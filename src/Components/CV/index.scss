@@ -1,0 +1,60 @@
+/*GENERAL CV STYLE*/
+main .col.cv-column{
+    flex: 0 0 50%;
+    min-height: 500px;
+    background-color: #ffffff;
+    border-radius: 0.5em;
+    padding: 55px;
+    max-width: 800px;
+    height: fit-content;
+  }
+
+  main .col.cv-column .cv-name{
+    text-align: center;
+  }
+
+  main .col.cv-column .website-links{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: baseline;
+    justify-content: center;
+  }
+
+  main .col.cv-column .section-title{
+    border-bottom: 1px solid #000;
+  }
+
+  main .col.cv-column .summary .summary-descr{
+    font-style: italic;
+  }
+
+  main .col.cv-column .general-section h1, main .col.cv-column .general-section h3{
+    margin-bottom: 0px;
+  }
+
+  main .col.cv-column .general-section p{
+    margin: 0px;
+  }
+
+  main .col.cv-column .skills-section ul{
+    list-style: none;
+    padding-left: 0px;
+  }
+
+  main .col.cv-column .section-descr .item .name{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  main .col.cv-column .section-descr .item .descr{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  main .col.cv-column .section-descr .item .descr p{
+    font-style: italic;
+  }
