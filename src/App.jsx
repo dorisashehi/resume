@@ -1,11 +1,15 @@
 import './App.scss'
-import CV from './Components/CV'
-import Experience from './Components/Experience'
+import CVPaper from './Components/CV'
+//import Experience from './Components/Experience'
 import Profile from './Components/Profile'
-import Skills from './Components/Skills'
+import { useState } from 'react'
+//import Skills from './Components/Skills'
+import defaultInfo from './defaultCV'
 
 function App() {
 
+
+    const [defaultCV, setDefaultCV] = useState(defaultInfo);
 
   return (
     <>
@@ -47,13 +51,12 @@ function App() {
                   </div>
 
                   <Profile />
-                  <Experience />
+                  {/* <Experience />
 
-                  <Skills />
+                  <Skills /> */}
               </div>
 
-            <CV />
-
+            <CVPaper defaultInfo = { defaultCV } />
           </main>
       </section>
 
