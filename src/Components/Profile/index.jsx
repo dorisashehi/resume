@@ -1,4 +1,5 @@
 import { useState } from "react"
+import OtherLinks from '../OtherLinks'
 
 function Profile () {
 
@@ -16,22 +17,56 @@ function Profile () {
         others: {
             website: '',
             github: '',
-            linkedIn: ''
+            linkedin: ''
         }
     })
 
-    const changeValue = (input, value) => { //CHANGE INPUT FIELDDS VALUES
 
-        setProfile((profile) => (
-            {
-                ...profile,
-                [input]:  value
+    const changeValue = (input, value) => { //CHANGE INPUT FIELDS VALUES
+
+        setProfile((profile) => {
+            if(input === 'website' || input === 'github' || input === 'linkedin'){ //IF OTHERS OBJECT IS MODIFIED
+                return {
+                    ...profile,
+                    others: {
+                        ...profile.others,
+                        [input]: value
+                    }
+                }
+
+            }else{ //ELSE MODIFIED DIRECTED FIELDS OF PROFILE
+
+                return {
+                    ...profile,
+                    [input]: value
+                }
             }
-
-        ))
+        })
 
     }
 
+    //CODE TO OPEN AND CLOSE OTHER LINKS
+    const [website, setOpenWeb] = useState(false);
+    const [github, setOpenGit] = useState(false);
+    const [linkedIn, setOpenLinkedin] = useState(false);
+
+    const openWeb = () => { //TRIGGER OPEN WEBSITE INPUT FIELD
+        setOpenWeb(!website);
+    }
+
+    const openGithub = () => { //TRIGGER OPEN GITHUB INPUT FIELD
+        setOpenGit(!github);
+    }
+
+    const openLinkedIn = () => { //TRIGGER OPEN LINKDIN INPUT FIELD
+        setOpenLinkedin(!linkedIn);
+    }
+
+    const removeField = (field) => { //REMOVE FORM FIELDS FOR LINKS ON CLICK REMOVE ICON
+        if(field === "website") openWeb()
+        if(field === "github") openGithub()
+        if(field === "linkedin") openLinkedIn()
+    }
 
 
     return(
@@ -119,6 +154,49 @@ function Profile () {
                                     value = {profile.location}
                                     onChange = {(event) => changeValue(event.target.id, event.target.value)}
                                 />
+                            </div>
+
+                            <div className="form-group">
+                                <h3>Others</h3>
+
+                                {
+
+                                    (website) && <OtherLinks name = "website"  text = "Website" removeField = {removeField} others = { profile.others } changeValue = { changeValue } />
+                                }
+
+                                {
+                                    (github) && <OtherLinks name = "github" text = "GitHub" removeField = {removeField} others = { profile.others } changeValue = { changeValue }  />
+                                }
+
+                                {
+                                    (linkedIn) && <OtherLinks name = "linkedin" text = "LinkedIn" removeField = {removeField} others = { profile.others } changeValue = { changeValue } />
+                                }
+
+
+                                <div className="links">
+                                    {
+                                        (!website) &&
+                                        <div className="link_name" onClick = {openWeb}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                            Website
+                                        </div>
+                                    }
+                                    {
+                                        (!github) &&
+                                        <div className="link_name" onClick = {openGithub}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                            Github
+                                        </div>
+                                    }
+
+                                    {
+                                        (!linkedIn) &&
+                                        <div className="link_name" onClick = {openLinkedIn}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                            LinkedIn
+                                        </div>
+                                    }
+                                </div>
                             </div>
                         </form>
                     </div>

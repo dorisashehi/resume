@@ -34,6 +34,39 @@ main .col.sections-column .form-group{
 
 }
 
+main .col.sections-column .inline{
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+}
+
+main .col.sections-column .inline input{
+  flex: 1%;
+}
+
+main .col.sections-column svg, main .col.sections-column .link_name{
+  cursor: pointer;
+}
+
+
+main .col.sections-column .form-group .links{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-top: 15px;
+}
+
+
+main .col.sections-column .form-group .link_name{
+  background: #f3f4f6;
+  width: fit-content;
+  padding: 10px 15px;
+  border-radius: 0.8em;
+  color: #6b7280;
+  font-weight: 500;
+}
+
 main .col.sections-column .form-group label{
   font-size: 1rem;
 
