@@ -1,7 +1,8 @@
 import { useState } from "react"
 import OtherLinks from '../OtherLinks'
+import PropTypes from 'prop-types';
 
-function Profile () {
+function Profile (props) {
 
     const [edit, setEdit] = useState(false); //EDIT BUTTON STATE
 
@@ -22,7 +23,7 @@ function Profile () {
     })
 
 
-    const changeValue = (input, value) => { //CHANGE INPUT FIELDS VALUES
+    const changeProfile = (input, value) => { //CHANGE INPUT FIELDS VALUES
 
         setProfile((profile) => {
             if(input === 'website' || input === 'github' || input === 'linkedin'){ //IF OTHERS OBJECT IS MODIFIED
@@ -42,6 +43,8 @@ function Profile () {
                 }
             }
         })
+
+        props.addProfile(profile);
 
     }
 
@@ -112,7 +115,7 @@ function Profile () {
                                     name="name"
                                     id="fullName"
                                     value = {profile.fullName}
-                                    onChange = {(event) => changeValue(event.target.id, event.target.value)}
+                                    onChange = {(event) => changeProfile(event.target.id, event.target.value)}
                                     placeholder="Enter Your First and Last Name"
                                 />
                             </div>
@@ -127,7 +130,7 @@ function Profile () {
                                         id="email"
                                         placeholder="Enter Email"
                                         value = {profile.email}
-                                        onChange = {(event) => changeValue(event.target.id, event.target.value)}
+                                        onChange = {(event) => changeProfile(event.target.id, event.target.value)}
                                     />
                                 </div>
 
@@ -139,7 +142,7 @@ function Profile () {
                                         id="phone"
                                         placeholder="Enter Phone"
                                         value = {profile.phone}
-                                        onChange = {(event) => changeValue(event.target.id, event.target.value)}
+                                        onChange = {(event) => changeProfile(event.target.id, event.target.value)}
                                     />
                                 </div>
                             </div>
@@ -152,7 +155,7 @@ function Profile () {
                                     id="location"
                                     placeholder="City, Country"
                                     value = {profile.location}
-                                    onChange = {(event) => changeValue(event.target.id, event.target.value)}
+                                    onChange = {(event) => changeProfile(event.target.id, event.target.value)}
                                 />
                             </div>
 
@@ -161,15 +164,15 @@ function Profile () {
 
                                 {
 
-                                    (website) && <OtherLinks name = "website"  text = "Website" removeField = {removeField} others = { profile.others } changeValue = { changeValue } />
+                                    (website) && <OtherLinks name = "website"  text = "Website" removeField = {removeField} others = { profile.others } changeValue = { changeProfile } />
                                 }
 
                                 {
-                                    (github) && <OtherLinks name = "github" text = "GitHub" removeField = {removeField} others = { profile.others } changeValue = { changeValue }  />
+                                    (github) && <OtherLinks name = "github" text = "GitHub" removeField = {removeField} others = { profile.others } changeValue = { changeProfile }  />
                                 }
 
                                 {
-                                    (linkedIn) && <OtherLinks name = "linkedin" text = "LinkedIn" removeField = {removeField} others = { profile.others } changeValue = { changeValue } />
+                                    (linkedIn) && <OtherLinks name = "linkedin" text = "LinkedIn" removeField = {removeField} others = { profile.others } changeValue = { changeProfile } />
                                 }
 
 
@@ -212,5 +215,8 @@ function Profile () {
         </>
     )
 }
+Profile.propTypes = {
+    addProfile: PropTypes.func
+};
 
 export default Profile

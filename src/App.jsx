@@ -4,12 +4,79 @@ import CVPaper from './Components/CV'
 import Profile from './Components/Profile'
 import { useState } from 'react'
 //import Skills from './Components/Skills'
-import defaultInfo from './defaultCV'
+//import defaultInfo from './defaultCV'
 
 function App() {
 
 
-    const [resumeInfo, setDefaultCV] = useState(defaultInfo);
+    //const [resumeInfo, setDefaultCV] = useState(defaultInfo);
+
+    const [cvData, setCVData] = useState(
+        {
+
+            profile: { //PROFILE SECTION DATA
+                fullName: '',
+                email: '',
+                phone: '',
+                location: '',
+                others: {
+                    website: '',
+                    github: '',
+                    linkedIn: ''
+                }
+            },
+            summary: '', //SUMMARY SECTION DATA
+            education: [ //EDUCATION SECTION DATA
+                {
+                    school: '',
+                    location: '',
+                    degree: '',
+                    date: '',
+                    courses: [],
+                },
+                {
+                    school: '',
+                    location: '',
+                    degree: '',
+                    date: '',
+                    courses: [],
+                }
+            ],
+            experience: [ //EXPERIENCE SECTION DATA
+                {
+                    company: '',
+                    location: '',
+                    position: '',
+                    date: '',
+                    responsibilities: []
+                }
+            ],
+            projects: [ //PROJECTS SECTION DATA
+                {
+                    pro_name: '',
+                    date: '',
+                    work_done: []
+
+                },
+            ],
+            skills: [ //SKILLS SECTION DATA
+                {
+                    skill_name: '',
+                    technologies: []
+                },
+
+            ]
+
+        }
+    )
+
+    const addProfile = (profileObj) => { //ADD PROFILE DATA TO CV DATA TP REFLECT THEM DIRECTLY IN CV PAPER
+        setCVData({
+            ...cvData,
+            profile: profileObj //OBJECT OD DATA PASED FROM THE CHILD COMPONENT
+        })
+    }
+
 
   return (
     <>
@@ -50,13 +117,13 @@ function App() {
                       </buton>
                   </div>
 
-                  <Profile/>
+                  <Profile addProfile = { addProfile }/>
                   {/* <Experience />
 
                   <Skills /> */}
               </div>
 
-            <CVPaper resumeInfo = { resumeInfo } />
+            <CVPaper resumeInfo = { cvData } />
           </main>
       </section>
 
