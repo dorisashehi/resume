@@ -2,13 +2,13 @@ const defaultInfo = {
 
     profile: {
         fullName: 'Name Surname',
-        email: 'doris.shehi2@gmial.com',
+        email: 'example@gmial.com',
         phone: 'Phone Number',
         location: 'Location',
         others: {
-            website: 'https://',
+            website: '',
             github: '',
-            linkedIn: 'https://'
+            linkedIn: ''
         }
     },
     summary: 'x+ years as [Title] with y small/medium/large companies in the [Industry]',
