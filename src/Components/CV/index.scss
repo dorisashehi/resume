@@ -9,6 +9,31 @@ main .col.cv-column{
     height: fit-content;
   }
 
+  main .col.cv-column .row{
+    padding: 10px 0px;
+  }
+
+  main .col.cv-column .section-descr{
+    padding-top: 5px;
+  }
+
+  main .col.cv-column ul.list{
+    margin: 10px 0px;
+  }
+
+
+  main .col.cv-column .profile-links{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+  }
+
+  main .col.cv-column .profile-links em{
+    padding: 0px 8px;
+  }
+
+
+
   main .col.cv-column .cv-name{
     text-align: center;
   }

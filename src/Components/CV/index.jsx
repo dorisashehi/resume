@@ -1,43 +1,42 @@
 import './index.scss';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const CVPaper  = (props) => {
 
     const {fullName, email, phone, location, others } = props.defaultInfo.profile;
-
-    const summary = props.defaultInfo.summary;
-    const education = props.defaultInfo.education;
-    const experience = props.defaultInfo.experience;
-    const projects = props.defaultInfo.projects;
-    const skills = props.defaultInfo.skills;
-
+    const { summary, education, experience, projects, skills } = props.defaultInfo;
 
     return(
         <>
             <div className="col cv-column">
 
-                <div className="row">
+                <div className="cv-name-section row">
                     <h1 className="cv-name">{ fullName }</h1>
                 </div>
-                <div className="website-links">
-                    <p className="item">{ email }</p> <em>|</em>
-                    <p className="item">{ phone }</p> <em>|</em>
-                    <p className="item">{ location }</p>
-                    {Object.entries(others).map(([key, value]) => (
-                        value !== '' && (
-                            <>
-                                <em>|</em>
-                                <p className="item">
-                                    <a href={value}>{key}</a>
-                                </p>
-                            </>
-                        )
+                <div className="cv-website-section">
+                    <ul className='profile-links'>
+                        <li className='item'>{ email }<em>|</em></li>
+                        <li className='item'>{ phone }<em>|</em></li>
+                        <li className='item'>{ location }</li>
 
-                    ))}
+                        {Object.entries(others).map(([key, value]) => (
+                            value !== '' && (
+                                <React.Fragment key={key}>
+                                    <em>|</em>
+                                    <li className="item">
+                                        <a href={value}>{key}</a>
+                                    </li>
+                                </React.Fragment>
+                            )
+
+                        ))}
+
+                    </ul>
 
                 </div>
 
-                <div className="summary">
+                <div className="cv-summary-section ">
                     <h1 className="section-title">Summary</h1>
                     <div className="section-descr">
                         {  summary }
@@ -45,7 +44,7 @@ const CVPaper  = (props) => {
 
                 </div>
 
-                <div className="general-section">
+                <div className="cv-education-section row">
                     <h1 className="section-title">Education</h1>
                     <div className="section-descr">
                         {
@@ -74,7 +73,7 @@ const CVPaper  = (props) => {
                     </div>
                 </div>
 
-                <div className="general-section">
+                <div className="cv-experience-section row">
                     <h1 className="section-title">Proffesional Experience</h1>
                     <div className="section-descr">
                         {
@@ -105,7 +104,7 @@ const CVPaper  = (props) => {
                     </div>
                 </div>
 
-                <div className="general-section">
+                <div className="cv-projects-section">
                     <h1 className="section-title">Projects</h1>
                     <div className="section-descr">
                         {
@@ -133,7 +132,7 @@ const CVPaper  = (props) => {
                    </div>
                 </div>
 
-                <div className="general-section skills-section">
+                <div className="cv-skills-section row">
                     <h1 className="section-title">Skills & Interests</h1>
                     <div className="section-descr">
                         <div className="item">
