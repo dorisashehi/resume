@@ -4,8 +4,8 @@ import React from 'react';
 
 const CVPaper  = (props) => {
 
-    const {fullName, email, phone, location, others } = props.defaultInfo.profile;
-    const { summary, education, experience, projects, skills } = props.defaultInfo;
+    const {fullName, email, phone, location, others } = props.resumeInfo.profile;
+    const { summary, education, experience, projects, skills } = props.resumeInfo;
 
     return(
         <>
@@ -159,7 +159,7 @@ const CVPaper  = (props) => {
 }
 
 CVPaper.propTypes = {
-    defaultInfo: PropTypes.object.isRequired
+    resumeInfo: PropTypes.object.isRequired
 };
 
 export default CVPaper;

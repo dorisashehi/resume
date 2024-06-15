@@ -9,7 +9,7 @@ import defaultInfo from './defaultCV'
 function App() {
 
 
-    const [defaultCV, setDefaultCV] = useState(defaultInfo);
+    const [resumeInfo, setDefaultCV] = useState(defaultInfo);
 
   return (
     <>
@@ -50,13 +50,13 @@ function App() {
                       </buton>
                   </div>
 
-                  <Profile />
+                  <Profile/>
                   {/* <Experience />
 
                   <Skills /> */}
               </div>
 
-            <CVPaper defaultInfo = { defaultCV } />
+            <CVPaper resumeInfo = { resumeInfo } />
           </main>
       </section>
 
