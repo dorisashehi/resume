@@ -16,14 +16,13 @@ const CVPaper  = (props) => {
                 </div>
                 <div className="cv-website-section">
                     <ul className='profile-links'>
-                        <li className='item'>{ email }<em>|</em></li>
-                        <li className='item'>{ phone }<em>|</em></li>
+                        <li className='item'>{ email }</li>
+                        <li className='item'>{ phone }</li>
                         <li className='item'>{ location }</li>
 
                         {Object.entries(others).map(([key, value]) => (
                             value !== '' && (
                                 <React.Fragment key={key}>
-                                    <em>|</em>
                                     <li className="item">
                                         <a href={value}>{key}</a>
                                     </li>
