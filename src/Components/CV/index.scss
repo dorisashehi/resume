@@ -26,6 +26,7 @@ main .col.cv-column{
     display: flex;
     flex-direction: row;
     list-style: none;
+    justify-content: center;
   }
 
   main .col.cv-column .profile-links em{
