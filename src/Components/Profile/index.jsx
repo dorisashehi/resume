@@ -57,40 +57,26 @@ function Profile (props) {
 
     const changeProfile = (input, value) => { //CHANGE INPUT FIELDS VALUES
 
-        validateFields(input, value)
-        setProfile((profile) => {
-            if(input === 'website' || input === 'github' || input === 'linkedin'){ //IF OTHERS OBJECT IS MODIFIED
-                return {
-                    ...profile,
-                    others: {
-                        ...profile.others,
-                        [input]: value
-                    }
-                }
+        validateFields(input, value);
 
-            }else{ //ELSE MODIFIED DIRECTED FIELDS OF PROFILE
+        const updatedProfile = {
+            ...profile
+        };
 
-                return {
-                    ...profile,
-                    [input]: value
-                }
-            }
-        })
+        if(['website', 'github', 'linkedin'].includes(input)){ //IF PROFILE OTHERS OBJECT IS MODIFIED
 
-        if(input === 'website' || input === 'github' || input === 'linkedin'){
-            props.addProfile({
-                ...profile,
-                others: {
-                    ...profile.others,
-                    [input]: value
-                }
-            });
-        }else{
-            props.addProfile({
-                ...profile,
+            updatedProfile.others = {
+                ...profile.others,
                 [input]: value
-            });
+            };
+
+        }else{ //ELSE MODIFIED DIRECTED FIELDS OF PROFILE
+
+            updatedProfile[input] = value;
         }
+
+        setProfile(updatedProfile); //UPDATE PROFILE
+        props.addProfile(updatedProfile); //UPDATE CV PROFILE
 
     }
 
