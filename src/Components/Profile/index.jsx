@@ -80,28 +80,22 @@ function Profile (props) {
 
     }
 
-    //CODE TO OPEN AND CLOSE OTHER LINKS
-    const [website, setOpenWeb] = useState(false);
-    const [github, setOpenGit] = useState(false);
-    const [linkedIn, setOpenLinkedin] = useState(false);
+    const [ othersLink, setOpenLink ] = useState({ //EDIT BUTTON STATE
+        website: false,
+        github: false,
+        linkedin: false
+    });
 
-    const openWeb = () => { //TRIGGER OPEN WEBSITE INPUT FIELD
-        setOpenWeb(!website);
+    const toggleField = (field) => { //TOGGLE FIELDS BASED ON THEIR STATE
+        setOpenLink({...othersLink, [field]: !othersLink[field]})
+
     }
-
-    const openGithub = () => { //TRIGGER OPEN GITHUB INPUT FIELD
-        setOpenGit(!github);
-    }
-
-    const openLinkedIn = () => { //TRIGGER OPEN LINKDIN INPUT FIELD
-        setOpenLinkedin(!linkedIn);
-    }
-
     const removeField = (field) => { //REMOVE FORM FIELDS FOR LINKS ON CLICK REMOVE ICON
 
-        if(field === "website") openWeb()
-        if(field === "github") openGithub()
-        if(field === "linkedin") openLinkedIn()
+
+        if(['website', 'github', 'linkedin'].includes(field)){
+            toggleField(field);
+        }
 
         const updatedProfile = {
             ...profile
@@ -111,6 +105,7 @@ function Profile (props) {
             ...profile.others,
             [field]: ''
         }
+
         //UPDATE THE PROFILE OBJECT
         setProfile(updatedProfile)
 
@@ -216,23 +211,23 @@ function Profile (props) {
 
                                 <div className="links">
                                     {
-                                        (!website) &&
-                                        <div className="link_name" onClick = {openWeb}>
+                                        (!othersLink.website) &&
+                                        <div className="link_name" onClick = {() => toggleField('website')}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                             Website
                                         </div>
                                     }
                                     {
-                                        (!github) &&
-                                        <div className="link_name" onClick = {openGithub}>
+                                        (!othersLink.github) &&
+                                        <div className="link_name" onClick = {() => toggleField('github')}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                             Github
                                         </div>
                                     }
 
                                     {
-                                        (!linkedIn) &&
-                                        <div className="link_name" onClick = {openLinkedIn}>
+                                        (!othersLink.linkedin) &&
+                                        <div className="link_name" onClick = {() => toggleField('linkedin')}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                             LinkedIn
                                         </div>
@@ -240,16 +235,9 @@ function Profile (props) {
                                 </div>
 
                                 {
-
-                                    (website) && <OtherLinks name = "website"  text = "Website" removeField = {removeField} others = { profile.others } changeValue = { changeProfile } />
-                                }
-
-                                {
-                                    (github) && <OtherLinks name = "github" text = "GitHub" removeField = {removeField} others = { profile.others } changeValue = { changeProfile }  />
-                                }
-
-                                {
-                                    (linkedIn) && <OtherLinks name = "linkedin" text = "LinkedIn" removeField = {removeField} others = { profile.others } changeValue = { changeProfile } />
+                                    Object.entries(othersLink).map(([key, value]) => (
+                                        value && <OtherLinks name = {key}  key={key}  text = {key.charAt(0).toUpperCase() + key.slice(1)} removeField = {removeField} others = { profile.others } changeValue = { changeProfile } />
+                                    ))
                                 }
 
 
