@@ -97,27 +97,25 @@ function Profile (props) {
         setOpenLinkedin(!linkedIn);
     }
 
-    const setEmptyValue = (field, value = '') => { //ADD EMPTY VALUE FOR OTHER LINKS
-        return {
-            ...profile,
-            others: {
-                ...profile.others,
-                [field]: value
-            }
-        }
-    }
-
     const removeField = (field) => { //REMOVE FORM FIELDS FOR LINKS ON CLICK REMOVE ICON
 
         if(field === "website") openWeb()
         if(field === "github") openGithub()
         if(field === "linkedin") openLinkedIn()
 
+        const updatedProfile = {
+            ...profile
+        }
+
+        updatedProfile.others = {
+            ...profile.others,
+            [field]: ''
+        }
         //UPDATE THE PROFILE OBJECT
-        setProfile(setEmptyValue(field))
+        setProfile(updatedProfile)
 
         //UPDATE THE PARENT OBJECT PROFILE
-        props.addProfile(setEmptyValue(field));
+        props.addProfile(updatedProfile);
 
     }
 
