@@ -33,8 +33,9 @@ function Experience (props) {
     const handleSave = ( event ) => {
 
         event.preventDefault();
-        setExperiences([...experiences, experienceObj]) //SET THE EXPERIENCE BJECT T THE ARRAY OF EXPERIENCES
-        props.addExperiences([...experiences, experienceObj]) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
+        const newExperiences = [...experiences, experienceObj];
+        setExperiences(newExperiences) //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
+        props.addExperiences(newExperiences) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
         setOpen(false) //CLOSE ADD BOX DIALOG
 
     }
