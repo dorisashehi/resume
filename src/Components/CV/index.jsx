@@ -8,6 +8,7 @@ const CVPaper  = (props) => {
 
     const {fullName, email, phone, location, others } = props.resumeInfo.profile;
     const { summary, education, experience, projects, skills } = props.resumeInfo;
+    const summ = DOMPurify.sanitize(summary) || 'x+ years as [Title] with y small/medium/large companies in the [Industry]'; //Summary sanitized or default value
 
     return(
         <>
@@ -39,9 +40,7 @@ const CVPaper  = (props) => {
 
                 <div className="cv-summary-section ">
                     <h1 className="section-title">Summary</h1>
-                    <div className="section-descr">
-                        {  summary }
-                    </div>
+                    <div className="section-descr" dangerouslySetInnerHTML={{ __html: summ }}></div>
 
                 </div>
 

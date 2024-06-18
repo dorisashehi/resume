@@ -1,0 +1,30 @@
+main .col.cv-column .section-descr{
+    padding-top: 5px;
+}
+
+
+
+main .col.cv-column .section-descr .item{
+    margin-bottom: 10px;
+}
+main .col.cv-column .section-descr .item .name{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+main .col.cv-column .section-descr .item .descr{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+main .col.cv-column .section-descr .item .descr p{
+    font-style: italic;
+}
+
+main .col.sections-column .summary-section.row {
+    flex-direction: column;
+
+}

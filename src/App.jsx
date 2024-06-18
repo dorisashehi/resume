@@ -2,6 +2,7 @@ import './App.scss'
 import CVPaper from './Components/CV'
 import Experience from './Components/Experience'
 import Profile from './Components/Profile'
+import Summary from './Components/Summary'
 import { useState } from 'react'
 //import Skills from './Components/Skills'
 //import defaultInfo from './defaultCV'
@@ -88,6 +89,14 @@ function App() {
         })
     }
 
+    const addSummary = (summaryContent) => {
+        setCVData({
+            ...cvData,
+            summary: summaryContent
+        })
+
+    }
+
 
   return (
     <>
@@ -129,6 +138,7 @@ function App() {
                   </div>
 
                   <Profile addProfile = { addProfile }/>
+                  <Summary addSummary = { addSummary } />
                   <Experience addExperiences = { addExperiences } />
                   {/* <Skills /> */}
               </div>

@@ -15,6 +15,7 @@ main .col.cv-column{
 
   main .col.cv-column .section-descr{
     padding-top: 5px;
+    font-style: italic;
   }
 
   main .col.cv-column ul.list{
@@ -67,25 +68,4 @@ main .col.cv-column{
   main .col.cv-column .skills-section ul{
     list-style: none;
     padding-left: 0px;
-  }
-
-
-  main .col.cv-column .section-descr .item{
-    margin-bottom: 10px;
-  }
-  main .col.cv-column .section-descr .item .name{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: baseline;
-  }
-
-  main .col.cv-column .section-descr .item .descr{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-  }
-
-  main .col.cv-column .section-descr .item .descr p{
-    font-style: italic;
   }
