@@ -9,6 +9,7 @@ function Experience (props) {
 
     const [ addBox, setOpen ] = useState(false); //STATE FOR ADD EXPERIENCE BOX
     const [ showSummany, setExpSummary ] = useState(false); //STATE FOR ADD EXPERIENCE BOX
+    const [ editBox, setEdit ] = useState(false);
 
     const [ exp_id, setExpID ] = useState(); //ID FOR A NEW EXPERIENCE
 
@@ -36,12 +37,12 @@ function Experience (props) {
 
         setExpID(uuidv4()); //GENERATE A RANDOM ID WHEN EXP BOX OPEN
         setExperienceObj({}); //EMPTY PREVIOUS EXPERIONCE OBJECT
+        setEdit(false)
         setOpen(!addBox) //OPEN/CLOSE ADD BOX
 
     }
 
     const changeExperience = (input, value) => {
-        console.log(value);
 
         setExperienceObj({  //SET INPUT FIELD VALUE TO THE EXPERIENCE OBJECT
             ...experienceObj,
@@ -81,15 +82,27 @@ function Experience (props) {
 
     }
 
-    const handleEdit = (exp_id) => {
-
-        console.log(exp_id);
-
-    }
-
     const handleOpenSummary = () => { //OPEN CLOSE EXPERIENCE SUMMARY
         setExpSummary(!showSummany)
     }
+
+    const toggleEdit = (event) => { //OPEN CLOSE EDIT BOX
+
+        event.preventDefault();
+        setEdit(!editBox) //OPEN/CLOSE EDIT BOX
+
+    }
+
+
+    const handleEdit = (id) => { //EDIT EXPERIEMCE ACTION
+
+        const experience = experiences.find((item) => (item.exp_id === id)) //FIND EDITED EXPERINCE IN EXPERIENCES ARRAY
+
+        setOpen(false) //CLOSE ADD BOX IF OPENED
+        setExperienceObj(experience); //PASS EXPERIENCE EDITED DATA
+        setEdit(true); //OPEN EDIT BOX
+    }
+
 
     return(
 
@@ -204,91 +217,79 @@ function Experience (props) {
                 </div>
             }
 
-            {/* <div className="experience-details-section row details">
-                <h1>
-                    Edit Proffesional Experience
-                </h1>
-                <div className="sub-section">
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="exp-job">Job Title</label>
-                            <input type="text" className="form-input" name="exp-job" id="exp-job" placeholder="Enter Job Title"/>
+            {
+                ( editBox ) &&
+                    <div className="experience-details-section row details">
+                        <h1>
+                            Edit Proffesional Experience
+                        </h1>
+                        <div className="sub-section">
+                            <form>
+                                <div className="form-group">
+                                    <label htmlFor="exp_company">Company</label>
+                                    <input type="text" value = { experienceObj?.exp_company } className="form-input" name="exp_company" id="exp_company" placeholder="Enter Company Title"/>
+                                    {
+                                        (required) && <span className='error'>That is a required field</span>
+                                    }
+
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exp_job">Job Title</label>
+                                    <input type="text" value = { experienceObj?.exp_job || '' } className="form-input" name="exp_job" id="exp_job" placeholder="Enter Job Title"/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exp_technology">Technology</label>
+                                    <input type="text"  value = { experienceObj?.exp_technology || '' } className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_technology" id="exp_technology" placeholder="Enter Technology"/>
+                                </div>
+
+                                <div className="row-group">
+                                    <div className="form-group">
+                                        <label htmlFor="exp_city">City</label>
+                                        <input type="text" value = { experienceObj?.exp_city  || ''} className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_city" id="exp_city" placeholder="Enter City"/>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label htmlFor="exp_country">Country</label>
+                                        <input type="text" value = { experienceObj?.exp_country || '' } className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_country" id="exp_country" placeholder="Enter Country"/>
+                                    </div>
+                                </div>
+
+                                <div className="row-group">
+                                    <div className="form-group">
+                                        <label htmlFor="exp_start_date">Start Date</label>
+                                        <input type="date" value = { experienceObj?.exp_start_date || '' } className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_start_date" id="exp_start_date" placeholder="Enter Start Date"/>
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label htmlFor="exp_end_date">End Date</label>
+                                        <input type="date" value = { experienceObj?.exp_end_date || '' } className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_end_date" id="exp_end_date" placeholder="Enter End Date"/>
+                                    </div>
+                                </div>
+
+                                <div className="row-group">
+                                    <div className="form-group">
+
+                                        <div className="App">
+                                                <label htmlFor="exp_responsibilities">Responsibilities</label>
+                                                <CKEditor
+                                                    editor={ ClassicEditor }
+                                                    data=""
+                                                    id="exp_responsibilities"
+                                                    onChange= {(event, editor) => changeExperience('exp_responsibilities', editor.getData())}
+                                                />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="button-section">
+                                    <input type="submit" className="btn close" onClick={(event) => toggleEdit(event)} value='Close' />
+                                    <input type="submit" className="btn save" onClick={(event) => handleSave(event)} value='Save' />
+
+                                </div>
+                            </form>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="exp-technology">Technology</label>
-                            <input type="text" className="form-input" name="exp-technology" id="exp-technology" placeholder="Enter Technology"/>
-                        </div>
-
-                        <div className="row-group">
-                            <div className="form-group">
-                                <label htmlFor="exp-city">City</label>
-                                <input type="text" className="form-input" name="exp-city" id="exp-city" placeholder="Enter City"/>
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="exp-country">Country</label>
-                                <input type="text" className="form-input" name="exp-country" id="exp-country" placeholder="Enter Country"/>
-                            </div>
-                        </div>
-
-                        <div className="row-group">
-                            <div className="form-group">
-                                <label htmlFor="exp-start-date">Start Date</label>
-                                <input type="date" className="form-input" name="exp-start-date" id="exp-start-date" placeholder="Enter Start Date"/>
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="exp-end-date">End Date</label>
-                                <input type="date" className="form-input" name="exp-end-date" id="exp-end-date" placeholder="Enter End Date"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div className="sub-section">
-                    <form>
-                        <div className="form-group">
-                            <label htmlFor="exp-job">Job Title</label>
-                            <input type="text" className="form-input" name="exp-job" id="exp-job" placeholder="Enter Job Title"/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="exp-technology">Technology</label>
-                            <input type="text" className="form-input" name="exp-technology" id="exp-technology" placeholder="Enter Technology"/>
-                        </div>
-
-                        <div className="row-group">
-                            <div className="form-group">
-                                <label htmlFor="exp-city">City</label>
-                                <input type="text" className="form-input" name="exp-city" id="exp-city" placeholder="Enter City"/>
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="exp-country">Country</label>
-                                <input type="text" className="form-input" name="exp-country" id="exp-country" placeholder="Enter Country"/>
-                            </div>
-                        </div>
-
-                        <div className="row-group">
-                            <div className="form-group">
-                                <label htmlFor="exp-start-date">Start Date</label>
-                                <input type="date" className="form-input" name="exp-start-date" id="exp-start-date" placeholder="Enter Start Date"/>
-                            </div>
-
-                            <div className="form-group">
-                                <label htmlFor="exp-end-date">End Date</label>
-                                <input type="date" className="form-input" name="exp-end-date" id="exp-end-date" placeholder="Enter End Date"/>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <div className="button-section">
-                    <button className="btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-                        <span>Add New</span>
-                    </button>
-                </div>
-            </div> */}
+                    </div>
+            }
 
         </>
 
