@@ -27,6 +27,7 @@ main .col.cv-column{
     flex-direction: row;
     list-style: none;
     justify-content: center;
+    gap: 10px;
   }
 
   main .col.cv-column .profile-links em{
@@ -68,6 +69,10 @@ main .col.cv-column{
     padding-left: 0px;
   }
 
+
+  main .col.cv-column .section-descr .item{
+    margin-bottom: 10px;
+  }
   main .col.cv-column .section-descr .item .name{
     display: flex;
     justify-content: space-between;

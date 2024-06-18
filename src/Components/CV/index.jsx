@@ -14,13 +14,13 @@ const CVPaper  = (props) => {
             <div className="col cv-column">
 
                 <div className="cv-name-section row">
-                    <h1 className="cv-name">{ fullName }</h1>
+                    <h1 className="cv-name">{ fullName || 'FirstName LastName' }</h1>
                 </div>
                 <div className="cv-website-section">
                     <ul className='profile-links'>
-                        <li className='item'>{ email }</li>
-                        <li className='item'>{ phone }</li>
-                        <li className='item'>{ location }</li>
+                        <li className='item'>{ email || 'Email Address' }</li>
+                        <li className='item'>{ phone || 'Phone Number' }</li>
+                        <li className='item'>{ location || 'Location' }</li>
 
                         {Object.entries(others).map(([key, value]) => (
                             value !== '' && (
