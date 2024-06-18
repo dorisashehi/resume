@@ -72,10 +72,11 @@ const CVPaper  = (props) => {
                     </div>
                 </div>
 
-                <div className="cv-experience-section row">
+                {/* <div className="cv-experience-section row">
                     <h1 className="section-title">Proffesional Experience</h1>
                     <div className="section-descr">
                         {
+
                             Object.entries(experience).map(([key, experience]) => (
 
                                 <div className="item" key={key}>
@@ -101,7 +102,7 @@ const CVPaper  = (props) => {
                         }
 
                     </div>
-                </div>
+                </div> */}
 
                 <div className="cv-projects-section">
                     <h1 className="section-title">Projects</h1>

@@ -1,6 +1,6 @@
 import './App.scss'
 import CVPaper from './Components/CV'
-//import Experience from './Components/Experience'
+import Experience from './Components/Experience'
 import Profile from './Components/Profile'
 import { useState } from 'react'
 //import Skills from './Components/Skills'
@@ -44,10 +44,13 @@ function App() {
             ],
             experience: [ //EXPERIENCE SECTION DATA
                 {
-                    company: '',
-                    location: '',
-                    position: '',
-                    date: '',
+                    exp_company: '',
+                    exp_job: '',
+                    exp_technology: '',
+                    exp_city: '',
+                    exp_country: '',
+                    exp_start_date: '',
+                    exp_end_date: '',
                     responsibilities: []
                 }
             ],
@@ -74,6 +77,15 @@ function App() {
         setCVData({
             ...cvData,
             profile: profileObj //OBJECT OD DATA PASED FROM THE CHILD COMPONENT
+        })
+    }
+
+    const addExperience = (experienceObj) => { //ADD PROFILE DATA TO CV DATA TP REFLECT THEM DIRECTLY IN CV PAPER
+        console.log(experienceObj);
+        setCVData({
+            ...cvData,
+            experience: experienceObj
+             //OBJECT OD DATA PASED FROM THE CHILD COMPONENT
         })
     }
 
@@ -118,9 +130,8 @@ function App() {
                   </div>
 
                   <Profile addProfile = { addProfile }/>
-                  {/* <Experience />
-
-                  <Skills /> */}
+                  <Experience addExperience = { addExperience } />
+                  {/* <Skills /> */}
               </div>
 
             <CVPaper resumeInfo = { cvData } />

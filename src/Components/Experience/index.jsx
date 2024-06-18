@@ -1,17 +1,152 @@
-function Experience () {
+import { useState } from 'react';
+import './index.scss';
+import { v4 as uuidv4 } from 'uuid';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
+
+function Experience (props) {
+
+    const [ addBox, setOpen ] = useState(false);
+
+    const [ id, setID ] = useState();
+
+    const toggleDetails = (event) => { //OPEN CLOSE DETAILS
+        event.preventDefault();
+        setID(uuidv4());
+        setOpen(!addBox)
+    }
+
+    const [ experience, setExperience] = useState([])
+
+    const [ obj, setObj] = useState({})
+
+    const changeExperience = (input, value) => {
+
+        setObj({
+            ...obj,
+            exp_id: id,
+            [input]:value
+        })
+    }
+
+    const handleSave = ( event ) => {
+
+        event.preventDefault();
+
+        //experience.push(obj)
+        setExperience([...experience, obj])
+        props.addExperience([...experience, obj])
+
+    }
 
     return(
 
         <>
             <div className="experience-section row">
                 <div className="experience">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                    <h1 className="title">Proffesional Experience</h1>
+                    <h1 className="title">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        Proffesional Experience
+                    </h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
+                <div className="experience-list">
+                    <div className="item">
+                        <p className="title">Experience 1</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    </div>
+                    <div className="item">
+                        <p className="title">Experience 1</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                    </div>
 
-            <div className="experience-details-section row details">
+                    <div className="item buttons">
+                        <div className='button-section'  onClick = {toggleDetails}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            <input type="submit" className="add" value='Exerience' />
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            {
+                (addBox) &&
+
+                <div className="experience-details-section row details">
+                    <h1>
+                        Add Experience
+                    </h1>
+                    <div className="sub-section">
+                        <form>
+                            <div className="form-group">
+                                <label htmlFor="exp_company">Company</label>
+                                <input type="text" onChange = {(event) => changeExperience(event.target.id, event.target.value)} className="form-input" name="exp_company" id="exp_company" placeholder="Enter Company Title"/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exp_job">Job Title</label>
+                                <input type="text" onChange = {(event) => changeExperience(event.target.id, event.target.value)} className="form-input" name="exp_job" id="exp_job" placeholder="Enter Job Title"/>
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="exp_technology">Technology</label>
+                                <input type="text" className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_technology" id="exp_technology" placeholder="Enter Technology"/>
+                            </div>
+
+                            <div className="row-group">
+                                <div className="form-group">
+                                    <label htmlFor="exp_city">City</label>
+                                    <input type="text" className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_city" id="exp_city" placeholder="Enter City"/>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exp_country">Country</label>
+                                    <input type="text" className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_country" id="exp_country" placeholder="Enter Country"/>
+                                </div>
+                            </div>
+
+                            <div className="row-group">
+                                <div className="form-group">
+                                    <label htmlFor="exp_start_date">Start Date</label>
+                                    <input type="date" className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_start_date" id="exp_start_date" placeholder="Enter Start Date"/>
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="exp_end_date">End Date</label>
+                                    <input type="date" className="form-input" onChange = {(event) => changeExperience(event.target.id, event.target.value)} name="exp_end_date" id="exp_end_date" placeholder="Enter End Date"/>
+                                </div>
+                            </div>
+
+                            <div className="row-group">
+                                <div className="form-group">
+
+                                    <div className="App">
+                                            <h2>Responsibilities</h2>
+                                            <CKEditor
+                                                editor={ ClassicEditor }
+                                                data="<p>Hello from CKEditor 5!</p>"
+                                                onChange={ ( event, editor ) => {
+                                                    const data = editor.getData();
+                                                    console.log( { data } );
+                                                } }
+
+                                            />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="button-section">
+                                <input type="submit" className="btn close" onClick={(event) => toggleDetails(event)} value='Close' />
+                                <input type="submit" className="btn save" onClick={(event) => handleSave(event)} value='Save' />
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            }
+
+            {/* <div className="experience-details-section row details">
                 <h1>
                     Edit Proffesional Experience
                 </h1>
@@ -95,7 +230,7 @@ function Experience () {
                         <span>Add New</span>
                     </button>
                 </div>
-            </div>
+            </div> */}
 
         </>
 

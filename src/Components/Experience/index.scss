@@ -1,0 +1,51 @@
+main .col.sections-column .experience-section.row{
+    flex-direction: column;
+
+}
+
+main .col.sections-column .experience{
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+main .col.sections-column .experience-list .item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #001660;
+    border-top: 5px solid #f3f4f6;
+    padding: 20px 0px;
+
+}
+
+main .col.sections-column .experience-list svg{
+    color: #4f5765;
+}
+
+main .col.sections-column .experience-list .item.buttons{
+    justify-content: center;
+}
+
+main .col.sections-column .experience-list .item.buttons .button-section{
+    border: 5px solid #f3f4f6;
+    border-radius: 1em;
+    padding: 9px 30px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+main .col.sections-column .experience-list .item.buttons .button-section input{
+    cursor: pointer;
+}
+
+main .col.sections-column .experience-list input.add{
+    border: none;
+    background: #ffffff;
+}
