@@ -8,14 +8,14 @@ const OtherLinks = ({name, text, removeField, others, changeValue }) => {
 
     return(
         <div className="form-group">
-            <label htmlFor="address">{text}</label>
+            <label htmlFor={name}>{text}</label>
             <div className='inline'>
                 <input type="text"
                     className="form-input"
                     name= { name }
                     id= { name }
                     placeholder="Enter Url"
-                    value = { others.text }
+                    value = { others[name] }
                     onChange = {(event) => changeValue(name, event.target.value)}
 
                 />
