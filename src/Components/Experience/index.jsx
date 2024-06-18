@@ -8,6 +8,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 function Experience (props) {
 
     const [ addBox, setOpen ] = useState(false); //STATE FOR ADD EXPERIENCE BOX
+    const [ showSummany, setExpSummary ] = useState(false); //STATE FOR ADD EXPERIENCE BOX
 
     const [ exp_id, setExpID ] = useState(); //ID FOR A NEW EXPERIENCE
 
@@ -86,6 +87,10 @@ function Experience (props) {
 
     }
 
+    const handleOpenSummary = () => { //OPEN CLOSE EXPERIENCE SUMMARY
+        setExpSummary(!showSummany)
+    }
+
     return(
 
         <>
@@ -95,30 +100,34 @@ function Experience (props) {
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                         Proffesional Experience
                     </h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" onClick = { handleOpenSummary } width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </div>
-                <div className="experience-list">
-
                     {
-                        experiences.map((experience, index) => (
-                            <div className="item" key={index}>
-                                <p className="title">{ experience.exp_company }</p>
-                                <svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleEdit(experience.exp_id) } width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        ( showSummany ) &&
+                        <div className="experience-list">
+
+                            {
+                                experiences.map((experience, index) => (
+                                    <div className="item" key={index}>
+                                        <p className="title">{ experience.exp_company }</p>
+                                        <svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleEdit(experience.exp_id) } width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                    </div>
+
+                                ))
+                            }
+
+                            <div className="item buttons">
+                                <div className='button-section'  onClick = {toggleDetails}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                    <input type="submit" className="add" value='Exerience' />
+
+                                </div>
+
                             </div>
 
-                        ))
+                        </div>
                     }
 
-                    <div className="item buttons">
-                        <div className='button-section'  onClick = {toggleDetails}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                            <input type="submit" className="add" value='Exerience' />
-
-                        </div>
-
-                    </div>
-
-                </div>
             </div>
             {
                 (addBox) &&
