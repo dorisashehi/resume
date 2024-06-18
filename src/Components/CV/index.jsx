@@ -72,37 +72,44 @@ const CVPaper  = (props) => {
                     </div>
                 </div>
 
-                {/* <div className="cv-experience-section row">
+                <div className="cv-experience-section row">
                     <h1 className="section-title">Proffesional Experience</h1>
                     <div className="section-descr">
                         {
 
-                            Object.entries(experience).map(([key, experience]) => (
+                            experience.map((experience, index) => {
 
-                                <div className="item" key={key}>
-                                    <div className="name">
-                                        <h3 className="name">{experience.company}</h3>
-                                        <p className="location">{experience.location}</p>
+                                console.log(experience)
+
+                                const location = experience.exp_city || 'City'  + ', ' + experience.exp_country || 'State';
+                                const date = experience.exp_start_date || 'MM/YEAR' + ' - ' + experience.exp_end_date || 'MM/YEAR';
+
+                                return(
+                                    <div className="item" key={index}>
+                                        <div className="name">
+                                            <h3 className="name">{experience.exp_company}</h3>
+                                            <p className="location">{ location }</p>
+                                        </div>
+                                        <div className="descr">
+                                            <p className="name">{experience.exp_job || 'Position Held'}</p>
+                                            <p className="date">{ date }</p>
+                                        </div>
+                                        <div className="more-info">
+                                            <ul className="list">
+                                                {
+                                                    experience.responsibilities?.map((item, index) => (
+                                                        <li className="item" key={index}>{item}</li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div className="descr">
-                                        <p className="name">{experience.position}</p>
-                                        <p className="date">{experience.date}</p>
-                                    </div>
-                                    <div className="more-info">
-                                        <ul className="list">
-                                            {
-                                                experience.responsibilities.map((item, index) => (
-                                                    <li className="item" key={index}>{item}</li>
-                                                ))
-                                            }
-                                        </ul>
-                                    </div>
-                                </div>
-                            ))
+                                )
+                            })
                         }
 
                     </div>
-                </div> */}
+                </div>
 
                 <div className="cv-projects-section">
                     <h1 className="section-title">Projects</h1>
