@@ -7,25 +7,25 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 function Experience (props) {
 
-    const [ addBox, setOpen ] = useState(false);
+    const [ addBox, setOpen ] = useState(false); //STATE FOR ADD EXPERIENCE BOX
 
-    const [ id, setID ] = useState();
+    const [ exp_id, setExpID ] = useState(); //ID FOR A NEW EXPERIENCE
 
     const toggleDetails = (event) => { //OPEN CLOSE DETAILS
         event.preventDefault();
-        setID(uuidv4());
-        setOpen(!addBox)
+        setExpID(uuidv4()); //GENERATE A RANDOM ID WHEN EXP BOX OPEN
+        setOpen(!addBox) //SET VALUE TO OPPOSITE
     }
 
-    const [ experience, setExperience] = useState([])
+    const [ experiences, setExperiences] = useState([]) //ARRAY OF EXPERIENCES ADDED
 
-    const [ obj, setObj] = useState({})
+    const [ experienceObj, setExperienceObj] = useState({}) //AN OBJ TO SAVE THE EXPERIENCE ADDING TO ADD EXP BOX
 
     const changeExperience = (input, value) => {
 
-        setObj({
-            ...obj,
-            exp_id: id,
+        setExperienceObj({  //SET INPUT FIELD VALUE TO THE EXPERIENCE OBJECT
+            ...experienceObj,
+            exp_id: exp_id,
             [input]:value
         })
     }
@@ -33,10 +33,9 @@ function Experience (props) {
     const handleSave = ( event ) => {
 
         event.preventDefault();
-
-        //experience.push(obj)
-        setExperience([...experience, obj])
-        props.addExperience([...experience, obj])
+        setExperiences([...experiences, experienceObj]) //SET THE EXPERIENCE BJECT T THE ARRAY OF EXPERIENCES
+        props.addExperiences([...experiences, experienceObj]) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
+        setOpen(false) //CLOSE ADD BOX DIALOG
 
     }
 

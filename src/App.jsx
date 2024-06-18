@@ -80,8 +80,7 @@ function App() {
         })
     }
 
-    const addExperience = (experienceObj) => { //ADD PROFILE DATA TO CV DATA TP REFLECT THEM DIRECTLY IN CV PAPER
-        console.log(experienceObj);
+    const addExperiences = (experienceObj) => { //ADD PROFILE DATA TO CV DATA TP REFLECT THEM DIRECTLY IN CV PAPER
         setCVData({
             ...cvData,
             experience: experienceObj
@@ -130,7 +129,7 @@ function App() {
                   </div>
 
                   <Profile addProfile = { addProfile }/>
-                  <Experience addExperience = { addExperience } />
+                  <Experience addExperiences = { addExperiences } />
                   {/* <Skills /> */}
               </div>
 
