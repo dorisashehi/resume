@@ -10,6 +10,7 @@ function Experience (props) {
     const [ addBox, setOpen ] = useState(false); //STATE FOR ADD EXPERIENCE BOX
     const [ showSummany, setExpSummary ] = useState(false); //STATE FOR ADD EXPERIENCE BOX
     const [ editBox, setEdit ] = useState(false);
+    const [required, setRequired]  = useState(false); //REQUIRED FIELD
 
     const [ exp_id, setExpID ] = useState(); //ID FOR A NEW EXPERIENCE
 
@@ -31,7 +32,7 @@ function Experience (props) {
     const [ experienceObj, setExperienceObj] = useState({}) //AN OBJ TO SAVE THE EXPERIENCE ADDING TO ADD EXP BOX
 
 
-    const toggleDetails = (event) => { //OPEN CLOSE DETAILS
+    const toggleAdd = (event) => { //OPEN CLOSE DETAILS
 
         event.preventDefault();
 
@@ -51,8 +52,6 @@ function Experience (props) {
         })
     }
 
-    const [required, setRequired]  = useState(false); //REQUIRED FIELD
-
     const validateRequiredFields = (experienceObj) =>{ //CHECK IS REQ FIELD IS FILLED
 
         if (!experienceObj.exp_company){
@@ -65,7 +64,7 @@ function Experience (props) {
 
     }
 
-    const handleSave = ( event ) => {
+    const save = ( event ) => {
 
         event.preventDefault();
 
@@ -98,9 +97,31 @@ function Experience (props) {
 
         const experience = experiences.find((item) => (item.exp_id === id)) //FIND EDITED EXPERINCE IN EXPERIENCES ARRAY
 
+        setExpID(id);
         setOpen(false) //CLOSE ADD BOX IF OPENED
         setExperienceObj(experience); //PASS EXPERIENCE EDITED DATA
         setEdit(true); //OPEN EDIT BOX
+    }
+
+    const update = (event, id) => {
+
+        event.preventDefault();
+        const expIdx = experiences.findIndex((item) => ( item.exp_id === id)); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
+
+        const error = validateRequiredFields(experienceObj); //CHECK ID COMPANY NAME EMPTY
+
+
+
+        if(!error){
+
+            const updatedExperiences = [...experiences];
+            updatedExperiences[expIdx] = experienceObj; //PUT UPDATED EXPERIENCE AT INDEX
+            console.log(updatedExperiences[expIdx]);
+            setExperiences(updatedExperiences) //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
+            props.addExperiences(updatedExperiences) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
+            setEdit(false) //CLOSE EDIT BOX DIALOG
+
+        }
     }
 
 
@@ -130,7 +151,7 @@ function Experience (props) {
                             }
 
                             <div className="item buttons">
-                                <div className='button-section'  onClick = {toggleDetails}>
+                                <div className='button-section'  onClick = {toggleAdd}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                                     <input type="submit" className="add" value='Exerience' />
 
@@ -208,8 +229,8 @@ function Experience (props) {
                             </div>
 
                             <div className="button-section">
-                                <input type="submit" className="btn close" onClick={(event) => toggleDetails(event)} value='Close' />
-                                <input type="submit" className="btn save" onClick={(event) => handleSave(event)} value='Save' />
+                                <input type="submit" className="btn close" onClick={(event) => toggleAdd(event)} value='Close' />
+                                <input type="submit" className="btn save" onClick={(event) => save(event)} value='Save' />
 
                             </div>
                         </form>
@@ -227,7 +248,7 @@ function Experience (props) {
                             <form>
                                 <div className="form-group">
                                     <label htmlFor="exp_company">Company</label>
-                                    <input type="text" value = { experienceObj?.exp_company } className="form-input" name="exp_company" id="exp_company" placeholder="Enter Company Title"/>
+                                    <input type="text" value = { experienceObj?.exp_company } onChange = {(event) => changeExperience(event.target.id, event.target.value)} className="form-input" name="exp_company" id="exp_company" placeholder="Enter Company Title"/>
                                     {
                                         (required) && <span className='error'>That is a required field</span>
                                     }
@@ -235,7 +256,7 @@ function Experience (props) {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exp_job">Job Title</label>
-                                    <input type="text" value = { experienceObj?.exp_job || '' } className="form-input" name="exp_job" id="exp_job" placeholder="Enter Job Title"/>
+                                    <input type="text" value = { experienceObj?.exp_job || '' } onChange = {(event) => changeExperience(event.target.id, event.target.value)} className="form-input" name="exp_job" id="exp_job" placeholder="Enter Job Title"/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="exp_technology">Technology</label>
@@ -273,7 +294,7 @@ function Experience (props) {
                                                 <label htmlFor="exp_responsibilities">Responsibilities</label>
                                                 <CKEditor
                                                     editor={ ClassicEditor }
-                                                    data=""
+                                                    data={ experienceObj.exp_responsibilities }
                                                     id="exp_responsibilities"
                                                     onChange= {(event, editor) => changeExperience('exp_responsibilities', editor.getData())}
                                                 />
@@ -283,7 +304,7 @@ function Experience (props) {
 
                                 <div className="button-section">
                                     <input type="submit" className="btn close" onClick={(event) => toggleEdit(event)} value='Close' />
-                                    <input type="submit" className="btn save" onClick={(event) => handleSave(event)} value='Save' />
+                                    <input type="submit" className="btn save" onClick={(event) => update(event, experienceObj.exp_id)} value='Update' />
 
                                 </div>
                             </form>
