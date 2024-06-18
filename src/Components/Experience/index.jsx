@@ -11,17 +11,36 @@ function Experience (props) {
 
     const [ exp_id, setExpID ] = useState(); //ID FOR A NEW EXPERIENCE
 
-    const toggleDetails = (event) => { //OPEN CLOSE DETAILS
-        event.preventDefault();
-        setExpID(uuidv4()); //GENERATE A RANDOM ID WHEN EXP BOX OPEN
-        setOpen(!addBox) //SET VALUE TO OPPOSITE
-    }
-
     const [ experiences, setExperiences] = useState([]) //ARRAY OF EXPERIENCES ADDED
+
+    /*
+        {
+            exp_company: '',
+            exp_job: '',
+            exp_technology: '',
+            exp_city: '',
+            exp_country: '',
+            exp_start_date: '',
+            exp_end_date: '',
+            responsibilities: []
+        }
+    */
 
     const [ experienceObj, setExperienceObj] = useState({}) //AN OBJ TO SAVE THE EXPERIENCE ADDING TO ADD EXP BOX
 
+
+    const toggleDetails = (event) => { //OPEN CLOSE DETAILS
+
+        event.preventDefault();
+
+        setExpID(uuidv4()); //GENERATE A RANDOM ID WHEN EXP BOX OPEN
+        setExperienceObj({}); //EMPTY PREVIOUS EXPERIONCE OBJECT
+        setOpen(!addBox) //OPEN/CLOSE ADD BOX
+
+    }
+
     const changeExperience = (input, value) => {
+        console.log(value);
 
         setExperienceObj({  //SET INPUT FIELD VALUE TO THE EXPERIENCE OBJECT
             ...experienceObj,
@@ -30,13 +49,34 @@ function Experience (props) {
         })
     }
 
+    const [required, setRequired]  = useState(false); //REQUIRED FIELD
+
+    const validateRequiredFields = (experienceObj) =>{ //CHECK IS REQ FIELD IS FILLED
+
+        if (!experienceObj.exp_company){
+            setRequired(true); //REQUIRED FIELD IS NOT FILLED
+            return true
+        }
+
+        setRequired(false); //REQUIRED FIELD IS FILLED
+        return false
+
+    }
+
     const handleSave = ( event ) => {
 
         event.preventDefault();
-        const newExperiences = [...experiences, experienceObj];
-        setExperiences(newExperiences) //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
-        props.addExperiences(newExperiences) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
-        setOpen(false) //CLOSE ADD BOX DIALOG
+
+        const error = validateRequiredFields(experienceObj);
+
+        if(!error){ //EXECUTE IF COMPANY NAME IF FILLED
+
+            const newExperiences = [...experiences, experienceObj];
+            setExperiences(newExperiences) //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
+            props.addExperiences(newExperiences) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
+            setOpen(false) //CLOSE ADD BOX DIALOG
+
+        }
 
     }
 
@@ -92,6 +132,10 @@ function Experience (props) {
                             <div className="form-group">
                                 <label htmlFor="exp_company">Company</label>
                                 <input type="text" onChange = {(event) => changeExperience(event.target.id, event.target.value)} className="form-input" name="exp_company" id="exp_company" placeholder="Enter Company Title"/>
+                                {
+                                    (required) && <span className='error'>That is a required field</span>
+                                }
+
                             </div>
                             <div className="form-group">
                                 <label htmlFor="exp_job">Job Title</label>
@@ -130,15 +174,12 @@ function Experience (props) {
                                 <div className="form-group">
 
                                     <div className="App">
-                                            <h2>Responsibilities</h2>
+                                            <label htmlFor="exp_responsibilities">Responsibilities</label>
                                             <CKEditor
                                                 editor={ ClassicEditor }
-                                                data="<p>Hello from CKEditor 5!</p>"
-                                                onChange={ ( event, editor ) => {
-                                                    const data = editor.getData();
-                                                    console.log( { data } );
-                                                } }
-
+                                                data=""
+                                                id="exp_responsibilities"
+                                                onChange= {(event, editor) => changeExperience('exp_responsibilities', editor.getData())}
                                             />
                                     </div>
                                 </div>

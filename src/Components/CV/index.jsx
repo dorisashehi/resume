@@ -1,6 +1,8 @@
 import './index.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
+import DOMPurify from 'dompurify';
+
 
 const CVPaper  = (props) => {
 
@@ -79,15 +81,17 @@ const CVPaper  = (props) => {
 
                             experience.map((experience, index) => {
 
-                                console.log(experience)
+                               //console.log(experience)
 
-                                const location = experience.exp_city || 'City'  + ', ' + experience.exp_country || 'State';
-                                const date = experience.exp_start_date || 'MM/YEAR' + ' - ' + experience.exp_end_date || 'MM/YEAR';
+                                const location = (experience?.exp_city || 'City')  + ', ' + (experience?.exp_country || 'State');
+                                const date = (experience?.exp_start_date || 'MM/YEAR') + ' - ' + (experience?.exp_end_date || 'MM/YEAR');
+                                const responsibilities = DOMPurify.sanitize(experience.exp_responsibilities)
+                                || '<ul><li>For example: Part of a 7 person team delivering a product serving 1,500 users, releasing updates every 2 weeks, on a codebase with more than 150,000 lines of code, 100 classes, 15 tables.</ul';
 
                                 return(
                                     <div className="item" key={index}>
                                         <div className="name">
-                                            <h3 className="name">{experience.exp_company}</h3>
+                                            <h3 className="name">{experience.exp_company || 'Company' }</h3>
                                             <p className="location">{ location }</p>
                                         </div>
                                         <div className="descr">
@@ -95,13 +99,7 @@ const CVPaper  = (props) => {
                                             <p className="date">{ date }</p>
                                         </div>
                                         <div className="more-info">
-                                            <ul className="list">
-                                                {
-                                                    experience.responsibilities?.map((item, index) => (
-                                                        <li className="item" key={index}>{item}</li>
-                                                    ))
-                                                }
-                                            </ul>
+                                            <div className="more-info" dangerouslySetInnerHTML={{ __html: responsibilities }}></div>
                                         </div>
                                     </div>
                                 )
