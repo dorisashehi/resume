@@ -3,6 +3,7 @@ import CVPaper from './Components/CV'
 import Experience from './Components/Experience'
 import Profile from './Components/Profile'
 import Summary from './Components/Summary'
+import Education from './Components/Education'
 import { useState } from 'react'
 //import Skills from './Components/Skills'
 //import defaultInfo from './defaultCV'
@@ -30,16 +31,11 @@ function App() {
             education: [ //EDUCATION SECTION DATA
                 {
                     school: '',
-                    location: '',
+                    edu_city: '',
+                    edu_country: '',
                     degree: '',
-                    date: '',
-                    courses: [],
-                },
-                {
-                    school: '',
-                    location: '',
-                    degree: '',
-                    date: '',
+                    schl_start_date: '',
+                    schl_end_date: '',
                     courses: [],
                 }
             ],
@@ -97,6 +93,14 @@ function App() {
 
     }
 
+    const addEducation = (educationObj) => {
+        setCVData({
+            ...cvData,
+            education: educationObj
+        })
+
+    }
+
 
   return (
     <>
@@ -139,6 +143,7 @@ function App() {
 
                   <Profile addProfile = { addProfile }/>
                   <Summary addSummary = { addSummary } />
+                  <Education addEducation = {addEducation} />
                   <Experience addExperiences = { addExperiences } />
                   {/* <Skills /> */}
               </div>

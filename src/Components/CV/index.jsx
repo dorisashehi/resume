@@ -44,7 +44,7 @@ const CVPaper  = (props) => {
 
                 </div>
 
-                <div className="cv-education-section row">
+                {/* <div className="cv-education-section row">
                     <h1 className="section-title">Education</h1>
                     <div className="section-descr">
                         {
@@ -71,7 +71,7 @@ const CVPaper  = (props) => {
                             ))
                         }
                     </div>
-                </div>
+                </div> */}
 
                 <div className="cv-experience-section row">
                     <h1 className="section-title">Proffesional Experience</h1>
