@@ -8,11 +8,11 @@ function Projects (props) {
 
     const [ addBox, setOpen ] = useState(false);
     const [ editBox, setEdit ] = useState(false);
-    const [ showSummany, setSummary ] = useState(false); //STATE FOR ADD EDUCATION BOX
-    const [ id, setID ] = useState(); //ID FOR A NEW EDUCATION
+    const [ showSummany, setSummary ] = useState(false); //STATE FOR ADD PROJECT BOX
+    const [ id, setID ] = useState(); //ID FOR A NEW PROJECT
     const [required, setRequired]  = useState(false); //REQUIRED FIELD
-    const [ fields, setFieldsObj] = useState({}) //AN OBJ TO SAVE THE EDUCATION ADDING TO ADD EXP BOX
-    const [ fieldsArr, setFieldsArr] = useState([]) //ARRAY OF EDUCATIONS ADDED
+    const [ fields, setFieldsObj] = useState({}) //AN OBJ TO SAVE THE PROJECT ADDING TO ADD EXP BOX
+    const [ fieldsArr, setFieldsArr] = useState([]) //ARRAY OF PROJECTS ADDED
 
 
     /**
@@ -27,7 +27,7 @@ function Projects (props) {
         },
      */
 
-    const handleOpenSummary = () => { //OPEN CLOSE EXPERIENCE SUMMARY
+    const handleOpenSummary = () => { //OPEN CLOSE PROJECT SUMMARY
         setSummary(!showSummany)
     }
 
@@ -35,8 +35,8 @@ function Projects (props) {
 
         event.preventDefault();
 
-        setID(uuidv4()); //GENERATE A RANDOM ID WHEN EXP BOX OPEN
-        setFieldsObj({}); //EMPTY PREVIOUS EDUCATION OBJECT
+        setID(uuidv4()); //GENERATE A RANDOM ID WHEN ADD BOX OPEN
+        setFieldsObj({}); //EMPTY PREVIOUS PROJECT OBJECT
         setEdit(false)
         setOpen(!addBox) //OPEN/CLOSE ADD BOX
     }
@@ -44,7 +44,7 @@ function Projects (props) {
 
     const changeFormFields = (input, value) => {
 
-        setFieldsObj({  //SET INPUT FIELD VALUE TO THE EDUCATION OBJECT
+        setFieldsObj({  //SET INPUT FIELD VALUE TO THE PROJECT OBJECT
             ...fields,
             id: id,
             [input]:value
@@ -74,39 +74,36 @@ function Projects (props) {
         if(!error){ //EXECUTE IF SCHOOL NAME IF FILLED
 
             const newFieldsArr = [...fieldsArr, fields];
-            setFieldsArr(newFieldsArr) //SET THE EDUCATION BJECT TO THE ARRAY OF EXPERIENCES
+            setFieldsArr(newFieldsArr) //SET THE PROJECT OBJECT TO THE ARRAY OF PROJECTS
             setOpen(false) //CLOSE ADD BOX DIALOG
-            props.addProjects(newFieldsArr) //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
+            props.addProjects(newFieldsArr) //ADD ARRAY OF PROJECTS TO THE PARENT ELEMNT
         }
 
     }
 
-    const handleEdit = (id) => { //EDIT EXPERIEMCE ACTION
+    const handleEdit = (id) => { //EDIT PROJECT ACTION
 
-        const data = fieldsArr.find((item) => (item.id === id)) //FIND EDITED EXPERINCE IN EXPERIENCES ARRAY
+        const data = fieldsArr.find((item) => (item.id === id)) //FIND EDITED PROJECT IN PROJECTS ARRAY
 
         setID(id);
         setOpen(false) //CLOSE ADD BOX IF OPENED
-        setFieldsObj(data); //PASS EXPERIENCE EDITED DATA
+        setFieldsObj(data); //PASS PROJECT EDITED DATA
         setEdit(true); //OPEN EDIT BOX
     }
 
     const update = (event, id) => {
 
         event.preventDefault();
-        const index = fieldsArr.findIndex((item) => ( item.id === id)); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
+        const index = fieldsArr.findIndex((item) => ( item.id === id)); //FIND INDEX OF PROJECT IN ARR PROJECTS
 
         const error = validateRequiredFields(fields); //CHECK ID COMPANY NAME EMPTY
-
-
 
         if(!error){
 
             const updatedFieldsArr= [...fieldsArr];
-            updatedFieldsArr[index] = fields; //PUT UPDATED EDUCATION AT INDEX
-            console.log(updatedFieldsArr[index]);
-            setFieldsArr(updatedFieldsArr) //SET THE EDUCATION BJECT TO THE ARRAY OF EDUCATIONS
-            props.addProjects(updatedFieldsArr) //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
+            updatedFieldsArr[index] = fields; //PUT UPDATED PROJECT AT INDEX
+            setFieldsArr(updatedFieldsArr) //SET THE PROJECT OBJECT TO THE ARRAY OF PROJECTS
+            props.addProjects(updatedFieldsArr) //ADD ARRAY OF PROJECTS TO THE PARENT ELEMNT
             setEdit(false) //CLOSE EDIT BOX DIALOG
 
         }
