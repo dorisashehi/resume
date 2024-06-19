@@ -58,8 +58,6 @@ function App() {
                     project_technology: '',
                     project_city: '',
                     project_country: '',
-                    project_start_date: '',
-                    project_end_date: '',
                     work_done: []
 
                 },
@@ -109,7 +107,7 @@ function App() {
     const addProjects = (projectsObj) => {
         setCVData({
             ...cvData,
-            education: projectsObj
+            projects: projectsObj
         })
 
     }

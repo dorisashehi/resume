@@ -115,33 +115,37 @@ const CVPaper  = (props) => {
                     </div>
                 </div>
 
-                {/* <div className="cv-projects-section">
+                <div className="cv-projects-section">
                     <h1 className="section-title">Projects</h1>
                     <div className="section-descr">
                         {
-                            Object.entries(projects).map(([key, project]) => (
+                            projects.map((project, index) => {
 
-                                <div className="item" key={key}>
-                                    <div className="name">
-                                        <h3 className="name">
-                                            <a href="">{project.pro_name}</a>
-                                        </h3>
-                                        <p className="date">{project.date}</p>
+                                const date = (project?.exp_start_date || 'MM/YEAR') + ' - ' + (project?.exp_end_date || 'MM/YEAR');
+
+                                return (
+                                    <div className="item" key={index}>
+                                        <div className="name">
+                                            <h3 className="name">
+                                                <a href="">{project.project_title}</a>
+                                            </h3>
+                                            <p className="date">{date}</p>
+                                        </div>
+                                        <div className="more-info">
+                                            {/* <ul className="list">
+                                                {
+                                                    project.work_done.map((item, index) => (
+                                                        <li className="item" key={index}>{item}</li>
+                                                    ))
+                                                }
+                                            </ul> */}
+                                        </div>
                                     </div>
-                                    <div className="more-info">
-                                        <ul className="list">
-                                            {
-                                                project.work_done.map((item, index) => (
-                                                    <li className="item" key={index}>{item}</li>
-                                                ))
-                                            }
-                                        </ul>
-                                    </div>
-                                </div>
-                            ))
+                                )
+                            })
                         }
                    </div>
-                </div> */}
+                </div>
 
                 <div className="cv-skills-section row">
                     <h1 className="section-title">Skills & Interests</h1>

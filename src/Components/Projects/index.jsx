@@ -21,8 +21,6 @@ function Projects (props) {
             project_technology: '',
             project_city: '',
             project_country: '',
-            project_start_date: '',
-            project_end_date: '',
             work_done: []
 
         },
@@ -103,11 +101,11 @@ function Projects (props) {
 
         if(!error){
 
-            const updatedExperiences = [...fieldsArr];
-            updatedExperiences[expIdx] = fields; //PUT UPDATED EXPERIENCE AT INDEX
-            console.log(updatedExperiences[index]);
-            setFieldsArr(updatedExperiences) //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
-            props.addProjects(updatedExperiences) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
+            const updatedFieldsArr= [...fieldsArr];
+            updatedFieldsArr[index] = fields; //PUT UPDATED EDUCATION AT INDEX
+            console.log(updatedFieldsArr[index]);
+            setFieldsArr(updatedFieldsArr) //SET THE EDUCATION BJECT TO THE ARRAY OF EDUCATIONS
+            props.addProjects(updatedFieldsArr) //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
             setEdit(false) //CLOSE EDIT BOX DIALOG
 
         }
@@ -176,18 +174,6 @@ function Projects (props) {
 
                             <div className="row-group">
                                 <div className="form-group">
-                                    <label htmlFor="project_city">City</label>
-                                    <input type="text" onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_city" id="project_city" placeholder="Enter City"/>
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="project_country">Country</label>
-                                    <input type="text" onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_country" id="project_country" placeholder="Enter Country"/>
-                                </div>
-                            </div>
-
-                            <div className="row-group">
-                                <div className="form-group">
                                     <label htmlFor="project_start_date">Start Date</label>
                                     <input type="date" onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_start_date" id="project_start_date" placeholder="Enter Start Date"/>
                                 </div>
@@ -246,18 +232,6 @@ function Projects (props) {
 
                             <div className="row-group">
                                 <div className="form-group">
-                                    <label htmlFor="project_city">City</label>
-                                    <input type="text" value = { fields?.project_city } onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_city" id="project_city" placeholder="Enter City"/>
-                                </div>
-
-                                <div className="form-group">
-                                    <label htmlFor="project_country">Country</label>
-                                    <input type="text" value = { fields?.project_country } onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_country" id="project_country" placeholder="Enter Country"/>
-                                </div>
-                            </div>
-
-                            <div className="row-group">
-                                <div className="form-group">
                                     <label htmlFor="project_start_date">Start Date</label>
                                     <input type="date" value = { fields?.project_start_date } onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_start_date" id="project_start_date" placeholder="Enter Start Date"/>
                                 </div>
@@ -285,7 +259,7 @@ function Projects (props) {
 
                             <div className="button-section">
                                 <input type="submit" className="btn close" onClick={(event) => toggleEdit(event)} value='Close' />
-                                <input type="submit" className="btn save" onClick={(event) => update(event, fields.id)} value='Save' />
+                                <input type="submit" className="btn save" onClick={(event) => update(event, fields.id)} value='Update' />
 
                             </div>
 
