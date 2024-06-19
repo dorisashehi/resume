@@ -4,6 +4,7 @@ import Experience from './Components/Experience'
 import Profile from './Components/Profile'
 import Summary from './Components/Summary'
 import Education from './Components/Education'
+import Projects from './Components/Projects'
 import { useState } from 'react'
 //import Skills from './Components/Skills'
 //import defaultInfo from './defaultCV'
@@ -53,8 +54,12 @@ function App() {
             ],
             projects: [ //PROJECTS SECTION DATA
                 {
-                    pro_name: '',
-                    date: '',
+                    project_title: '',
+                    project_technology: '',
+                    project_city: '',
+                    project_country: '',
+                    project_start_date: '',
+                    project_end_date: '',
                     work_done: []
 
                 },
@@ -97,6 +102,14 @@ function App() {
         setCVData({
             ...cvData,
             education: educationObj
+        })
+
+    }
+
+    const addProjects = (projectsObj) => {
+        setCVData({
+            ...cvData,
+            education: projectsObj
         })
 
     }
@@ -145,6 +158,7 @@ function App() {
                   <Summary addSummary = { addSummary } />
                   <Education addEducation = {addEducation} />
                   <Experience addExperiences = { addExperiences } />
+                  <Projects addProjects = { addProjects } />
                   {/* <Skills /> */}
               </div>
 
