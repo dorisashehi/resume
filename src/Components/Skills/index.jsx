@@ -107,9 +107,9 @@ function Skills(props) {
 
     }
 
-    const removeField = (index) => { //REMOVE FORM FIELDS FOR LINKS ON CLICK REMOVE ICON
+    const removeField = (item) => { //REMOVE FORM FIELDS FOR LINKS ON CLICK REMOVE ICON
 
-        const newTechnologies = technologies.splice(index, 1); //REMOVE FROM TECH ARRAY TECHNOLOGIE REMOVED
+        const newTechnologies = technologies.filter(tech => tech !== item.trim()); //FILTER WITHOUT REMOVED ITEM
         setTechnologies(newTechnologies) //UPDATE THE TECH ARRAY
         setFieldsObj({...fields, technologies: newTechnologies }); //ADD UPDATED TECH ARRAY TO FIELDS OBJ
 
@@ -124,13 +124,13 @@ function Skills(props) {
 
     const handleEdit = (id) => { //EDIT EXPERIEMCE ACTION
 
-        const data = fieldsArr.find((item) => (item.id === id)) //FIND EDITED EDUCATION IN EXPERIENCES ARRAY
+        const data = fieldsArr.find((item) => (item.id === id)) //FIND EDITED SKILL IN SKILLS ARRAY
 
         setID(id);
         setOpen(false) //CLOSE ADD BOX IF OPENED
 
-        setFieldsObj(data); //PASS EXPERIENCE EDITED DATA
-        setTechnologies(data.technologies); //PASS EXPERIENCE EDITED DATA
+        setFieldsObj(data); //PASS SKILL EDITED DATA
+        setTechnologies(data.technologies); //PASS SKILL EDITED DATA
         setEdit(true); //OPEN EDIT BOX
     }
 
@@ -146,10 +146,9 @@ function Skills(props) {
 
             const newFieldsArr = [...fieldsArr];
             newFieldsArr[index] = fields;
-            setFieldsArr(newFieldsArr) //SET THE EDUCATION BJECT TO THE ARRAY OF EXPERIENCES
+            setFieldsArr(newFieldsArr) //SET THE SKILL BJECT TO THE ARRAY OF SKILLS
             setEdit(false) //CLOSE ADD BOX DIALOG
-            //props.addSkills(newFieldsArr) //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
-            props.addSkills(newFieldsArr) //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
+            props.addSkills(newFieldsArr) //ADD ARRAY OF SKILLS TO THE PARENT ELEMNT
         }
 
     }
@@ -296,7 +295,7 @@ function Skills(props) {
                                             technologies?.map((item, index) => (
 
                                                     <div className="link_name" key = {index}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" onClick={() => removeField(index) }  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" onClick={() => removeField(item) }  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                                                         { item.charAt(0).toUpperCase() +  item.slice(1) }
                                                     </div>
                                             ))
