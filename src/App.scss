@@ -84,6 +84,7 @@ main .col.sections-column .row-group{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: end;
 
 }
 
@@ -217,11 +218,12 @@ main .col.sections-column .toogle-section{
   margin-top: 10px;
 }
 
-main .col.sections-column .toogle-section .item.buttons{
+main .col.sections-column .toogle-section .item.buttons, main .col.sections-column .details .item.buttons{
   justify-content: center;
 }
 
-main .col.sections-column .toogle-section .item.buttons .button-section{
+main .col.sections-column .toogle-section .item.buttons .button-section,
+main .col.sections-column .details .button-section.add {
   border: 5px solid #f3f4f6;
   border-radius: 1em;
   padding: 9px 30px;
@@ -229,13 +231,17 @@ main .col.sections-column .toogle-section .item.buttons .button-section{
   display: flex;
   justify-content: center;
   cursor: pointer;
+  align-items: flex-end;
+  height: 15px;
 }
 
-main .col.sections-column .toogle-section .item.buttons .button-section input{
+main .col.sections-column .toogle-section .item.buttons .button-section input,
+main .col.sections-column .details .item.buttons .button-section input{
   cursor: pointer;
 }
 
-main .col.sections-column .toogle-section input.add{
+main .col.sections-column .toogle-section input.add,
+main .col.sections-column .details  input.add{
   border: none;
   background: #ffffff;
 }
@@ -330,3 +336,14 @@ main .col.sections-column svg{
   padding-right: 5px;
 }
 
+
+//FIELD INPUT + BUTTON
+.field-btn{
+  display: flex;
+  align-items: end;
+  gap: 10px
+}
+
+.field-btn input[type='text']{
+  flex: 1;
+}

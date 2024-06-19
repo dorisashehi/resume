@@ -146,7 +146,7 @@ const CVPaper  = (props) => {
                    </div>
                 </div>
 
-                <div className="cv-skills-section row">
+                {/* <div className="cv-skills-section row">
                     <h1 className="section-title">Skills & Interests</h1>
                     <div className="section-descr">
                         <div className="item">
@@ -165,7 +165,7 @@ const CVPaper  = (props) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     )

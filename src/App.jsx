@@ -6,7 +6,7 @@ import Summary from './Components/Summary'
 import Education from './Components/Education'
 import Projects from './Components/Projects'
 import { useState } from 'react'
-//import Skills from './Components/Skills'
+import Skills from './Components/Skills'
 //import defaultInfo from './defaultCV'
 
 function App() {
@@ -65,7 +65,8 @@ function App() {
             ],
             skills: [ //SKILLS SECTION DATA
                 {
-                    skill_name: '',
+                    skill_category: '',
+                    skill_title: '',
                     technologies: []
                 },
 
@@ -109,6 +110,14 @@ function App() {
         setCVData({
             ...cvData,
             projects: projectsObj
+        })
+
+    }
+
+    const addSkills = (skillsObj) => {
+        setCVData({
+            ...cvData,
+            skills: skillsObj
         })
 
     }
@@ -158,7 +167,7 @@ function App() {
                   <Education addEducation = {addEducation} />
                   <Experience addExperiences = { addExperiences } />
                   <Projects addProjects = { addProjects } />
-                  {/* <Skills /> */}
+                  <Skills addSkills = {addSkills} />
               </div>
 
             <CVPaper resumeInfo = { cvData } />
