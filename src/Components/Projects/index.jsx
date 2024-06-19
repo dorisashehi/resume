@@ -19,6 +19,7 @@ function Projects (props) {
      *  {
             project_title: '',
             project_technology: '',
+            project_type: '',
             project_city: '',
             project_country: '',
             work_done: []
@@ -172,6 +173,11 @@ function Projects (props) {
                                 <input type="text" onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_technology" id="project_technology" placeholder="Enter Technology"/>
                             </div>
 
+                            <div className="form-group">
+                                <label htmlFor="project_type">Project Type</label>
+                                <input type="text" onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_type" id="project_type" placeholder="Project Type"/>
+                            </div>
+
                             <div className="row-group">
                                 <div className="form-group">
                                     <label htmlFor="project_start_date">Start Date</label>
@@ -187,7 +193,7 @@ function Projects (props) {
                             <div className="row-group">
                                 <div className="form-group">
                                     <div className="App">
-                                        <label htmlFor="exp_responsibilities">Works Done</label>
+                                        <label htmlFor="exp_responsibilities">Work Done</label>
                                         <CKEditor
                                             editor={ ClassicEditor }
                                             data={ fields.project_works }
@@ -225,6 +231,12 @@ function Projects (props) {
                                     (required) && <span className='error'>That is a required field</span>
                                 }
                             </div>
+
+                            <div className="form-group">
+                                <label htmlFor="project_type">Project Type</label>
+                                <input type="text" value = { fields?.project_type } onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_type" id="project_type" placeholder="Project Type"/>
+                            </div>
+
                             <div className="form-group">
                                 <label htmlFor="project_technology">Technology</label>
                                 <input type="text" value = { fields?.project_technology } onChange = {(event) => changeFormFields(event.target.id, event.target.value)}  className="form-input" name="project_technology" id="project_technology" placeholder="Enter Technology"/>

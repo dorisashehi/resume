@@ -123,22 +123,21 @@ const CVPaper  = (props) => {
 
                                 const date = (project?.exp_start_date || 'MM/YEAR') + ' - ' + (project?.exp_end_date || 'MM/YEAR');
 
+                                const work = DOMPurify.sanitize(project?.project_works) || '<ul><li>Cover your project, team/ solo work, quantify and call out notable things like size of projects, number of users, etc.</li></ul>'; //Summary sanitized or default value
+
                                 return (
                                     <div className="item" key={index}>
                                         <div className="name">
                                             <h3 className="name">
-                                                <a href="">{project.project_title}</a>
+                                                <a href="">{project.project_title || 'Project Name'}</a>
                                             </h3>
                                             <p className="date">{date}</p>
                                         </div>
+                                        <div className="descr">
+                                            <p className="project-type">{project.project_type || 'Project Type'}</p>
+                                        </div>
                                         <div className="more-info">
-                                            {/* <ul className="list">
-                                                {
-                                                    project.work_done.map((item, index) => (
-                                                        <li className="item" key={index}>{item}</li>
-                                                    ))
-                                                }
-                                            </ul> */}
+                                            <div className="more-info" dangerouslySetInnerHTML={{ __html: work }}></div>
                                         </div>
                                     </div>
                                 )

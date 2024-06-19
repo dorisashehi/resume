@@ -58,6 +58,7 @@ function App() {
                     project_technology: '',
                     project_city: '',
                     project_country: '',
+                    project_type: '',
                     work_done: []
 
                 },
