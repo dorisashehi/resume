@@ -50,7 +50,7 @@ const CVPaper  = (props) => {
                         {
                             Object.entries(education).map(([key, education]) => {
 
-                                const location = (education?.edu_city || 'City')  + ', ' + (education?.edu_country || 'State');
+                                const location = (education.edu_city || 'City')  + ', ' + (education.edu_country || 'State');
                                 const date = (education?.schl_start_date || 'MM/YEAR') + ' - ' + (education?.schl_end_date || 'MM/YEAR');
 
 
@@ -89,8 +89,8 @@ const CVPaper  = (props) => {
 
                                //console.log(experience)
 
-                                const location = (experience?.exp_city || 'City')  + ', ' + (experience?.exp_country || 'State');
-                                const date = (experience?.exp_start_date || 'MM/YEAR') + ' - ' + (experience?.exp_end_date || 'MM/YEAR');
+                                const location = (experience.exp_city || 'City')  + ', ' + (experience.exp_country || 'State');
+                                const date = (experience.exp_start_date || 'MM/YEAR') + ' - ' + (experience.exp_end_date || 'MM/YEAR');
                                 const responsibilities = DOMPurify.sanitize(experience.exp_responsibilities)
                                 || '<ul><li>For example: Part of a 7 person team delivering a product serving 1,500 users, releasing updates every 2 weeks, on a codebase with more than 150,000 lines of code, 100 classes, 15 tables.</ul';
 
@@ -121,7 +121,7 @@ const CVPaper  = (props) => {
                         {
                             projects.map((project, index) => {
 
-                                const date = (project?.exp_start_date || 'MM/YEAR') + ' - ' + (project?.exp_end_date || 'MM/YEAR');
+                                const date = (project.exp_start_date || 'MM/YEAR') + ' - ' + (project.exp_end_date || 'MM/YEAR');
 
                                 const work = DOMPurify.sanitize(project?.project_works) || '<ul><li>Cover your project, team/ solo work, quantify and call out notable things like size of projects, number of users, etc.</li></ul>'; //Summary sanitized or default value
 
@@ -146,26 +146,31 @@ const CVPaper  = (props) => {
                    </div>
                 </div>
 
-                {/* <div className="cv-skills-section row">
+                <div className="cv-skills-section row">
                     <h1 className="section-title">Skills & Interests</h1>
                     <div className="section-descr">
                         <div className="item">
                             <div className="more-info">
                                 <ul className="list">
                                     {
-                                        skills.map((item, key) => (
-                                            <li className="item" key={key}>
-                                                <b>{ item.skill_name }: </b>
-                                                { item.technologies.join(', ')}
-                                            </li>
+                                        skills.map((skill, index) => {
 
-                                        ))
+                                            return (
+                                                <li className="item" key={index}>
+                                                    <b class="skill-category">{ skill.skill_category || 'Skill'}: </b>
+                                                    { skill.technologies.join(', ') || 'Note things related to your role'}
+                                                </li>
+
+                                            )
+                                        })
                                     }
                                 </ul>
                             </div>
                         </div>
                     </div>
-                </div> */}
+                </div>
+
+
             </div>
         </>
     )

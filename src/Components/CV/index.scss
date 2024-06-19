@@ -53,6 +53,12 @@ main .col.cv-column{
     border-bottom: 1px solid #000;
   }
 
+  main .col.cv-column .skill-category{
+    font-style: normal;
+    text-transform: capitalize;
+  }
+
+
   main .col.cv-column .summary .summary-descr{
     font-style: italic;
   }

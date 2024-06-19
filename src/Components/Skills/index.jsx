@@ -33,15 +33,6 @@ function Skills(props) {
 
     const [ fieldsArr, setFieldsArr] = useState([]) //ARRAY OF EDUCATIONS ADDED
 
-    /**
-     *  {
-            skill_category: '',
-            skill_title: '',
-            technologies: []
-        }
-     */
-
-
     const toggleAdd = (event) => { //OPEN CLOSE DETAILS
 
         event.preventDefault();
@@ -128,7 +119,6 @@ function Skills(props) {
 
         setID(id);
         setOpen(false) //CLOSE ADD BOX IF OPENED
-
         setFieldsObj(data); //PASS SKILL EDITED DATA
         setTechnologies(data.technologies); //PASS SKILL EDITED DATA
         setEdit(true); //OPEN EDIT BOX
