@@ -95,18 +95,18 @@ function Experience (props) {
 
     const handleEdit = (id) => { //EDIT EXPERIEMCE ACTION
 
-        const experience = fieldsArr.find((item) => (item.id === id)) //FIND EDITED EXPERINCE IN EXPERIENCES ARRAY
+        const data = fieldsArr.find((item) => (item.id === id)) //FIND EDITED EXPERINCE IN EXPERIENCES ARRAY
 
         setID(id);
         setOpen(false) //CLOSE ADD BOX IF OPENED
-        setFieldsObj(experience); //PASS EXPERIENCE EDITED DATA
+        setFieldsObj(data); //PASS EXPERIENCE EDITED DATA
         setEdit(true); //OPEN EDIT BOX
     }
 
     const update = (event, id) => {
 
         event.preventDefault();
-        const expIdx = fieldsArr.findIndex((item) => ( item.id === id)); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
+        const index = fieldsArr.findIndex((item) => ( item.id === id)); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
 
         const error = validateRequiredFields(fields); //CHECK ID COMPANY NAME EMPTY
 
@@ -116,7 +116,7 @@ function Experience (props) {
 
             const updatedExperiences = [...fieldsArr];
             updatedExperiences[expIdx] = fields; //PUT UPDATED EXPERIENCE AT INDEX
-            console.log(updatedExperiences[expIdx]);
+            console.log(updatedExperiences[index]);
             setFieldsArr(updatedExperiences) //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
             props.addExperiences(updatedExperiences) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
             setEdit(false) //CLOSE EDIT BOX DIALOG
