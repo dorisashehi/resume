@@ -44,34 +44,41 @@ const CVPaper  = (props) => {
 
                 </div>
 
-                {/* <div className="cv-education-section row">
+                <div className="cv-education-section row">
                     <h1 className="section-title">Education</h1>
                     <div className="section-descr">
                         {
-                            Object.entries(education).map(([key, value]) => (
+                            Object.entries(education).map(([key, education]) => {
 
-                                <div className="item" key={key}>
-                                    <div className="name">
-                                        <h3 className="name">{value.school}</h3>
-                                        <p className="location">{value.location}</p>
+                                const location = (education?.edu_city || 'City')  + ', ' + (education?.edu_country || 'State');
+                                const date = (education?.schl_start_date || 'MM/YEAR') + ' - ' + (education?.schl_end_date || 'MM/YEAR');
+
+
+                                return(
+
+                                    <div className="item" key={key}>
+                                        <div className="name">
+                                            <h3 className="name">{education.school || 'School / Bootcamp / Program'}</h3>
+                                            <p className="location">{location}</p>
+                                        </div>
+                                        <div className="descr">
+                                            <p className="name">{education.degree || 'Degree Name'}</p>
+                                            <p className="date">{date}</p>
+                                        </div>
+                                        <div className="more-info">
+                                            {/* <ul className="list">
+                                                <li className="item">
+                                                    <b>Relevant Courses: </b>
+                                                    { value.courses.join(', ') }
+                                                </li>
+                                            </ul> */}
+                                        </div>
                                     </div>
-                                    <div className="descr">
-                                        <p className="name">{value.degree}</p>
-                                        <p className="date">{value.date}</p>
-                                    </div>
-                                    <div className="more-info">
-                                        <ul className="list">
-                                            <li className="item">
-                                                <b>Relevant Courses: </b>
-                                                { value.courses.join(', ') }
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            ))
+                                )
+                            })
                         }
                     </div>
-                </div> */}
+                </div>
 
                 <div className="cv-experience-section row">
                     <h1 className="section-title">Proffesional Experience</h1>

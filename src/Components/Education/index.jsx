@@ -17,6 +17,18 @@ function Education (props) {
     const [ fields, setFieldsObj] = useState({}) //AN OBJ TO SAVE THE EDUCATION ADDING TO ADD EXP BOX
     const [ fieldsArr, setFieldsArr] = useState([]) //ARRAY OF EDUCATIONS ADDED
 
+    /**
+     *  {
+            school: '',
+            edu_city: '',
+            edu_country: '',
+            degree: '',
+            schl_start_date: '',
+            schl_end_date: '',
+            courses: [],
+        }
+     */
+
 
     const toggleAdd = (event) => { //OPEN CLOSE DETAILS
 
@@ -193,7 +205,7 @@ function Education (props) {
                             </div>
 
                             <div className="button-section">
-                                <input type="submit" className="btn close" value='Close' />
+                                <input type="submit" className="btn close" onClick={(event) => toggleAdd(event)}  value='Close' />
                                 <input type="submit" className="btn save" onClick={(event) => save(event)} value='Save' />
 
                             </div>
