@@ -116,7 +116,6 @@ function Experience (props) {
 
             const updatedExperiences = [...fieldsArr];
             updatedExperiences[expIdx] = fields; //PUT UPDATED EXPERIENCE AT INDEX
-            console.log(updatedExperiences[index]);
             setFieldsArr(updatedExperiences) //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
             props.addExperiences(updatedExperiences) //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
             setEdit(false) //CLOSE EDIT BOX DIALOG

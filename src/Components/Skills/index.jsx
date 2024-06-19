@@ -59,7 +59,7 @@ function Skills(props) {
             ...fields,
             id: id,
             [input]:value,
-            technologies: []
+            technologies: [...technologies]
         })
     }
 
@@ -112,6 +112,45 @@ function Skills(props) {
         const newTechnologies = technologies.splice(index, 1); //REMOVE FROM TECH ARRAY TECHNOLOGIE REMOVED
         setTechnologies(newTechnologies) //UPDATE THE TECH ARRAY
         setFieldsObj({...fields, technologies: newTechnologies }); //ADD UPDATED TECH ARRAY TO FIELDS OBJ
+
+    }
+
+    const toggleEdit = (event) => { //OPEN CLOSE EDIT BOX
+
+        event.preventDefault();
+        setEdit(!editBox) //OPEN/CLOSE EDIT BOX
+
+    }
+
+    const handleEdit = (id) => { //EDIT EXPERIEMCE ACTION
+
+        const data = fieldsArr.find((item) => (item.id === id)) //FIND EDITED EDUCATION IN EXPERIENCES ARRAY
+
+        setID(id);
+        setOpen(false) //CLOSE ADD BOX IF OPENED
+
+        setFieldsObj(data); //PASS EXPERIENCE EDITED DATA
+        setTechnologies(data.technologies); //PASS EXPERIENCE EDITED DATA
+        setEdit(true); //OPEN EDIT BOX
+    }
+
+    const update = (event, id) => {
+
+        event.preventDefault();
+
+        const index = fieldsArr.findIndex((item) => ( item.id === id)); //FIND INDEX OF EDUCATION IN ARR OF EDUCATIONS
+
+        const error = validateRequiredFields('skill_category',fields.skill_category);
+
+        if(!error){ //EXECUTE IF SCHOOL NAME IF FILLED
+
+            const newFieldsArr = [...fieldsArr];
+            newFieldsArr[index] = fields;
+            setFieldsArr(newFieldsArr) //SET THE EDUCATION BJECT TO THE ARRAY OF EXPERIENCES
+            setEdit(false) //CLOSE ADD BOX DIALOG
+            //props.addSkills(newFieldsArr) //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
+            props.addSkills(newFieldsArr) //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
+        }
 
     }
 
@@ -209,6 +248,67 @@ function Skills(props) {
                             <div className="button-section">
                                 <input type="submit" className="btn close" onClick={(event) => toggleAdd(event)}  value='Close' />
                                 <input type="submit" className="btn save" onClick={(event) => save(event)} value='Save' />
+
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            }
+
+
+            {
+                (editBox) &&
+                <div className="project-details-section row details">
+                    <h1>
+                        Edit Skills
+                    </h1>
+                    <div className="sub-section">
+                        <form>
+                            <div className="form-group">
+                                <label htmlFor="skill_category">Skill Category</label>
+                                <input type="text" value = { fields?.skill_category }  onChange = {(event) => changeFormFields(event.target.id, event.target.value)} className="form-input" name="skill_category" id="skill_category" placeholder="Enter Skill Category"/>
+
+                                {
+                                    (required.skill_category) && <span className='error'>That is a required field</span>
+                                }
+                            </div>
+
+                            <div className="row-group">
+                                <div className="form-group">
+                                    <label htmlFor="skill_title">Technology</label>
+                                    <div className="field-btn">
+                                        <input type="text" onChange = {(event) => changeFormFields(event.target.id, event.target.value)} className="form-input" name="skill_title" id="skill_title" placeholder="Enter Technology"/>
+                                        {
+                                            (required.technology) && <span className='error'>Technology can't be empty</span>
+                                        }
+                                        <div className="button-section add" onClick = { (event) =>  handleAdd(event, fields.skill_title) }>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                            <input type="submit" class="add" value="Add"/>
+
+                                        </div>
+                                    </div>
+                                    <div className="links">
+                                        {
+
+                                            (technologies.length !== 0) &&
+                                            technologies?.map((item, index) => (
+
+                                                    <div className="link_name" key = {index}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" onClick={() => removeField(index) }  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                                        { item.charAt(0).toUpperCase() +  item.slice(1) }
+                                                    </div>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div className="button-section">
+                                <input type="submit" className="btn close"  onClick={(event) => toggleEdit(event)}  value='Close' />
+                                <input type="submit" className="btn save" onClick={(event) => update(event, fields.id)} value='Update' />
 
                             </div>
 
