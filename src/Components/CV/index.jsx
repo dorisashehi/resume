@@ -157,7 +157,7 @@ const CVPaper  = (props) => {
 
                                             return (
                                                 <li className="item" key={index}>
-                                                    <b class="skill-category">{ skill.skill_category || 'Skill'}: </b>
+                                                    <b className="skill-category">{ skill.skill_category || 'Skill'}: </b>
                                                     { skill.technologies.join(', ') || 'Note things related to your role'}
                                                 </li>
 

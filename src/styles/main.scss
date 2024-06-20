@@ -1,0 +1,357 @@
+@import './variables.scss';
+body{
+    padding: 0px;
+    margin: 0px;
+    background-color: #eef0f4;
+    font-size: 16px;
+  }
+
+  svg{
+    cursor: pointer;
+    color: var(--icons-color);
+  }
+
+  h1, h3, p{
+    margin: 0px;
+  }
+
+  .error{
+    font-style: italic;
+    color: #ff5f64;
+    padding-top: 10px;
+    font-size: 0.9rem;
+  }
+
+  section .main{
+    height: 45px;
+    padding: 10px 82px;
+    background-color: #210e31;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    font-size: 0.9rem;
+  }
+
+
+  /*GENERAL INPUT STYLE*/
+  main .col.sections-column .form-group{
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    font-size: 500;
+
+  }
+
+  main .col.sections-column .inline{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+
+  main .col.sections-column .inline input{
+    flex: 1%;
+  }
+
+  main .col.sections-column svg, main .col.sections-column .link_name{
+    cursor: pointer;
+  }
+
+
+  main .col.sections-column .form-group .links{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-top: 15px;
+  }
+
+
+  main .col.sections-column .form-group .link_name{
+    background: #f3f4f6;
+    width: fit-content;
+    padding: 10px 15px;
+    border-radius: 0.8em;
+    color: #6b7280;
+    font-weight: 500;
+  }
+
+  main .col.sections-column .form-group label{
+    font-size: 1rem;
+
+  }
+
+  main .col.sections-column .row-group{
+    gap: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+
+  }
+
+  main .col.sections-column .row-group .form-group{
+    flex: 1 1 45%;
+  }
+
+  main .col.sections-column .form-group input{
+    padding: 10px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 0.7em;
+    height: 25px;
+    margin-top: 10px;
+    color: #6c7381;
+  }
+
+  main .col.sections-column .form-group input::placeholder{
+    color: #6c7381;
+
+
+  }
+
+  main .col.sections-column .form-group input:focus-visible{
+    outline: none;
+  }
+
+  /*GENERAL MAIN COLUMNS STYLE*/
+
+  main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 50px 100px 50px 80px;
+    max-width: 1950px;
+    margin: auto;
+  }
+
+  main .col.costumize-column{
+    flex: 0 0 10%;
+    min-height: 400px;
+    background-color: #ffffff;
+    border-radius: 0.5em;
+    height: fit-content;
+    max-width: 80px;
+    padding: 33px 20px 0px 20px;
+    font-weight: 500;
+  }
+
+  main .col.costumize-column .content{
+    display: flex;
+    flex-direction: column;
+  }
+
+  main .col.sections-column{
+    flex: 0 0 30%;
+    min-height: 500px;
+    min-width: 700px;
+  }
+
+  main .col.sections-column .row{
+    background-color: #ffffff;
+    padding: 25px 30px;
+    display: flex;
+    font-weight: bold;
+    color: #240f33;
+    border-radius: 0.7em;
+    margin-bottom: 20px;
+    justify-content: space-between;
+  }
+
+  main .col.sections-column .row.details{
+    display: flex;
+    flex-direction: column;
+
+  }
+
+
+
+
+  /*DOWNLOAD SECTION*/
+  main .col.sections-column .download-section{
+    justify-content: space-between;
+    align-items: center;
+
+  }
+  main .col.sections-column .download-section .resume-title svg{
+    color: #a4a8b0;
+  }
+  main .col.sections-column .btn{
+    padding: 10px 44px;
+    border-radius: 0.9em;
+    background-color: var(--button-bg-color);
+    font-size: 1rem;
+    color: var(--button-color);
+    cursor: pointer;
+    float: right;
+  }
+
+  main .col.sections-column .btn svg{
+    color: var(--button-color);
+    padding-left: 10px;
+
+  }
+
+  //TOOGLE SECTIONS
+
+  main .col.sections-column .section-presentation.row{
+    flex-direction: column;
+
+  }
+
+  main .col.sections-column .toogle-header{
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  main .col.sections-column .toogle-section .item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #001660;
+    border-top: 5px solid #f3f4f6;
+    padding: 20px 0px;
+
+  }
+
+  main .col.sections-column .toogle-section svg{
+    color: #4f5765;
+  }
+
+  main .col.sections-column .toogle-section{
+    margin-top: 10px;
+  }
+
+  main .col.sections-column .toogle-section .item.buttons, main .col.sections-column .details .item.buttons{
+    justify-content: center;
+  }
+
+  main .col.sections-column .toogle-section .item.buttons .button-section,
+  main .col.sections-column .details .button-section.add {
+    border: 5px solid #f3f4f6;
+    border-radius: 1em;
+    padding: 9px 30px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: flex-end;
+    height: 15px;
+  }
+
+  main .col.sections-column .toogle-section .item.buttons .button-section input,
+  main .col.sections-column .details .item.buttons .button-section input{
+    cursor: pointer;
+  }
+
+  main .col.sections-column .toogle-section input.add,
+  main .col.sections-column .details  input.add{
+    border: none;
+    background: #ffffff;
+  }
+
+  main .col.sections-column  .ck.ck-editor{
+    padding-top: 10px;
+  }
+
+  main .col.sections-column  .ck.ck-content{
+    min-height: 150px;
+
+  }
+
+
+  /*PERSONAL DETAILS SECTION*/
+  main .col.sections-column .personal-section{
+    flex-direction: column;
+    position: relative;
+  }
+
+  main .col.sections-column .personal-section .position{
+    color: #8c8d97;
+    margin-top: 5px;
+
+  }
+
+  main .col.sections-column .personal-section .edit-icon{
+    width: fit-content;
+    padding: 6px;
+    border-radius: 0.9em;
+    float: right;
+    position: absolute;
+    right: 20px;
+
+  }
+
+  main .col.sections-column .personal-section .personal-info{
+    list-style: none;
+    padding: 0px;
+  }
+
+  main .col.sections-column .personal-section .personal-info .item{
+    margin-top: 15px;
+    color: #443d52;
+    font-weight: 500;
+  }
+
+  main .col.sections-column .personal-section .name{
+    text-transform: capitalize;
+  }
+
+
+  /*EXPERIENCE, PROJECTS, SKILLS SECTION*/
+
+
+  main .col.sections-column .button-section{
+    margin-top: 25px;
+  }
+
+  main .col.sections-column button{
+    float: right;
+  }
+  main .col.sections-column .sub-section{
+    margin-top: 25px;
+  }
+
+
+  main .col.sections-column h1{
+    font-size: 1.2rem;
+    color: var(--text-color);
+  }
+
+  main .col.costumize-column .container h1{
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+  main .col.costumize-column .container{
+    margin-bottom: 25px;
+    padding: 19px 7px;
+    text-align: center;
+    border-radius: 0.8em;
+    align-items: center;
+  }
+
+  main .col.costumize-column .container.active{
+    background: #f9fafb;
+  }
+
+
+
+  main .col.sections-column svg{
+    padding-right: 5px;
+  }
+
+
+  //FIELD INPUT + BUTTON
+  .field-btn{
+    display: flex;
+    align-items: end;
+    gap: 10px
+  }
+
+  .field-btn input[type='text']{
+    flex: 1;
+  }
