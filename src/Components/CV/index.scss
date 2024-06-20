@@ -29,6 +29,7 @@ main .col.cv-column{
     list-style: none;
     justify-content: center;
     gap: 10px;
+    text-transform: capitalize;
   }
 
   main .col.cv-column .profile-links em{
@@ -39,6 +40,7 @@ main .col.cv-column{
 
   main .col.cv-column .cv-name{
     text-align: center;
+    text-transform: capitalize;
   }
 
   main .col.cv-column .website-links{

@@ -216,7 +216,7 @@ function Skills(props) {
                                         }
                                         <div className="button-section add" onClick = { (event) =>  handleAdd(event, fields.skill_title) }>
                                             <FontAwesomeIcon icon={ faPlus }/>
-                                            <input type="submit" class="add" value="Add"/>
+                                            <input type="submit" className="add" value="Add"/>
 
                                         </div>
                                     </div>

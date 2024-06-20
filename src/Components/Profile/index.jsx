@@ -131,11 +131,11 @@ function Profile (props) {
     return(
 
         <>
-            <div className="personal-section row">
+            <div className="personal-section section-presentation  row">
                 <div className="edit-icon">
                     <FontAwesomeIcon icon={ faPenToSquare } onClick = {toggleDetails} />
                 </div>
-                <div className="name">{ profile?.fullName || 'Your name' }</div>
+                <h1 className="name">{ profile?.fullName || 'Your name' }</h1>
                 {/* <div className="position">
                     { (profile.location !== '') ? profile.location : 'Adress' }
                 </div> */}

@@ -1,9 +1,12 @@
 @import './variables.scss';
+@import './fonts.scss';
+
 body{
     padding: 0px;
     margin: 0px;
     background-color: #eef0f4;
     font-size: 16px;
+    font-family: 'Arial';
   }
 
   svg{
@@ -24,12 +27,17 @@ body{
 
   section .main{
     height: 45px;
-    padding: 10px 82px;
-    background-color: #210e31;
+    padding: 10px 0px;
+    background-color: var(--button-bg-color);
     display: flex;
     color: #ffffff;
     align-items: center;
     font-size: 0.9rem;
+  }
+  section .main .text-content{
+    max-width: 1950px;
+    width: 100%;
+    margin: auto;
   }
 
 
@@ -119,7 +127,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 50px 100px 50px 80px;
+    padding: 100px 100px 50px 80px;
     max-width: 1950px;
     margin: auto;
   }
@@ -130,9 +138,14 @@ body{
     background-color: #ffffff;
     border-radius: 0.5em;
     height: fit-content;
-    max-width: 80px;
+    max-width: 100px;
     padding: 33px 20px 0px 20px;
     font-weight: 500;
+  }
+
+  main .col.costumize-column svg{
+    font-size: 30px;
+
   }
 
   main .col.costumize-column .content{
@@ -176,18 +189,21 @@ body{
     color: #a4a8b0;
   }
   main .col.sections-column .btn{
-    padding: 10px 44px;
+    padding: 15px 44px;
     border-radius: 0.9em;
     background-color: var(--button-bg-color);
     font-size: 1rem;
     color: var(--button-color);
     cursor: pointer;
     float: right;
+    font-size: 1.1rem;
+    font-weight: 600;
   }
 
   main .col.sections-column .btn svg{
     color: var(--button-color);
     padding-left: 10px;
+    font-size: 1.3rem;
 
   }
 
@@ -317,8 +333,9 @@ body{
 
 
   main .col.sections-column h1{
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: var(--text-color);
+    line-height: 1.75rem;
   }
 
   main .col.costumize-column .container h1{
@@ -339,10 +356,11 @@ body{
   }
 
 
-
-  main .col.sections-column svg{
-    padding-right: 5px;
+  main .col.sections-column .section-presentation svg{
+    padding-right: 15px;
+    font-size: 1.3rem;
   }
+
 
 
   //FIELD INPUT + BUTTON

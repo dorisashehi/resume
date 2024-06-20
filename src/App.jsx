@@ -129,7 +129,9 @@ function App() {
     <>
       <section>
           <div className="main">
-              <h1>CV Builder</h1>
+             <div className="text-content">
+                <h1>CV Builder</h1>
+             </div>
           </div>
       </section>
 
@@ -156,9 +158,9 @@ function App() {
               <div className="col sections-column">
 
                   <div className="download-section row">
-                      <div className="resume-title">Resume No.1
+                      <h1 className="resume-title">Resume No.1
                             <FontAwesomeIcon icon={ faPenToSquare } />
-                      </div>
+                      </h1>
                       <buton className="download-button btn">Download
                             <FontAwesomeIcon icon={ faDownload } />
                       </buton>

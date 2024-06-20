@@ -12,6 +12,11 @@ main .col.cv-column .section-descr .item .name{
     justify-content: space-between;
     flex-direction: row;
     align-items: baseline;
+    text-transform: capitalize;
+}
+
+main .col.cv-column .section-descr .item .location{
+    text-transform: capitalize;
 }
 
 main .col.cv-column .section-descr .item .descr{
