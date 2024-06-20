@@ -373,3 +373,7 @@ body{
   .field-btn input[type='text']{
     flex: 1;
   }
+
+  #popup-root .popup-overlay {
+    background: rgba(0,0,0,0.5);
+  }

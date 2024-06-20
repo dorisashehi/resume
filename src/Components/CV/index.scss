@@ -1,5 +1,5 @@
 /*GENERAL CV STYLE*/
-main .col.cv-column{
+  .col.cv-column{
     flex: 0 0 50%;
     min-height: 500px;
     background-color: #ffffff;
@@ -9,21 +9,21 @@ main .col.cv-column{
     height: fit-content;
   }
 
-  main .col.cv-column .row{
+  .col.cv-column .row{
     padding: 10px 0px;
   }
 
-  main .col.cv-column .section-descr{
+  .col.cv-column .section-descr{
     padding-top: 5px;
     font-style: italic;
   }
 
-  main .col.cv-column ul.list{
+  .col.cv-column ul.list{
     margin: 10px 0px;
   }
 
 
-  main .col.cv-column .profile-links{
+  .col.cv-column .profile-links{
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -32,18 +32,18 @@ main .col.cv-column{
     text-transform: capitalize;
   }
 
-  main .col.cv-column .profile-links em{
+  .col.cv-column .profile-links em{
     padding: 0px 8px;
   }
 
 
 
-  main .col.cv-column .cv-name{
+  .col.cv-column .cv-name{
     text-align: center;
     text-transform: capitalize;
   }
 
-  main .col.cv-column .website-links{
+  .col.cv-column .website-links{
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -51,29 +51,29 @@ main .col.cv-column{
     justify-content: center;
   }
 
-  main .col.cv-column .section-title{
+  .col.cv-column .section-title{
     border-bottom: 1px solid #000;
   }
 
-  main .col.cv-column .skill-category{
+  .col.cv-column .skill-category{
     font-style: normal;
     text-transform: capitalize;
   }
 
 
-  main .col.cv-column .summary .summary-descr{
+  .col.cv-column .summary .summary-descr{
     font-style: italic;
   }
 
-  main .col.cv-column .general-section h1, main .col.cv-column .general-section h3{
+  .col.cv-column .general-section h1, .col.cv-column .general-section h3{
     margin-bottom: 0px;
   }
 
-  main .col.cv-column .general-section p{
+  .col.cv-column .general-section p{
     margin: 0px;
   }
 
-  main .col.cv-column .skills-section ul{
+  .col.cv-column .skills-section ul{
     list-style: none;
     padding-left: 0px;
   }

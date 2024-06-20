@@ -8,13 +8,18 @@ import Projects from './Components/Projects'
 import { useState } from 'react'
 import Skills from './Components/Skills'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare, faFilePen, faFileLines, faEnvelope, faDownload} from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare, faFilePen, faFileLines, faEnvelope, faDownload, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import Popup from 'reactjs-popup';
 //import defaultInfo from './defaultCV'
 
 function App() {
 
 
     //const [resumeInfo, setDefaultCV] = useState(defaultInfo);
+    const [modalOpen, setModalOpen] = useState(false);
+    const openModal = () => {
+        setModalOpen(!modalOpen);
+    };
 
     const [cvData, setCVData] = useState(
         {
@@ -151,6 +156,24 @@ function App() {
                   <div className="costumize container">
                         <FontAwesomeIcon icon={ faFilePen } />
                         <h1>Costumize</h1>
+                  </div>
+                  <div className="costumize container" onClick={openModal}>
+                        <FontAwesomeIcon icon={ faMagnifyingGlass } />
+                        <h1>Preview</h1>
+                        <Popup
+                            open={modalOpen}
+                            modal
+                            nested
+                        >
+                            {close => (
+                                <div className="modal">
+
+                                    <div className="content">
+                                        <CVPaper resumeInfo = { cvData } />
+                                    </div>
+                                </div>
+                            )}
+                        </Popup>
                   </div>
 
               </div>
