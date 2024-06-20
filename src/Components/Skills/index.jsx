@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import './index.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleDown, faPlus, faPenToSquare, faHeadSideVirus } from '@fortawesome/free-solid-svg-icons'
+
 
 function Skills(props) {
 
@@ -150,10 +153,10 @@ function Skills(props) {
             <div className="section-presentation row">
                 <div className="education toogle-header">
                     <h1 className="title">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        <FontAwesomeIcon icon={ faHeadSideVirus }/>
                         Skills
                     </h1>
-                    <svg xmlns="http://www.w3.org/2000/svg" onClick = { handleOpenSummary }  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    <FontAwesomeIcon icon={ faAngleDown }  onClick = { handleOpenSummary }/>
                 </div>
 
 
@@ -166,7 +169,7 @@ function Skills(props) {
                             fieldsArr.map((skill, index) => (
                                 <div className="item" key={index}>
                                     <p className="title"> { skill.skill_category }</p>
-                                    <svg xmlns="http://www.w3.org/2000/svg" onClick={() => handleEdit(skill.id) } width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                    <FontAwesomeIcon icon={ faPenToSquare } onClick = {() => handleEdit(skill.id)}/>
                                 </div>
                             ))
 
@@ -174,7 +177,7 @@ function Skills(props) {
 
                         <div className="item buttons">
                             <div className='button-section' onClick = {toggleAdd} >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                <FontAwesomeIcon icon={ faPlus }/>
                                 <input type="submit" className="add" value='Skill' />
 
                             </div>
@@ -212,7 +215,7 @@ function Skills(props) {
                                             (required.technology) && <span className='error'>Technology can't be empty</span>
                                         }
                                         <div className="button-section add" onClick = { (event) =>  handleAdd(event, fields.skill_title) }>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                            <FontAwesomeIcon icon={ faPlus }/>
                                             <input type="submit" class="add" value="Add"/>
 
                                         </div>
@@ -273,7 +276,7 @@ function Skills(props) {
                                             (required.technology) && <span className='error'>Technology can't be empty</span>
                                         }
                                         <div className="button-section add" onClick = { (event) =>  handleAdd(event, fields.skill_title) }>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                            <FontAwesomeIcon icon={ faPlus }/>
                                             <input type="submit" class="add" value="Add"/>
 
                                         </div>
