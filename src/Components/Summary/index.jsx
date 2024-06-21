@@ -31,12 +31,12 @@ const Summary = (props) => {
 
         <>
             <div className="section-presentation row">
-                <div className="summary toogle-header">
+                <div className="summary toogle-header" onClick = { toggleSummary }>
                     <h1 className="title">
                         <FontAwesomeIcon icon={ faClipboardList }/>
                         <span>Summary</span>
                     </h1>
-                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon" onClick = { toggleSummary }/>
+                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon"/>
                 </div>
             </div>
 

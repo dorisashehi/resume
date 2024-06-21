@@ -129,13 +129,13 @@ function Experience (props) {
 
         <>
             <div className="section-presentation row">
-                <div className="experience toogle-header">
+                <div className="experience toogle-header" onClick = { handleOpenSummary }>
                     <h1 className="title">
                         <FontAwesomeIcon icon={ faBriefcase } />
 
                         <span>Professional Experience</span>
                     </h1>
-                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon" onClick = { handleOpenSummary }/>
+                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon"/>
                 </div>
                     {
                         ( showSummany ) &&

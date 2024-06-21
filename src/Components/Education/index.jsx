@@ -123,12 +123,12 @@ function Education (props) {
         <>
 
             <div className="section-presentation row">
-                <div className="education toogle-header">
+                <div className="education toogle-header" onClick = { handleOpenSummary }>
                     <h1 className="title">
                         <FontAwesomeIcon icon={ faGraduationCap }/>
                         <span>Education</span>
                     </h1>
-                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon"  onClick = { handleOpenSummary }/>
+                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon"/>
                 </div>
 
                 {

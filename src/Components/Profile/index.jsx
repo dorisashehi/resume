@@ -131,9 +131,9 @@ function Profile (props) {
     return(
 
         <>
-            <div className="personal-section section-presentation  row">
+            <div className="personal-section section-presentation  row" onClick = {toggleDetails}>
                 <div className="edit-icon">
-                    <FontAwesomeIcon icon={ faPenToSquare } onClick = {toggleDetails} />
+                    <FontAwesomeIcon icon={ faPenToSquare }/>
                 </div>
                 <h1 className="name">{ profile?.fullName || 'Your name' }</h1>
                 {/* <div className="position">

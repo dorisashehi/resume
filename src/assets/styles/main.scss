@@ -230,6 +230,7 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    cursor: pointer;
   }
 
   main .col.sections-column .toogle-section .item{
@@ -298,6 +299,7 @@ body{
   main .col.sections-column .personal-section{
     flex-direction: column;
     position: relative;
+    cursor: pointer;
   }
 
   main .col.sections-column .personal-section .position{

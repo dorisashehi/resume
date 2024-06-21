@@ -117,12 +117,12 @@ function Projects (props) {
     return(
         <>
             <div className="section-presentation row">
-                <div className="experience toogle-header">
+                <div className="experience toogle-header"  onClick = { handleOpenSummary }>
                     <h1 className="title">
                         <FontAwesomeIcon icon={ faFolderOpen }/>
                         <span>Projects & Outside Experience</span>
                     </h1>
-                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon"  onClick = { handleOpenSummary }/>
+                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon"/>
                 </div>
 
                 {
