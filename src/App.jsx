@@ -213,7 +213,7 @@ function App() {
                             nested
                         >
                             {close => (
-                                <div className="modal only-mobile">
+                                <div className="modal">
 
                                     <div className="content">
                                         <CVPaper resumeInfo = { cvData } />
