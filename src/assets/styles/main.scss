@@ -118,6 +118,7 @@ body{
     height: 25px;
     margin-top: 10px;
     color: #6c7381;
+    font-size: 0.9rem;
   }
 
   main .col.sections-column .form-group input::placeholder{
@@ -141,7 +142,7 @@ body{
     margin: auto;
   }
 
-  main .col.costumize-column{
+  .col.costumize-column{
     display: none;
     flex: 0 0 10%;
     min-height: 400px;
@@ -153,12 +154,12 @@ body{
     font-weight: 500;
   }
 
-  main .col.costumize-column svg{
+  .col.costumize-column svg{
     font-size: 20px;
 
   }
 
-  main .col.costumize-column .content{
+  .col.costumize-column .content{
     display: flex;
     flex-direction: column;
   }
@@ -367,12 +368,12 @@ body{
     width: 80%;
   }
 
-  main .col.costumize-column .container h1{
+  .col.costumize-column .container h1{
     font-weight: 500;
     font-size: 0.9rem;
     margin-top: 12px;
   }
-  main .col.costumize-column .container{
+  .col.costumize-column .container{
     margin-bottom: 25px;
     padding: 19px 7px;
     text-align: center;
@@ -380,7 +381,7 @@ body{
     align-items: center;
   }
 
-  main .col.costumize-column .container.active{
+  .col.costumize-column .container.active{
     background: #f9fafb;
   }
 
@@ -415,6 +416,38 @@ body{
   }
 
 
+  //MOBILE BOTTOM MENU
+
+  .col.costumize-column.only-mobile{
+    background: transparent;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
+    display: block;
+  }
+
+  .col.costumize-column.only-mobile .container.container{
+    background-color: #ffffff;
+    border-radius: 1.9em;
+    padding: 15px;
+    background: #f9fafb;
+    box-shadow: -1px 2px 7px #b2abab;
+
+  }
+  .col.costumize-column.only-mobile{
+    min-height: auto;
+
+  }
+
+  #popup-root .col.cv-column{
+    display: block;
+    padding: 20px;
+    min-height: 600px;
+  }
+  #popup-root .popup-content {
+    padding: 0px 20px;
+  }
+
 @media screen and (min-width: 575px) {
 
   main{
@@ -427,7 +460,7 @@ body{
 
 @media screen and (min-width:1200px){
 
-  main .col.costumize-column{
+  .col.costumize-column{
     display: block;
   }
   main{
@@ -436,6 +469,9 @@ body{
 
   main .col.sections-column{
     flex: 0 0 40%;
+  }
+  .col.costumize-column.only-mobile{
+    display: none;
   }
 
 }
@@ -517,12 +553,12 @@ body{
     margin-top: 25px;
   }
 
-  main .col.costumize-column svg{
+  .col.costumize-column svg{
     font-size: 30px;
   }
 
 
-  main .col.costumize-column{
+  .col.costumize-column{
     max-width: 100px;
   }
 

@@ -8,7 +8,7 @@ import Projects from './Components/Projects'
 import { useState } from 'react'
 import Skills from './Components/Skills'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare, faFilePen, faFileLines, faDownload, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare, faFilePen, faFileLines, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import Popup from 'reactjs-popup';
 
 
@@ -141,23 +141,23 @@ function App() {
       </section>
 
       <section className="main">
-          <main>
+            <main>
 
-              <div className="col costumize-column">
-                  <div className="logo container">
-                        <h1>CV</h1>
-                  </div>
+                <div className="col costumize-column">
+                    <div className="logo container">
+                            <h1>CV</h1>
+                    </div>
 
-                  <div className="content container active">
-                        <FontAwesomeIcon icon={ faFileLines } />
-                        <h1>Content</h1>
-                  </div>
+                    <div className="content container active">
+                            <FontAwesomeIcon icon={ faFileLines } />
+                            <h1>Content</h1>
+                    </div>
 
-                  <div className="costumize container">
-                        <FontAwesomeIcon icon={ faFilePen } />
-                        <h1>Costumize</h1>
-                  </div>
-                  <div className="costumize container" onClick={openModal}>
+                    <div className="costumize container">
+                            <FontAwesomeIcon icon={ faFilePen } />
+                            <h1>Costumize</h1>
+                    </div>
+                    <div className="costumize container" onClick={openModal}>
                         <FontAwesomeIcon icon={ faMagnifyingGlass } />
                         <h1>Preview</h1>
                         <Popup
@@ -174,31 +174,59 @@ function App() {
                                 </div>
                             )}
                         </Popup>
-                  </div>
+                    </div>
 
-              </div>
+                </div>
 
-              <div className="col sections-column">
 
-                  <div className="download-section row">
-                      <h1 className="resume-title">Resume No.1
-                            <FontAwesomeIcon icon={ faPenToSquare } />
-                      </h1>
-                      {/* <buton className="download-button btn">Download
-                            <FontAwesomeIcon icon={ faDownload } />
-                      </buton> */}
-                  </div>
+                <div className="col sections-column">
 
-                  <Profile addProfile = { addProfile }/>
-                  <Summary addSummary = { addSummary } />
-                  <Education addEducation = {addEducation} />
-                  <Experience addExperiences = { addExperiences } />
-                  <Projects addProjects = { addProjects } />
-                  <Skills addSkills = {addSkills} />
-              </div>
+                    <div className="download-section row">
+                        <h1 className="resume-title">Resume No.1
+                                <FontAwesomeIcon icon={ faPenToSquare } />
+                        </h1>
+                    </div>
 
-            <CVPaper resumeInfo = { cvData } />
-          </main>
+                    <Profile addProfile = { addProfile }/>
+                    <Summary addSummary = { addSummary } />
+                    <Education addEducation = {addEducation} />
+                    <Experience addExperiences = { addExperiences } />
+                    <Projects addProjects = { addProjects } />
+                    <Skills addSkills = {addSkills} />
+                </div>
+
+                <CVPaper resumeInfo = { cvData } />
+
+                <div className="col costumize-column only-mobile">
+                    <div className="content container active">
+                            <FontAwesomeIcon icon={ faFileLines } />
+                    </div>
+
+                    <div className="costumize container">
+                            <FontAwesomeIcon icon={ faFilePen } />
+                    </div>
+                    <div className="costumize container" onClick={openModal}>
+                        <FontAwesomeIcon icon={ faMagnifyingGlass } />
+                        <Popup
+                            open={modalOpen}
+                            modal
+                            nested
+                        >
+                            {close => (
+                                <div className="modal only-mobile">
+
+                                    <div className="content">
+                                        <CVPaper resumeInfo = { cvData } />
+                                    </div>
+                                </div>
+                            )}
+                        </Popup>
+                    </div>
+
+                </div>
+
+
+            </main>
       </section>
 
     </>
