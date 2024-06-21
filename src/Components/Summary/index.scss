@@ -5,13 +5,6 @@
 .col.cv-column .section-descr .item{
     margin-bottom: 10px;
 }
-.col.cv-column .section-descr .item .name{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: baseline;
-    text-transform: capitalize;
-}
 
 .col.cv-column .section-descr .item .location{
     text-transform: capitalize;
@@ -21,10 +14,6 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-}
-
-.col.cv-column .section-descr .item .descr p{
-    font-style: italic;
 }
 
 .col.sections-column .summary-section.row {

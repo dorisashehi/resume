@@ -30,6 +30,13 @@
     margin: 10px 0px;
   }
 
+  .col.cv-column .section-descr .item .name{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: baseline;
+    text-transform: capitalize;
+}
 
   .col.cv-column .profile-links{
     display: flex;
@@ -73,6 +80,10 @@
 
 
   .col.cv-column .summary .summary-descr{
+    font-style: italic;
+  }
+
+  .col.cv-column .section-descr .item .descr p{
     font-style: italic;
   }
 

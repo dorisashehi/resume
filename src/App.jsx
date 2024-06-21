@@ -10,6 +10,10 @@ import Skills from './Components/Skills'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare, faFilePen, faFileLines, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import Popup from 'reactjs-popup';
+import MyDocument from './Components/Document';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import CVPrint from './Components/CV/CVPrint';
+
 
 
 function App() {
@@ -185,6 +189,11 @@ function App() {
                         <h1 className="resume-title">Resume No.1
                                 <FontAwesomeIcon icon={ faPenToSquare } />
                         </h1>
+                        <PDFDownloadLink document={<CVPrint resumeInfo = { cvData } />} fileName="example.pdf">
+                            {({ blob, url, loading, error }) =>
+                                loading ? 'Loading document...' : 'Download PDF'
+                            }
+                            </PDFDownloadLink>
                     </div>
 
                     <Profile addProfile = { addProfile }/>
