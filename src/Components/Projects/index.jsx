@@ -120,9 +120,9 @@ function Projects (props) {
                 <div className="experience toogle-header">
                     <h1 className="title">
                         <FontAwesomeIcon icon={ faFolderOpen }/>
-                        Projects & Outside Experience
+                        <span>Projects & Outside Experience</span>
                     </h1>
-                    <FontAwesomeIcon icon={ faAngleDown }  onClick = { handleOpenSummary }/>
+                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon"  onClick = { handleOpenSummary }/>
                 </div>
 
                 {

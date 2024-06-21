@@ -1,21 +1,29 @@
 /*GENERAL CV STYLE*/
   .col.cv-column{
-    flex: 0 0 50%;
+    display: none;
+    flex: 1 1 50%;
     min-height: 500px;
     background-color: #ffffff;
     border-radius: 0.5em;
     padding: 55px;
     max-width: 800px;
-    height: fit-content;
+    min-height: 700px;
+
   }
 
   .col.cv-column .row{
     padding: 10px 0px;
   }
 
+  .col.cv-column  .cv-name-section.row{
+    padding: 0px;
+
+  }
+
   .col.cv-column .section-descr{
     padding-top: 5px;
     font-style: italic;
+    font-size: 11px;
   }
 
   .col.cv-column ul.list{
@@ -30,6 +38,7 @@
     justify-content: center;
     gap: 10px;
     text-transform: capitalize;
+    font-size: 12px;
   }
 
   .col.cv-column .profile-links em{
@@ -41,6 +50,7 @@
   .col.cv-column .cv-name{
     text-align: center;
     text-transform: capitalize;
+    font-size: 18px;
   }
 
   .col.cv-column .website-links{
@@ -53,6 +63,7 @@
 
   .col.cv-column .section-title{
     border-bottom: 1px solid #000;
+    font-size: 15px;
   }
 
   .col.cv-column .skill-category{
@@ -76,4 +87,38 @@
   .col.cv-column .skills-section ul{
     list-style: none;
     padding-left: 0px;
+  }
+
+
+  @media screen and (min-width:1200px) {
+    .col.cv-column{
+      display: block;
+    }
+
+    .col.cv-column{
+      flex: 0 0 30%;
+    }
+
+  }
+  @media screen and (min-width:1400px){
+
+    .col.cv-column{
+      display: block;
+      min-height: 900px;
+    }
+
+    .col.cv-column .section-title{
+      border-bottom: 1px solid #000;
+      font-size: 16px;
+    }
+
+    .col.cv-column .section-descr{
+      font-size: 12px;
+    }
+    .col.cv-column .cv-name{
+      font-size: 20px;
+    }
+
+
+
   }

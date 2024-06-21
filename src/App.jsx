@@ -8,9 +8,9 @@ import Projects from './Components/Projects'
 import { useState } from 'react'
 import Skills from './Components/Skills'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare, faFilePen, faFileLines, faEnvelope, faDownload, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare, faFilePen, faFileLines, faDownload, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import Popup from 'reactjs-popup';
-//import defaultInfo from './defaultCV'
+
 
 function App() {
 
@@ -184,9 +184,9 @@ function App() {
                       <h1 className="resume-title">Resume No.1
                             <FontAwesomeIcon icon={ faPenToSquare } />
                       </h1>
-                      <buton className="download-button btn">Download
+                      {/* <buton className="download-button btn">Download
                             <FontAwesomeIcon icon={ faDownload } />
-                      </buton>
+                      </buton> */}
                   </div>
 
                   <Profile addProfile = { addProfile }/>

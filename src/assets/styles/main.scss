@@ -27,7 +27,7 @@ body{
 
   section .main{
     height: 45px;
-    padding: 10px 0px;
+    padding: 10px 20px;
     background-color: var(--button-bg-color);
     display: flex;
     color: #ffffff;
@@ -47,6 +47,7 @@ body{
     flex-direction: column;
     margin-top: 25px;
     font-size: 500;
+    flex: 1;
 
   }
 
@@ -63,12 +64,14 @@ body{
 
   main .col.sections-column svg, main .col.sections-column .link_name{
     cursor: pointer;
+    padding-right: 5px;
   }
 
 
   main .col.sections-column .form-group .links{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 5px;
     margin-top: 15px;
   }
@@ -81,24 +84,30 @@ body{
     border-radius: 0.8em;
     color: #6b7280;
     font-weight: 500;
+    font-size: 0.7rem;
   }
 
   main .col.sections-column .form-group label{
-    font-size: 1rem;
+    font-size: 0.7rem;
 
   }
 
   main .col.sections-column .row-group{
     gap: 5%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: end;
+    align-items: normal;
 
   }
 
   main .col.sections-column .row-group .form-group{
     flex: 1 1 45%;
+  }
+
+  main .col.sections-column form{
+    display: flex;
+    flex-direction: column;
   }
 
   main .col.sections-column .form-group input{
@@ -127,24 +136,25 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    padding: 100px 100px 50px 80px;
-    max-width: 1950px;
+    padding: 50px 20px;
+    max-width: 400px;
     margin: auto;
   }
 
   main .col.costumize-column{
+    display: none;
     flex: 0 0 10%;
     min-height: 400px;
     background-color: #ffffff;
     border-radius: 0.5em;
     height: fit-content;
-    max-width: 100px;
+    max-width: 80px;
     padding: 33px 20px 0px 20px;
     font-weight: 500;
   }
 
   main .col.costumize-column svg{
-    font-size: 30px;
+    font-size: 20px;
 
   }
 
@@ -154,9 +164,9 @@ body{
   }
 
   main .col.sections-column{
-    flex: 0 0 30%;
+    flex: 0 0 100%;
     min-height: 500px;
-    min-width: 700px;
+    min-width: 0px;
   }
 
   main .col.sections-column .row{
@@ -189,14 +199,13 @@ body{
     color: #a4a8b0;
   }
   main .col.sections-column .btn{
-    padding: 15px 44px;
+    padding: 10px 35px;
     border-radius: 0.9em;
     background-color: var(--button-bg-color);
-    font-size: 1rem;
     color: var(--button-color);
     cursor: pointer;
     float: right;
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     font-weight: 600;
   }
 
@@ -249,18 +258,23 @@ body{
   main .col.sections-column .details .button-section.add {
     border: 5px solid #f3f4f6;
     border-radius: 1em;
-    padding: 9px 30px;
+    padding: 8px 24px;
     margin-top: 0px;
     display: flex;
     justify-content: center;
     cursor: pointer;
     align-items: flex-end;
     height: 15px;
+    align-items: normal;
+    gap: 0px;
+
   }
 
   main .col.sections-column .toogle-section .item.buttons .button-section input,
   main .col.sections-column .details .item.buttons .button-section input{
     cursor: pointer;
+    font-size: 0.7rem;
+    padding: 0px;
   }
 
   main .col.sections-column .toogle-section input.add,
@@ -298,7 +312,11 @@ body{
     float: right;
     position: absolute;
     right: 20px;
+  }
 
+
+  main .col.sections-column .personal-section .edit-icon{
+    font-size: 0.7rem;
   }
 
   main .col.sections-column .personal-section .personal-info{
@@ -310,6 +328,7 @@ body{
     margin-top: 15px;
     color: #443d52;
     font-weight: 500;
+    font-size: 0.7rem;
   }
 
   main .col.sections-column .personal-section .name{
@@ -322,20 +341,30 @@ body{
 
   main .col.sections-column .button-section{
     margin-top: 25px;
+    display: flex;
+    gap: 5px;
+
   }
 
   main .col.sections-column button{
     float: right;
   }
+
   main .col.sections-column .sub-section{
-    margin-top: 25px;
+    margin-top: 0px;
   }
 
 
   main .col.sections-column h1{
-    font-size: 1.25rem;
+    font-size: 0.8rem;
     color: var(--text-color);
-    line-height: 1.75rem;
+    line-height: 1.15rem;
+    width: 80%;
+    display: flex;
+  }
+
+  main .col.sections-column h1 span{
+    width: 80%;
   }
 
   main .col.costumize-column .container h1{
@@ -357,11 +386,18 @@ body{
 
 
   main .col.sections-column .section-presentation svg{
-    padding-right: 15px;
-    font-size: 1.3rem;
+    padding-right: 10px;
+    font-size: 1rem;
   }
 
+  main .col.sections-column .section-presentation .toogle-header svg.right-icon{
+    font-size: 0.7rem;
+  }
 
+  main .col.sections-column .section-presentation  .edit-icon svg{
+    font-size: 0.7rem;
+
+  }
 
   //FIELD INPUT + BUTTON
   .field-btn{
@@ -377,3 +413,117 @@ body{
   #popup-root .popup-overlay {
     background: rgba(0,0,0,0.5);
   }
+
+
+@media screen and (min-width: 575px) {
+
+  main{
+    max-width: 600px;
+  }
+
+
+}
+
+
+@media screen and (min-width:1200px){
+
+  main .col.costumize-column{
+    display: block;
+  }
+  main{
+    max-width: 1950px;
+  }
+
+  main .col.sections-column{
+    flex: 0 0 40%;
+  }
+
+}
+
+@media screen and (min-width:1400px){
+
+  main .col.sections-column{
+    min-width: 700px;
+  }
+
+  main .col.sections-column h1{
+    font-size: 1.2rem;
+    line-height: 1.75rem;
+  }
+
+  main{
+    padding: 100px 100px 50px 80px;
+  }
+
+  main .col.sections-column .row-group{
+    flex-direction: row;
+    align-items: end;
+
+  }
+
+  main .col.sections-column .form-group input{
+    height: 35px;
+  }
+
+  main .col.sections-column .btn{
+    padding: 15px 44px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  main .col.sections-column .form-group .link_name{
+    font-size: 1rem;
+  }
+
+  main .col.sections-column .form-group label{
+    font-size: 1rem;
+
+  }
+
+  main .col.sections-column .toogle-section .item.buttons .button-section input,
+  main .col.sections-column .details .item.buttons .button-section input{
+    font-size: 1rem;
+  }
+
+
+  main .col.sections-column .toogle-section .item.buttons .button-section,
+  main .col.sections-column .details .button-section.add {
+    padding: 13px 30px;
+  }
+
+  main .col.sections-column .personal-section .personal-info .item{
+    font-size: 1rem;
+  }
+
+  main .col.sections-column .section-presentation  .edit-icon svg{
+    font-size: 1rem;
+
+  }
+
+  main .col.sections-column .section-presentation svg{
+    padding-right: 15px;
+    font-size: 1.3rem;
+  }
+
+  main .col.sections-column .section-presentation .toogle-header svg.right-icon{
+    font-size: 1rem;
+  }
+
+  main .col.sections-column{
+    flex: 0 0 30%;
+  }
+
+  main .col.sections-column .sub-section{
+    margin-top: 25px;
+  }
+
+  main .col.costumize-column svg{
+    font-size: 30px;
+  }
+
+
+  main .col.costumize-column{
+    max-width: 100px;
+  }
+
+}

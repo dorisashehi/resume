@@ -34,9 +34,9 @@ const Summary = (props) => {
                 <div className="summary toogle-header">
                     <h1 className="title">
                         <FontAwesomeIcon icon={ faClipboardList }/>
-                        Summary
+                        <span>Summary</span>
                     </h1>
-                    <FontAwesomeIcon icon={ faAngleDown }  onClick = { toggleSummary }/>
+                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon" onClick = { toggleSummary }/>
                 </div>
             </div>
 

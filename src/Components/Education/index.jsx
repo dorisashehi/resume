@@ -126,9 +126,9 @@ function Education (props) {
                 <div className="education toogle-header">
                     <h1 className="title">
                         <FontAwesomeIcon icon={ faGraduationCap }/>
-                        Education
+                        <span>Education</span>
                     </h1>
-                    <FontAwesomeIcon icon={ faAngleDown }  onClick = { handleOpenSummary }/>
+                    <FontAwesomeIcon icon={ faAngleDown } className="right-icon"  onClick = { handleOpenSummary }/>
                 </div>
 
                 {
