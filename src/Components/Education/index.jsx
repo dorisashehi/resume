@@ -153,7 +153,13 @@ function Education(props) {
       {editBox && (
         <div className="experience-details-section row details">
           <h1>Edit Education</h1>
-          <UpdateForm changeFormFields={changeFormFields} toggleEdit={toggleEdit} update={update} fields={fields} />
+          <UpdateForm
+            changeFormFields={changeFormFields}
+            toggleEdit={toggleEdit}
+            update={update}
+            fields={fields}
+            required={required}
+          />
         </div>
       )}
     </>
