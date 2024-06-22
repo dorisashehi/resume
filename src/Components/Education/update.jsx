@@ -1,12 +1,13 @@
 import FormInput from '../Elements/FormInput';
 import Button from '../Elements/Button';
-const AddForm = (props) => {
+const UpdateForm = (props) => {
   return (
     <div className="sub-section">
       <form>
         <FormInput
           label="School"
           type="text"
+          value={props.fields?.school}
           className="form-input"
           name="school"
           id="school"
@@ -14,10 +15,10 @@ const AddForm = (props) => {
           onChange={(event) => props.changeFormFields(event.target.id, event.target.value)}
           placeholder="Enter School"
         />
-
         <FormInput
           label="Degree"
           type="text"
+          value={props.fields?.degree || ''}
           className="form-input"
           name="degree"
           id="degree"
@@ -28,6 +29,7 @@ const AddForm = (props) => {
           <FormInput
             label="City"
             type="text"
+            value={props.fields?.edu_city || ''}
             className="form-input"
             name="edu_city"
             id="edu_city"
@@ -38,6 +40,7 @@ const AddForm = (props) => {
           <FormInput
             label="Country"
             type="text"
+            value={props.fields?.edu_country || ''}
             className="form-input"
             name="edu_country"
             id="edu_country"
@@ -50,6 +53,7 @@ const AddForm = (props) => {
           <FormInput
             label="Start Date"
             type="date"
+            value={props.fields?.schl_start_date || ''}
             className="form-input"
             name="schl_start_date"
             id="schl_start_date"
@@ -60,6 +64,7 @@ const AddForm = (props) => {
           <FormInput
             label="End Date"
             type="date"
+            value={props.fields?.schl_end_date || ''}
             className="form-input"
             name="schl_end_date"
             id="schl_end_date"
@@ -67,14 +72,13 @@ const AddForm = (props) => {
             placeholder="Enter End Date"
           />
         </div>
-
         <div className="button-section">
-          <Button value="Close" onClick={(event) => props.toggleAdd(event)} className="btn close" />
-          <Button value="Save" onClick={(event) => props.save(event)} className="btn save" />
+          <Button value="Close" onClick={(event) => props.toggleEdit(event)} className="btn close" />
+          <Button value="Update" onClick={props.update} className="btn save" />
         </div>
       </form>
     </div>
   );
 };
 
-export default AddForm;
+export default UpdateForm;
