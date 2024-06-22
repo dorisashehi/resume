@@ -18,7 +18,7 @@ const UpdateForm = (props) => {
         <FormInput
           label="Degree"
           type="text"
-          value={props.fields?.degree || ''}
+          value={props.fields.degree || ''}
           className="form-input"
           name="degree"
           id="degree"
@@ -29,7 +29,7 @@ const UpdateForm = (props) => {
           <FormInput
             label="City"
             type="text"
-            value={props.fields?.edu_city || ''}
+            value={props.fields.edu_city || ''}
             className="form-input"
             name="edu_city"
             id="edu_city"
@@ -40,7 +40,7 @@ const UpdateForm = (props) => {
           <FormInput
             label="Country"
             type="text"
-            value={props.fields?.edu_country || ''}
+            value={props.fields.edu_country || ''}
             className="form-input"
             name="edu_country"
             id="edu_country"
@@ -53,7 +53,7 @@ const UpdateForm = (props) => {
           <FormInput
             label="Start Date"
             type="date"
-            value={props.fields?.schl_start_date || ''}
+            value={props.fields.schl_start_date || ''}
             className="form-input"
             name="schl_start_date"
             id="schl_start_date"
@@ -64,7 +64,7 @@ const UpdateForm = (props) => {
           <FormInput
             label="End Date"
             type="date"
-            value={props.fields?.schl_end_date || ''}
+            value={props.fields.schl_end_date || ''}
             className="form-input"
             name="schl_end_date"
             id="schl_end_date"
