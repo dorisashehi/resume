@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faPenToSquare, faAngleDown, faPlus } from '@fortawesome/free-solid-svg-icons';
+import Button from '../Elements/Button';
+import FormInput from '../Elements/FormInput';
+import AddForm from './add';
 
 function Education(props) {
   const [addBox, setOpen] = useState(false);
@@ -32,9 +35,7 @@ function Education(props) {
 
   const toggleAdd = (event) => {
     //OPEN CLOSE DETAILS
-
     event.preventDefault();
-
     setID(uuidv4()); //GENERATE A RANDOM ID WHEN EXP BOX OPEN
     setFieldsObj({}); //EMPTY PREVIOUS EDUCATION OBJECT
     setEdit(false);
@@ -146,87 +147,72 @@ function Education(props) {
           <h1>Add Education</h1>
           <div className="sub-section">
             <form>
-              <div className="form-group">
-                <label htmlFor="school">School</label>
-                <input
+              <FormInput
+                label="School"
+                type="text"
+                className="form-input"
+                name="school"
+                id="school"
+                required={required}
+                onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                placeholder="Enter School"
+              />
+              <FormInput
+                label="Degree"
+                type="text"
+                className="form-input"
+                name="degree"
+                id="degree"
+                onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                placeholder="Enter Degree"
+              />
+              <div className="row-group">
+                <FormInput
+                  label="City"
                   type="text"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
                   className="form-input"
-                  name="school"
-                  id="school"
-                  placeholder="Enter Schools"
+                  name="edu_city"
+                  id="edu_city"
+                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  placeholder="Enter City"
                 />
 
-                {required && <span className="error">That is a required field</span>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="degree">Degree</label>
-                <input
+                <FormInput
+                  label="Country"
                   type="text"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
                   className="form-input"
-                  name="degree"
-                  id="degree"
-                  placeholder="Enter Degree"
+                  name="edu_country"
+                  id="edu_country"
+                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  placeholder="Enter Country"
                 />
               </div>
 
               <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="exp-city">City</label>
-                  <input
-                    type="text"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="edu_city"
-                    id="edu_city"
-                    placeholder="Enter City"
-                  />
-                </div>
+                <FormInput
+                  label="Start Date"
+                  type="date"
+                  className="form-input"
+                  name="schl_start_date"
+                  id="schl_start_date"
+                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  placeholder="Enter Start Date"
+                />
 
-                <div className="form-group">
-                  <label htmlFor="exp-country">Country</label>
-                  <input
-                    type="text"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="edu_country"
-                    id="edu_country"
-                    placeholder="Enter Country"
-                  />
-                </div>
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="schl-start-date">Start Date</label>
-                  <input
-                    type="date"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="schl_start_date"
-                    id="schl_start_date"
-                    placeholder="Enter Start Date"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="schl-end-date">End Date</label>
-                  <input
-                    type="date"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="schl_end_date"
-                    id="schl_end_date"
-                    placeholder="Enter End Date"
-                  />
-                </div>
+                <FormInput
+                  label="End Date"
+                  type="date"
+                  className="form-input"
+                  name="schl_end_date"
+                  id="schl_end_date"
+                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  placeholder="Enter End Date"
+                />
               </div>
 
               <div className="button-section">
-                <input type="submit" className="btn close" onClick={(event) => toggleAdd(event)} value="Close" />
-                <input type="submit" className="btn save" onClick={(event) => save(event)} value="Save" />
+                <Button value="Close" onClick={(event) => toggleAdd(event)} className="btn close" />
+                <Button value="Save" onClick={(event) => save(event)} className="btn save" />
               </div>
             </form>
           </div>
@@ -238,98 +224,77 @@ function Education(props) {
           <h1>Edit Education</h1>
           <div className="sub-section">
             <form>
-              <div className="form-group">
-                <label htmlFor="school">School</label>
-                <input
+              <FormInput
+                label="School"
+                type="text"
+                value={fields?.school}
+                className="form-input"
+                name="school"
+                id="school"
+                required={required}
+                onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                placeholder="Enter School"
+              />
+              <FormInput
+                label="Degree"
+                type="text"
+                value={fields?.degree || ''}
+                className="form-input"
+                name="degree"
+                id="degree"
+                onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                placeholder="Enter Degree"
+              />
+              <div className="row-group">
+                <FormInput
+                  label="City"
                   type="text"
-                  value={fields?.school}
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  value={fields?.edu_city || ''}
                   className="form-input"
-                  name="school"
-                  id="school"
-                  placeholder="Enter Schools"
+                  name="edu_city"
+                  id="edu_city"
+                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  placeholder="Enter City"
                 />
 
-                {required && <span className="error">That is a required field</span>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="degree">Degree</label>
-                <input
+                <FormInput
+                  label="Country"
                   type="text"
-                  value={fields?.degree || ''}
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  value={fields?.edu_country || ''}
                   className="form-input"
-                  name="degree"
-                  id="degree"
-                  placeholder="Enter Degree"
+                  name="edu_country"
+                  id="edu_country"
+                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  placeholder="Enter Country"
                 />
               </div>
 
               <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="exp-city">City</label>
-                  <input
-                    type="text"
-                    value={fields?.edu_city || ''}
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="edu_city"
-                    id="edu_city"
-                    placeholder="Enter City"
-                  />
-                </div>
+                <FormInput
+                  label="Start Date"
+                  type="date"
+                  value={fields?.schl_start_date || ''}
+                  className="form-input"
+                  name="schl_start_date"
+                  id="schl_start_date"
+                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  placeholder="Enter Start Date"
+                />
 
-                <div className="form-group">
-                  <label htmlFor="exp-country">Country</label>
-                  <input
-                    type="text"
-                    value={fields?.edu_country || ''}
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="edu_country"
-                    id="edu_country"
-                    placeholder="Enter Country"
-                  />
-                </div>
+                <FormInput
+                  label="End Date"
+                  type="date"
+                  value={fields?.schl_end_date || ''}
+                  className="form-input"
+                  name="schl_end_date"
+                  id="schl_end_date"
+                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
+                  placeholder="Enter End Date"
+                />
               </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="schl-start-date">Start Date</label>
-                  <input
-                    type="date"
-                    value={fields?.schl_start_date || ''}
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="schl_start_date"
-                    id="schl_start_date"
-                    placeholder="Enter Start Date"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="schl-end-date">End Date</label>
-                  <input
-                    type="date"
-                    value={fields?.schl_end_date || ''}
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="schl_end_date"
-                    id="schl_end_date"
-                    placeholder="Enter End Date"
-                  />
-                </div>
-              </div>
-
               <div className="button-section">
-                <input type="submit" className="btn close" onClick={(event) => toggleEdit(event)} value="Close" />
-                <input
-                  type="submit"
-                  className="btn save"
-                  onClick={(event) => update(event, fields.id)}
-                  value="Update"
-                />
+                <Button value="Close" onClick={(event) => toggleEdit(event)} className="btn close" />
+                <Button value="Update" onClick={(event) => update(event, fields.id)} className="btn save" />
               </div>
             </form>
           </div>

@@ -3,7 +3,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardList, faAngleDown } from '@fortawesome/free-solid-svg-icons';
-
+import Button from '../Elements/Button';
 import './index.scss';
 
 const Summary = (props) => {
@@ -26,6 +26,7 @@ const Summary = (props) => {
 
     event.preventDefault();
     props.addSummary(summary);
+    setEdit(false);
   };
 
   return (
@@ -60,8 +61,8 @@ const Summary = (props) => {
               </div>
 
               <div className="button-section">
-                <input type="submit" className="btn close" onClick={(event) => toggleSummary(event)} value="Close" />
-                <input type="submit" className="btn save" onClick={(event) => save(event)} value="Edit" />
+                <Button value="Close" onClick={(event) => toggleSummary(event)} className="btn close" />
+                <Button value="Update" onClick={(event) => save(event)} className="btn save" />
               </div>
             </form>
           </div>

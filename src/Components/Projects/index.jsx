@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+import Button from '../Elements/Button';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderOpen, faAngleDown, faPlus, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
@@ -216,8 +217,8 @@ function Projects(props) {
               </div>
 
               <div className="button-section">
-                <input type="submit" className="btn close" onClick={(event) => toggleAdd(event)} value="Close" />
-                <input type="submit" className="btn save" onClick={(event) => save(event)} value="Save" />
+                <Button value="Close" onClick={(event) => toggleAdd(event)} className="btn close" />
+                <Button value="Save" onClick={(event) => save(event)} className="btn save" />
               </div>
             </form>
           </div>
@@ -312,13 +313,8 @@ function Projects(props) {
               </div>
 
               <div className="button-section">
-                <input type="submit" className="btn close" onClick={(event) => toggleEdit(event)} value="Close" />
-                <input
-                  type="submit"
-                  className="btn save"
-                  onClick={(event) => update(event, fields.id)}
-                  value="Update"
-                />
+                <Button value="Close" onClick={(event) => toggleEdit(event)} className="btn close" />
+                <Button value="Update" onClick={(event) => update(event, fields.id)} className="btn save" />
               </div>
             </form>
           </div>

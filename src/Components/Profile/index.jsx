@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import OtherLinks from '../OtherLinks';
 import PropTypes from 'prop-types';
+import Button from '../Elements/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare, faEnvelope, faPhoneVolume, faLocationDot, faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -241,8 +242,8 @@ function Profile(props) {
               </div>
 
               <div className="button-section">
-                <input type="submit" className="btn close" onClick={(event) => toggleDetails(event)} value="Close" />
-                <input type="submit" className="btn save" onClick={(event) => save(event)} value="Save" />
+                <Button value="Close" onClick={(event) => toggleDetails(event)} className="btn close" />
+                <Button value="Update" onClick={(event) => save(event)} className="btn save" />
               </div>
             </form>
           </div>
