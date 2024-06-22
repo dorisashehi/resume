@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import './index.scss';
 import { v4 as uuidv4 } from 'uuid';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Button from '../Elements/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faPlus, faPenToSquare, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import AddForm from './add';
+import UpdateForm from './update';
 
 function Experience(props) {
   const [addBox, setOpen] = useState(false); //STATE FOR ADD EXPERIENCE BOX
@@ -102,15 +100,15 @@ function Experience(props) {
     setEdit(true); //OPEN EDIT BOX
   };
 
-  const update = (event, id) => {
+  const update = (event) => {
     event.preventDefault();
-    const index = fieldsArr.findIndex((item) => item.id === id); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
+    const index = fieldsArr.findIndex((item) => item.id === fields.id); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
 
     const error = validateRequiredFields(fields); //CHECK ID COMPANY NAME EMPTY
 
     if (!error) {
       const updatedExperiences = [...fieldsArr];
-      updatedExperiences[expIdx] = fields; //PUT UPDATED EXPERIENCE AT INDEX
+      updatedExperiences[index] = fields; //PUT UPDATED EXPERIENCE AT INDEX
       setFieldsArr(updatedExperiences); //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
       props.addExperiences(updatedExperiences); //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
       setEdit(false); //CLOSE EDIT BOX DIALOG
@@ -133,7 +131,7 @@ function Experience(props) {
             {fieldsArr.map((experience, index) => (
               <div className="item" key={index}>
                 <p className="title">{experience.exp_company}</p>
-                <FontAwesomeIcon icon={faPenToSquare} />
+                <FontAwesomeIcon icon={faPenToSquare} onClick={() => handleEdit(experience.id)} />
               </div>
             ))}
 
@@ -149,237 +147,20 @@ function Experience(props) {
       {addBox && (
         <div className="experience-details-section row details">
           <h1>Add Experience</h1>
-          <div className="sub-section">
-            <form>
-              <div className="form-group">
-                <label htmlFor="exp_company">Company</label>
-                <input
-                  type="text"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="exp_company"
-                  id="exp_company"
-                  placeholder="Enter Company Title"
-                />
-                {required && <span className="error">That is a required field</span>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="exp_job">Job Title</label>
-                <input
-                  type="text"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="exp_job"
-                  id="exp_job"
-                  placeholder="Enter Job Title"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="exp_technology">Technology</label>
-                <input
-                  type="text"
-                  className="form-input"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  name="exp_technology"
-                  id="exp_technology"
-                  placeholder="Enter Technology"
-                />
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="exp_city">City</label>
-                  <input
-                    type="text"
-                    className="form-input"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    name="exp_city"
-                    id="exp_city"
-                    placeholder="Enter City"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="exp_country">Country</label>
-                  <input
-                    type="text"
-                    className="form-input"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    name="exp_country"
-                    id="exp_country"
-                    placeholder="Enter Country"
-                  />
-                </div>
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="exp_start_date">Start Date</label>
-                  <input
-                    type="date"
-                    className="form-input"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    name="exp_start_date"
-                    id="exp_start_date"
-                    placeholder="Enter Start Date"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="exp_end_date">End Date</label>
-                  <input
-                    type="date"
-                    className="form-input"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    name="exp_end_date"
-                    id="exp_end_date"
-                    placeholder="Enter End Date"
-                  />
-                </div>
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <div className="App">
-                    <label htmlFor="exp_responsibilities">Responsibilities</label>
-                    <CKEditor
-                      editor={ClassicEditor}
-                      data=""
-                      id="exp_responsibilities"
-                      onChange={(event, editor) => changeFormFields('exp_responsibilities', editor.getData())}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="button-section">
-                <Button value="Close" onClick={(event) => toggleAdd(event)} className="btn close" />
-                <Button value="Save" onClick={(event) => save(event)} className="btn save" />
-              </div>
-            </form>
-          </div>
+          <AddForm required={required} toggleAdd={toggleAdd} save={save} changeFormFields={changeFormFields} />
         </div>
       )}
 
       {editBox && (
         <div className="experience-details-section row details">
           <h1>Edit Proffesional Experience</h1>
-          <div className="sub-section">
-            <form>
-              <div className="form-group">
-                <label htmlFor="exp_company">Company</label>
-                <input
-                  type="text"
-                  value={fields?.exp_company}
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="exp_company"
-                  id="exp_company"
-                  placeholder="Enter Company Title"
-                />
-                {required && <span className="error">That is a required field</span>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="exp_job">Job Title</label>
-                <input
-                  type="text"
-                  value={fields?.exp_job || ''}
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="exp_job"
-                  id="exp_job"
-                  placeholder="Enter Job Title"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="exp_technology">Technology</label>
-                <input
-                  type="text"
-                  value={fields?.exp_technology || ''}
-                  className="form-input"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  name="exp_technology"
-                  id="exp_technology"
-                  placeholder="Enter Technology"
-                />
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="exp_city">City</label>
-                  <input
-                    type="text"
-                    value={fields?.exp_city || ''}
-                    className="form-input"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    name="exp_city"
-                    id="exp_city"
-                    placeholder="Enter City"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="exp_country">Country</label>
-                  <input
-                    type="text"
-                    value={fields?.exp_country || ''}
-                    className="form-input"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    name="exp_country"
-                    id="exp_country"
-                    placeholder="Enter Country"
-                  />
-                </div>
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="exp_start_date">Start Date</label>
-                  <input
-                    type="date"
-                    value={fields?.exp_start_date || ''}
-                    className="form-input"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    name="exp_start_date"
-                    id="exp_start_date"
-                    placeholder="Enter Start Date"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="exp_end_date">End Date</label>
-                  <input
-                    type="date"
-                    value={fields?.exp_end_date || ''}
-                    className="form-input"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    name="exp_end_date"
-                    id="exp_end_date"
-                    placeholder="Enter End Date"
-                  />
-                </div>
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <div className="App">
-                    <label htmlFor="exp_responsibilities">Responsibilities</label>
-                    <CKEditor
-                      editor={ClassicEditor}
-                      data={fields.exp_responsibilities}
-                      id="exp_responsibilities"
-                      onChange={(event, editor) => changeFormFields('exp_responsibilities', editor.getData())}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="button-section">
-                <Button value="Close" onClick={(event) => toggleEdit(event)} className="btn close" />
-                <Button value="Update" onClick={(event) => update(event, fields.id)} className="btn save" />
-              </div>
-            </form>
-          </div>
+          <UpdateForm
+            changeFormFields={changeFormFields}
+            toggleEdit={toggleEdit}
+            update={update}
+            fields={fields}
+            required={required}
+          />
         </div>
       )}
     </>

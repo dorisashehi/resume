@@ -1,4 +1,4 @@
-import FormInput from '../Elements/FormInput';
+import FormInput from '../Elements/Input';
 import Button from '../Elements/Button';
 const UpdateForm = (props) => {
   return (

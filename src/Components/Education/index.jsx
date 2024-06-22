@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faPenToSquare, faAngleDown, faPlus } from '@fortawesome/free-solid-svg-icons';
-import FormInput from '../Elements/FormInput';
 import AddForm from './add';
-import Button from '../Elements/Button';
 import UpdateForm from './update';
 
 function Education(props) {
