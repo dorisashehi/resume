@@ -2,7 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 import Html from 'react-pdf-html';
-import { Document, Page, Text, View, StyleSheet, Link } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Link, Font } from '@react-pdf/renderer';
+//import Arial1 from '../../../public/Arial.ttf';
+// Registering custom fonts
+// Font.register({
+//     family: 'Arial',
+//     fonts: [
+//       { src: Arial1},
+//     ],
+//   });
+
 
 const styles = StyleSheet.create({
 
@@ -19,7 +28,7 @@ const styles = StyleSheet.create({
     },
     nameSection: {
         textAlign: 'center',
-        paddingBottom: 0,
+        padding: 0,
     },
     paragraph: {
         fontStyle: 'italic'
@@ -39,6 +48,7 @@ const styles = StyleSheet.create({
     cvName: {
         fontSize: 18,
         textTransform: 'capitalize',
+        textAlign: 'center'
     },
     profileLinks: {
         display: 'flex',
@@ -61,6 +71,11 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         fontSize: 11,
     },
+    header: {
+        marginBottom: 0,
+        fontSize: 12,
+    }
+
 
 });
 
@@ -80,47 +95,47 @@ const CVPaper = (props) => {
                 <Text style={styles.cvName}>{fullName || 'FirstName LastName'}</Text>
             </View>
 
-            <View style={styles.profileLinks}>
-                <Text style={styles.linkItem}>{email || 'Email Address'}</Text>
-                <Text style={styles.linkItem}>{phone || 'Phone Number'}</Text>
-                <Text style={styles.linkItem}>{location || 'Location'}</Text>
-                {Object.entries(others).map(([key, value]) =>
-                    value !== '' ? (
-                    <Link key={key} style={styles.linkItem} src={value}>
-                        {key}
-                    </Link>
-                    ) : null
-                )}
+            <View>
+                <View style={styles.profileLinks}>
+                    <Text style={styles.linkItem}>{email || 'Email Address'}</Text>
+                    <Text style={styles.linkItem}>{phone || 'Phone Number'}</Text>
+                    <Text style={styles.linkItem}>{location || 'Location'}</Text>
+                    {Object.entries(others).map(([key, value]) =>
+                        value !== '' ? (
+                        <Link key={key} style={styles.linkItem} src={value}>
+                            {key}
+                        </Link>
+                        ) : null
+                    )}
+                </View>
             </View>
 
-            <View style={styles.cvSummarySection}>
+            <View style={[styles.row, styles.cvSummarySection]}>
                 <Text style={styles.sectionTitle}>Summary</Text>
                 <Html style={styles.sectionDescr}>{summ}</Html>
             </View>
 
             <View style={styles.row}>
                 <Text style={styles.sectionTitle}>Education</Text>
-                {Object.entries(education).map(([key, education]) => {
-                    const location =
-                    (education.edu_city || 'City') + ', ' + (education.edu_country || 'State');
-                    const date =
-                    (education?.schl_start_date || 'MM/YEAR') +
-                    ' - ' +
-                    (education?.schl_end_date || 'MM/YEAR');
+                <View style={styles.sectionDescr}>
+                    {Object.entries(education).map(([key, education]) => {
+                        const location = (education.edu_city || 'City') + ', ' + (education.edu_country || 'State');
+                        const date = (education.schl_start_date || 'MM/YEAR') + ' - ' + (education?.schl_end_date || 'MM/YEAR');
 
-                    return (
-                    <View style={styles.item} key={key}>
-                        <View style={styles.descrName}>
-                            <Text style={styles.itemName}>{education.school || 'School / Bootcamp / Program'}</Text>
-                            <Text style={styles.itemLocation}>{location}</Text>
-                        </View>
-                        <View style={styles.descrName}>
-                            <Text style={styles.itemDescr}>{education.degree || 'Degree Name'}</Text>
-                            <Text style={styles.itemDescr}>{date}</Text>
-                        </View>
-                    </View>
-                    );
-                })}
+                        return (
+                            <View style={styles.item} key={key}>
+                                <View style={styles.descrName}>
+                                    <Text style={styles.header}>{education.school || 'School / Bootcamp / Program'}</Text>
+                                    <Text style={[styles.paragraph, styles.itemLocation]}>{location}</Text>
+                                </View>
+                                <View  style={styles.descrName}>
+                                    <Text>{education.degree || 'Degree Name'}</Text>
+                                    <Text style={styles.paragraph}>{date}</Text>
+                                </View>
+                            </View>
+                        );
+                    })}
+                </View>
             </View>
 
             <View style={styles.row}>
@@ -134,12 +149,12 @@ const CVPaper = (props) => {
                         return (
                             <View style={styles.item} key={index}>
                                 <View style={styles.descrName}>
-                                    <Text style={styles.itemName}>{experienceItem.exp_company || 'Company'}</Text>
-                                    <Text style={styles.itemLocation}>{location}</Text>
+                                    <Text style={styles.header}>{experienceItem.exp_company || 'Company'}</Text>
+                                    <Text style={[styles.paragraph, styles.itemLocation]}>{location}</Text>
                                 </View>
                                 <View style={styles.descrName}>
-                                    <Text style={styles.itemDescr}>{experienceItem.exp_job || 'Position Held'}</Text>
-                                    <Text style={styles.itemDescr}>{date}</Text>
+                                    <Text>{experienceItem.exp_job || 'Position Held'}</Text>
+                                    <Text style={styles.paragraph}>{date}</Text>
                                 </View>
                                 <View>
                                     <Html style={styles.sectionDescr}>{responsibilities}</Html>
@@ -160,13 +175,13 @@ const CVPaper = (props) => {
                         return (
                             <View style={styles.item} key={index}>
                                 <View style={styles.descrName}>
-                                    <Text style={styles.itemName} onPress={() => Linking.openURL(project.project_link || '')}>
+                                    <Text style={styles.header} onPress={() => Linking.openURL(project.project_link || '')}>
                                         {project.project_title || 'Project Name'}
                                     </Text>
-                                    <Text style={styles.itemDescr}>{date}</Text>
+                                    <Text style={styles.paragraph}>{date}</Text>
                                 </View>
                                 <View style={styles.descrName}>
-                                    <Text style={styles.itemDescr}>{project.project_type || 'Project Type'}</Text>
+                                    <Text>{project.project_type || 'Project Type'}</Text>
                                 </View>
                                 <View>
                                     <Html style={styles.sectionDescr}>{work}</Html>

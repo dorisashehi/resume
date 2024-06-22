@@ -38,7 +38,7 @@ const CVPaper  = (props) => {
 
                 </div>
 
-                <div className="cv-summary-section ">
+                <div className="cv-summary-section row">
                     <h1 className="section-title">Summary</h1>
                     <div className="section-descr" dangerouslySetInnerHTML={{ __html: summ }}></div>
 
@@ -58,12 +58,12 @@ const CVPaper  = (props) => {
 
                                     <div className="item" key={key}>
                                         <div className="name">
-                                            <h3 className="name">{education.school || 'School / Bootcamp / Program'}</h3>
-                                            <p className="location">{location}</p>
+                                            <h3>{education.school || 'School / Bootcamp / Program'}</h3>
+                                            <p>{location}</p>
                                         </div>
                                         <div className="descr">
-                                            <p className="name">{education.degree || 'Degree Name'}</p>
-                                            <p className="date">{date}</p>
+                                            <p>{education.degree || 'Degree Name'}</p>
+                                            <p>{date}</p>
                                         </div>
                                         <div className="more-info">
                                             {/* <ul className="list">
@@ -97,12 +97,12 @@ const CVPaper  = (props) => {
                                 return(
                                     <div className="item" key={index}>
                                         <div className="name">
-                                            <h3 className="name">{experience.exp_company || 'Company' }</h3>
-                                            <p className="location">{ location }</p>
+                                            <h3>{experience.exp_company || 'Company' }</h3>
+                                            <p>{ location }</p>
                                         </div>
                                         <div className="descr">
-                                            <p className="name">{experience.exp_job || 'Position Held'}</p>
-                                            <p className="date">{ date }</p>
+                                            <p>{experience.exp_job || 'Position Held'}</p>
+                                            <p>{ date }</p>
                                         </div>
                                         <div className="more-info">
                                             <div className="more-info" dangerouslySetInnerHTML={{ __html: responsibilities }}></div>
@@ -128,13 +128,13 @@ const CVPaper  = (props) => {
                                 return (
                                     <div className="item" key={index}>
                                         <div className="name">
-                                            <h3 className="name">
+                                            <h3>
                                                 <a href="">{project.project_title || 'Project Name'}</a>
                                             </h3>
-                                            <p className="date">{date}</p>
+                                            <p>{date}</p>
                                         </div>
                                         <div className="descr">
-                                            <p className="project-type">{project.project_type || 'Project Type'}</p>
+                                            <p>{project.project_type || 'Project Type'}</p>
                                         </div>
                                         <div className="more-info">
                                             <div className="more-info" dangerouslySetInnerHTML={{ __html: work }}></div>
