@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import Button from '../Elements/Button';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderOpen, faAngleDown, faPlus, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import AddForm from './add';
+import UpdateForm from './update';
 
 function Projects(props) {
   const [addBox, setOpen] = useState(false);
@@ -90,10 +89,8 @@ function Projects(props) {
     setEdit(true); //OPEN EDIT BOX
   };
 
-  const update = (event, id) => {
-    event.preventDefault();
+  const update = (id) => {
     const index = fieldsArr.findIndex((item) => item.id === id); //FIND INDEX OF PROJECT IN ARR PROJECTS
-
     const error = validateRequiredFields(fields); //CHECK ID COMPANY NAME EMPTY
 
     if (!error) {
@@ -138,186 +135,26 @@ function Projects(props) {
       {addBox && (
         <div className="project-details-section row details">
           <h1>Edit Projects</h1>
-          <div className="sub-section">
-            <form>
-              <div className="form-group">
-                <label htmlFor="project_title">Project Title</label>
-                <input
-                  type="text"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="project_title"
-                  id="project_title"
-                  placeholder="Enter Job Title"
-                />
-                {required && <span className="error">That is a required field</span>}
-              </div>
-              <div className="form-group">
-                <label htmlFor="project_technology">Technology</label>
-                <input
-                  type="text"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="project_technology"
-                  id="project_technology"
-                  placeholder="Enter Technology"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="project_type">Project Type</label>
-                <input
-                  type="text"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="project_type"
-                  id="project_type"
-                  placeholder="Project Type"
-                />
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="project_start_date">Start Date</label>
-                  <input
-                    type="date"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="project_start_date"
-                    id="project_start_date"
-                    placeholder="Enter Start Date"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="project_end_date">End Date</label>
-                  <input
-                    type="date"
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="project_end_date"
-                    id="project_end_date"
-                    placeholder="Enter End Date"
-                  />
-                </div>
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <div className="App">
-                    <label htmlFor="exp_responsibilities">Work Done</label>
-                    <CKEditor
-                      editor={ClassicEditor}
-                      data={fields.project_works}
-                      id="project_works"
-                      onChange={(event, editor) => changeFormFields('project_works', editor.getData())}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="button-section">
-                <Button value="Close" onClick={(event) => toggleAdd(event)} className="btn close" />
-                <Button value="Save" onClick={(event) => save(event)} className="btn save" />
-              </div>
-            </form>
-          </div>
+          <AddForm
+            required={required}
+            toggleAdd={toggleAdd}
+            save={save}
+            changeFormFields={changeFormFields}
+            fields={fields}
+          />
         </div>
       )}
 
       {editBox && (
         <div className="project-details-section row details">
           <h1>Edit Projects</h1>
-          <div className="sub-section">
-            <form>
-              <div className="form-group">
-                <label htmlFor="project_title">Project Title</label>
-                <input
-                  type="text"
-                  value={fields?.project_title}
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="project_title"
-                  id="project_title"
-                  placeholder="Enter Job Title"
-                />
-                {required && <span className="error">That is a required field</span>}
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="project_type">Project Type</label>
-                <input
-                  type="text"
-                  value={fields?.project_type}
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="project_type"
-                  id="project_type"
-                  placeholder="Project Type"
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="project_technology">Technology</label>
-                <input
-                  type="text"
-                  value={fields?.project_technology}
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="project_technology"
-                  id="project_technology"
-                  placeholder="Enter Technology"
-                />
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="project_start_date">Start Date</label>
-                  <input
-                    type="date"
-                    value={fields?.project_start_date}
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="project_start_date"
-                    id="project_start_date"
-                    placeholder="Enter Start Date"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="project_end_date">End Date</label>
-                  <input
-                    type="date"
-                    value={fields?.project_end_date}
-                    onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                    className="form-input"
-                    name="project_end_date"
-                    id="project_end_date"
-                    placeholder="Enter End Date"
-                  />
-                </div>
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <div className="App">
-                    <label htmlFor="exp_responsibilities">Works Done</label>
-                    <CKEditor
-                      editor={ClassicEditor}
-                      data={fields.project_works}
-                      id="project_works"
-                      onChange={(event, editor) => changeFormFields('project_works', editor.getData())}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="button-section">
-                <Button value="Close" onClick={(event) => toggleEdit(event)} className="btn close" />
-                <Button value="Update" onClick={(event) => update(event, fields.id)} className="btn save" />
-              </div>
-            </form>
-          </div>
+          <UpdateForm
+            changeFormFields={changeFormFields}
+            handleEdit={handleEdit}
+            update={update}
+            fields={fields}
+            required={required}
+          />
         </div>
       )}
     </>
