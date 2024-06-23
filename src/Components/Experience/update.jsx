@@ -7,7 +7,7 @@ const UpdateForm = (props) => {
   return (
     <div className="sub-section">
       <div className="sub-section">
-        <form>
+        <form method="POST">
           <FormInput
             label="Company"
             type="text"

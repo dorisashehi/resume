@@ -6,7 +6,7 @@ import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 const AddForm = (props) => {
   return (
     <div className="sub-section">
-      <form>
+      <form method="POST">
         <FormInput
           label="Company"
           type="text"

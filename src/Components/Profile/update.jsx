@@ -9,7 +9,7 @@ const UpdateForm = (props) => {
     <div className="sub-section">
       <div className="sub-section">
         <div className="sub-section">
-          <form>
+          <form method="POST">
             <FormInput
               label="Full Name"
               type="text"

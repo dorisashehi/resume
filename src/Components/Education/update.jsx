@@ -3,7 +3,7 @@ import Button from '../Elements/Button';
 const UpdateForm = (props) => {
   return (
     <div className="sub-section">
-      <form>
+      <form method="POST">
         <FormInput
           label="School"
           type="text"
