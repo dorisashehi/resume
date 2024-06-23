@@ -78,6 +78,13 @@ function Projects(props) {
     }
   };
 
+  const toggleEdit = (event) => {
+    //OPEN CLOSE EDIT BOX
+
+    event.preventDefault();
+    setEdit(!editBox); //OPEN/CLOSE EDIT BOX
+  };
+
   const handleEdit = (id) => {
     //EDIT PROJECT ACTION
 
@@ -100,6 +107,14 @@ function Projects(props) {
       props.addProjects(updatedFieldsArr); //ADD ARRAY OF PROJECTS TO THE PARENT ELEMNT
       setEdit(false); //CLOSE EDIT BOX DIALOG
     }
+  };
+
+  const deleteField = (event, id) => {
+    event.preventDefault();
+    const newFieldsArr = fieldsArr.filter((item) => item.id !== id); //FILTER WITHOUT THE REMOVED ELEMENT
+    setFieldsArr(newFieldsArr);
+    props.addProjects(newFieldsArr);
+    setEdit(false); //CLOSE EDIT BOX DIALOG
   };
 
   return (
@@ -150,10 +165,11 @@ function Projects(props) {
           <h1>Edit Projects</h1>
           <UpdateForm
             changeFormFields={changeFormFields}
-            handleEdit={handleEdit}
+            toggleEdit={toggleEdit}
             update={update}
             fields={fields}
             required={required}
+            delete={deleteField}
           />
         </div>
       )}

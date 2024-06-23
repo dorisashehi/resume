@@ -1,7 +1,9 @@
-import FormInput from '../Elements/Input';
+import FormInput from '../Elements/FormInput';
 import Button from '../Elements/Button';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 const AddForm = (props) => {
   return (
@@ -97,8 +99,11 @@ const AddForm = (props) => {
         </div>
 
         <div className="button-section">
-          <Button value="Close" onClick={props.toggleAdd} className="btn close" />
-          <Button value="Save" onClick={props.save} className="btn save" />
+          <div className="link_name">
+            <FontAwesomeIcon icon={faMinus} />
+            <Button value="Close" onClick={(event) => props.toggleAdd(event)} className="btn-simple close" />
+          </div>
+          <Button value="Save" onClick={(event) => props.save(event)} className="btn save" />
         </div>
       </form>
     </div>

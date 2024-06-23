@@ -1,6 +1,6 @@
 import Button from '../Elements/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const AddForm = (props) => {
   return (
@@ -35,7 +35,7 @@ const AddForm = (props) => {
                 />
                 {props.required.technology && <span className="error">Technology can't be empty</span>}
               </div>
-              <div className="button-section add" onClick={(event) => props.handleAdd(event, props.fields.skill_title)}>
+              <div className="button-section add" onClick={(event) => props.handleAdd(props.fields.skill_title, event)}>
                 <FontAwesomeIcon icon={faPlus} />
                 <input type="submit" className="add" value="Add" />
               </div>
@@ -53,8 +53,11 @@ const AddForm = (props) => {
         </div>
 
         <div className="button-section">
-          <Button value="Close" onClick={(event) => props.toggleAdd(event)} className="btn close" />
-          <Button value="Save" onClick={props.save} className="btn save" />
+          <div className="link_name">
+            <FontAwesomeIcon icon={faMinus} />
+            <Button value="Close" onClick={(event) => props.toggleAdd(event)} className="btn-simple close" />
+          </div>
+          <Button value="Save" onClick={(event) => props.save(event)} className="btn save" />
         </div>
       </form>
     </div>

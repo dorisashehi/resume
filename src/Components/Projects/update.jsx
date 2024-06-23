@@ -1,7 +1,9 @@
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Button from '../Elements/Button';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import FormInput from '../Elements/Input';
+import FormInput from '../Elements/FormInput';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const UpdateForm = (props) => {
   const updateAction = (event) => {
@@ -79,9 +81,25 @@ const UpdateForm = (props) => {
             </div>
           </div>
         </div>
+
         <div className="button-section">
-          <Button value="Close" onClick={(event) => props.handleEdit(event)} className="btn close" />
-          <Button value="Update" onClick={(event) => updateAction(event)} className="btn save" />
+          <div className="link_name">
+            <FontAwesomeIcon icon={faTrashCan} />
+            <Button
+              value="Delete"
+              onClick={(event) => props.delete(event, props.fields.id)}
+              className="btn-simple delete"
+            />
+          </div>
+
+          <div className="button-group">
+            <div className="link_name" onClick={(event) => props.toggleEdit(event)}>
+              <FontAwesomeIcon icon={faMinus} />
+              <Button value="Close" className="btn-simple close" />
+            </div>
+
+            <Button value="Update" onClick={(event) => updateAction(event)} className="btn save" />
+          </div>
         </div>
       </form>
     </div>

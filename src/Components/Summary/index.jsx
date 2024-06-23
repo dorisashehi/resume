@@ -2,15 +2,16 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClipboardList, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList, faAngleDown, faMinus } from '@fortawesome/free-solid-svg-icons';
 import Button from '../Elements/Button';
 import './index.scss';
 
 const Summary = (props) => {
   const [editBox, setEdit] = useState(false);
 
-  const toggleSummary = () => {
+  const toggleAdd = (event) => {
     //OPEN CLOSE EDIT
+    event.preventDefault();
     setEdit(!editBox);
   };
 
@@ -32,7 +33,7 @@ const Summary = (props) => {
   return (
     <>
       <div className="section-presentation row">
-        <div className="summary toogle-header" onClick={toggleSummary}>
+        <div className="summary toogle-header" onClick={toggleAdd}>
           <h1 className="title">
             <FontAwesomeIcon icon={faClipboardList} />
             <span>Summary</span>
@@ -61,8 +62,11 @@ const Summary = (props) => {
               </div>
 
               <div className="button-section">
-                <Button value="Close" onClick={(event) => toggleSummary(event)} className="btn close" />
-                <Button value="Update" onClick={(event) => save(event)} className="btn save" />
+                <div className="link_name">
+                  <FontAwesomeIcon icon={faMinus} />
+                  <Button value="Close" onClick={(event) => toggleAdd(event)} className="btn-simple close" />
+                </div>
+                <Button value="Save" onClick={(event) => save(event)} className="btn save" />
               </div>
             </form>
           </div>

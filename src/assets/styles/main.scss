@@ -68,6 +68,12 @@ main .col.sections-column .link_name {
   cursor: pointer;
   padding-right: 5px;
 }
+
+main .col.sections-column .link_name:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
 main .col.sections-column svg.delete-icon {
   align-self: center;
 }
@@ -88,6 +94,9 @@ main .col.sections-column .form-group .link_name {
   color: #6b7280;
   font-weight: 500;
   font-size: 0.7rem;
+}
+main .col.sections-column .form-group .link_name:hover {
+  opacity: 0.8;
 }
 
 main .col.sections-column .form-group label {
@@ -206,6 +215,23 @@ main .col.sections-column .btn {
   font-size: 0.7rem;
   font-weight: 600;
 }
+.btn-simple {
+  border: none;
+  background: #ffffff;
+  font-weight: bold;
+  color: var(--button-bg-color);
+  font-size: 1rem;
+  cursor: pointer;
+}
+.button-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+main .col.sections-column .btn:hover {
+  opacity: 0.8;
+}
 
 main .col.sections-column .btn svg {
   color: var(--button-color);
@@ -271,6 +297,7 @@ main .col.sections-column .details .item.buttons .button-section input {
   cursor: pointer;
   font-size: 0.7rem;
   padding: 0px;
+  font-weight: bold;
 }
 
 main .col.sections-column .toogle-section input.add,
@@ -337,6 +364,8 @@ main .col.sections-column .button-section {
   margin-top: 25px;
   display: flex;
   gap: 5px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 main .col.sections-column button {
@@ -379,6 +408,11 @@ main .col.sections-column h1 span {
 main .col.sections-column .section-presentation svg {
   padding-right: 10px;
   font-size: 1rem;
+  color: var(--button-bg-color);
+}
+
+main .col.sections-column .section-presentation svg:hover {
+  opacity: 0.8;
 }
 
 main .col.sections-column .section-presentation .toogle-header svg.right-icon {
@@ -496,6 +530,8 @@ main .col.sections-column .section-presentation .edit-icon svg {
   main .col.sections-column .toogle-section .item.buttons .button-section input,
   main .col.sections-column .details .item.buttons .button-section input {
     font-size: 1rem;
+    color: var(--button-bg-color);
+    font-weight: bold;
   }
 
   main .col.sections-column .toogle-section .item.buttons .button-section,
@@ -513,7 +549,6 @@ main .col.sections-column .section-presentation .edit-icon svg {
   }
 
   main .col.sections-column .section-presentation svg {
-    padding-right: 15px;
     font-size: 1.3rem;
   }
 

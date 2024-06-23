@@ -115,6 +115,14 @@ function Experience(props) {
     }
   };
 
+  const deleteField = (event, id) => {
+    event.preventDefault();
+    const newFieldsArr = fieldsArr.filter((item) => item.id !== id); //FILTER WITHOUT THE REMOVED ELEMENT
+    setFieldsArr(newFieldsArr);
+    props.addExperiences(newFieldsArr);
+    setEdit(false); //CLOSE EDIT BOX DIALOG
+  };
+
   return (
     <>
       <div className="section-presentation row">
@@ -160,6 +168,7 @@ function Experience(props) {
             update={update}
             fields={fields}
             required={required}
+            delete={deleteField}
           />
         </div>
       )}

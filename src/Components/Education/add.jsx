@@ -1,5 +1,8 @@
-import FormInput from '../Elements/Input';
+import FormInput from '../Elements/FormInput';
 import Button from '../Elements/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
+
 const AddForm = (props) => {
   return (
     <div className="sub-section">
@@ -69,7 +72,10 @@ const AddForm = (props) => {
         </div>
 
         <div className="button-section">
-          <Button value="Close" onClick={(event) => props.toggleAdd(event)} className="btn close" />
+          <div className="link_name">
+            <FontAwesomeIcon icon={faMinus} />
+            <Button value="Close" onClick={(event) => props.toggleAdd(event)} className="btn-simple close" />
+          </div>
           <Button value="Save" onClick={(event) => props.save(event)} className="btn save" />
         </div>
       </form>

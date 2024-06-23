@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import './index.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faPlus, faPenToSquare, faHeadSideVirus } from '@fortawesome/free-solid-svg-icons';
 import AddForm from './add';
@@ -81,7 +80,7 @@ function Skills(props) {
     }
   };
 
-  const handleAdd = (event, tech) => {
+  const handleAdd = (tech, event) => {
     //ADD SKILL BUTTON LISTENER
     event.preventDefault();
 
@@ -134,6 +133,14 @@ function Skills(props) {
       setEdit(false); //CLOSE ADD BOX DIALOG
       props.addSkills(newFieldsArr); //ADD ARRAY OF SKILLS TO THE PARENT ELEMNT
     }
+  };
+
+  const deleteField = (event, id) => {
+    event.preventDefault();
+    const newFieldsArr = fieldsArr.filter((item) => item.id !== id); //FILTER WITHOUT THE REMOVED ELEMENT
+    setFieldsArr(newFieldsArr);
+    props.addSkills(newFieldsArr);
+    setEdit(false); //CLOSE EDIT BOX DIALOG
   };
 
   return (
@@ -192,6 +199,7 @@ function Skills(props) {
             required={required}
             technologies={technologies}
             fields={fields}
+            delete={deleteField}
           />
         </div>
       )}

@@ -2,7 +2,7 @@ import Button from '../Elements/Button';
 import FormInput from '../Elements/Input';
 import OtherLinks from '../OtherLinks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const UpdateForm = (props) => {
   return (
@@ -87,8 +87,11 @@ const UpdateForm = (props) => {
             </div>
 
             <div className="button-section">
-              <Button value="Close" onClick={(event) => props.toggleDetails(event)} className="btn close" />
-              <Button value="Update" onClick={props.save} className="btn save" />
+              <div className="link_name">
+                <FontAwesomeIcon icon={faMinus} />
+                <Button value="Close" onClick={(event) => props.toggleDetails(event)} className="btn-simple close" />
+              </div>
+              <Button value="Update" onClick={(event) => props.save(event)} className="btn save" />
             </div>
           </form>
         </div>

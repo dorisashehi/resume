@@ -1,7 +1,9 @@
-import FormInput from '../Elements/Input';
+import FormInput from '../Elements/FormInput';
 import Button from '../Elements/Button';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
 
 const AddForm = (props) => {
   return (
@@ -23,7 +25,6 @@ const AddForm = (props) => {
           className="form-input"
           name="project_technology"
           id="project_technology"
-          required={props.required}
           onChange={(event) => props.changeFormFields(event.target.id, event.target.value)}
           placeholder="Enter Technology"
         />
@@ -34,7 +35,6 @@ const AddForm = (props) => {
           className="form-input"
           name="project_type"
           id="project_type"
-          required={props.required}
           onChange={(event) => props.changeFormFields(event.target.id, event.target.value)}
           placeholder="Project Type"
         />
@@ -45,7 +45,6 @@ const AddForm = (props) => {
             className="form-input"
             name="project_start_date"
             id="project_start_date"
-            required={props.required}
             onChange={(event) => props.changeFormFields(event.target.id, event.target.value)}
             placeholder="Enter Start Date"
           />
@@ -56,7 +55,6 @@ const AddForm = (props) => {
             className="form-input"
             name="project_end_date"
             id="project_end_date"
-            required={props.required}
             onChange={(event) => props.changeFormFields(event.target.id, event.target.value)}
             placeholder="Enter End Date"
           />
@@ -75,8 +73,11 @@ const AddForm = (props) => {
         </div>
 
         <div className="button-section">
-          <Button value="Close" onClick={(event) => props.toggleAdd(event)} className="btn close" />
-          <Button value="Save" onClick={props.save} className="btn save" />
+          <div className="link_name">
+            <FontAwesomeIcon icon={faMinus} />
+            <Button value="Close" onClick={(event) => props.toggleAdd(event)} className="btn-simple close" />
+          </div>
+          <Button value="Save" onClick={(event) => props.save(event)} className="btn save" />
         </div>
       </form>
     </div>

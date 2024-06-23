@@ -104,11 +104,18 @@ function Education(props) {
     if (!error) {
       const updatedFieldsArr = [...fieldsArr];
       updatedFieldsArr[index] = fields; //PUT UPDATED EDUCATION AT INDEX
-      console.log(updatedFieldsArr[index]);
       setFieldsArr(updatedFieldsArr); //SET THE EDUCATION BJECT TO THE ARRAY OF EDUCATIONS
       props.addEducation(updatedFieldsArr); //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
       setEdit(false); //CLOSE EDIT BOX DIALOG
     }
+  };
+
+  const deleteField = (event, id) => {
+    event.preventDefault();
+    const newFieldsArr = fieldsArr.filter((item) => item.id !== id); //FILTER WITHOUT THE REMOVED ELEMENT
+    setFieldsArr(newFieldsArr);
+    props.addEducation(newFieldsArr);
+    setEdit(false); //CLOSE EDIT BOX DIALOG
   };
 
   return (
@@ -157,6 +164,7 @@ function Education(props) {
             update={update}
             fields={fields}
             required={required}
+            delete={deleteField}
           />
         </div>
       )}
