@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import './index.scss';
-import Button from '../Elements/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown, faPlus, faPenToSquare, faHeadSideVirus } from '@fortawesome/free-solid-svg-icons';
+import AddForm from './add';
+import UpdateForm from './update';
 
 function Skills(props) {
   const [addBox, setOpen] = useState(false);
@@ -76,7 +77,6 @@ function Skills(props) {
       const newFieldsArr = [...fieldsArr, fields];
       setFieldsArr(newFieldsArr); //SET THE EDUCATION BJECT TO THE ARRAY OF EXPERIENCES
       setOpen(false); //CLOSE ADD BOX DIALOG
-      console.log(newFieldsArr);
       props.addSkills(newFieldsArr); //ADD ARRAY OF EDUCATIONS TO THE PARENT ELEMNT
     }
   };
@@ -120,9 +120,7 @@ function Skills(props) {
     setEdit(true); //OPEN EDIT BOX
   };
 
-  const update = (event, id) => {
-    event.preventDefault();
-
+  const update = (id) => {
     const index = fieldsArr.findIndex((item) => item.id === id); //FIND INDEX OF EDUCATION IN ARR OF EDUCATIONS
 
     const error = validateRequiredFields('skill_category', fields.skill_category);
@@ -171,132 +169,30 @@ function Skills(props) {
       {addBox && (
         <div className="project-details-section row details">
           <h1>Edit Skills</h1>
-          <div className="sub-section">
-            <form>
-              <div className="form-group">
-                <label htmlFor="skill_category">Skill Category</label>
-                <input
-                  type="text"
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="skill_category"
-                  id="skill_category"
-                  placeholder="Enter Skill Category"
-                />
-
-                {required.skill_category && <span className="error">That is a required field</span>}
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="skill_title">Technology</label>
-                  <div className="field-btn">
-                    <input
-                      type="text"
-                      onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                      className="form-input"
-                      name="skill_title"
-                      id="skill_title"
-                      placeholder="Enter Technology"
-                    />
-                    {required.technology && <span className="error">Technology can't be empty</span>}
-                    <div className="button-section add" onClick={(event) => handleAdd(event, fields.skill_title)}>
-                      <FontAwesomeIcon icon={faPlus} />
-                      <input type="submit" className="add" value="Add" />
-                    </div>
-                  </div>
-                  <div className="links">
-                    {technologies.length !== 0 &&
-                      technologies?.map((item, index) => (
-                        <div className="link_name" key={index}>
-                          {/* <svg xmlns="http://www.w3.org/2000/svg" onClick={() => removeField(index) }  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> */}
-                          {item.charAt(0).toUpperCase() + item.slice(1)}
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="button-section">
-                <Button value="Close" onClick={(event) => toggleAdd(event)} className="btn close" />
-                <Button value="Save" onClick={(event) => save(event)} className="btn save" />
-              </div>
-            </form>
-          </div>
+          <AddForm
+            changeFormFields={changeFormFields}
+            required={required}
+            handleAdd={handleAdd}
+            technologies={technologies}
+            toggleAdd={toggleAdd}
+            save={save}
+            fields={fields}
+          />
         </div>
       )}
 
       {editBox && (
         <div className="project-details-section row details">
           <h1>Edit Skills</h1>
-          <div className="sub-section">
-            <form>
-              <div className="form-group">
-                <label htmlFor="skill_category">Skill Category</label>
-                <input
-                  type="text"
-                  value={fields?.skill_category}
-                  onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                  className="form-input"
-                  name="skill_category"
-                  id="skill_category"
-                  placeholder="Enter Skill Category"
-                />
-
-                {required.skill_category && <span className="error">That is a required field</span>}
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="skill_title">Technology</label>
-                  <div className="field-btn">
-                    <input
-                      type="text"
-                      onChange={(event) => changeFormFields(event.target.id, event.target.value)}
-                      className="form-input"
-                      name="skill_title"
-                      id="skill_title"
-                      placeholder="Enter Technology"
-                    />
-                    {required.technology && <span className="error">Technology can't be empty</span>}
-                    <div className="button-section add" onClick={(event) => handleAdd(event, fields.skill_title)}>
-                      <FontAwesomeIcon icon={faPlus} />
-                      <input type="submit" class="add" value="Add" />
-                    </div>
-                  </div>
-                  <div className="links">
-                    {technologies.length !== 0 &&
-                      technologies?.map((item, index) => (
-                        <div className="link_name" key={index}>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            onClick={() => removeField(item)}
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            class="feather feather-x"
-                          >
-                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                          </svg>
-                          {item.charAt(0).toUpperCase() + item.slice(1)}
-                        </div>
-                      ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="button-section">
-                <Button value="Close" onClick={(event) => toggleEdit(event)} className="btn close" />
-                <Button value="Update" onClick={(event) => update(event, fields.id)} className="btn save" />
-              </div>
-            </form>
-          </div>
+          <UpdateForm
+            changeFormFields={changeFormFields}
+            toggleEdit={toggleEdit}
+            update={update}
+            removeField={removeField}
+            required={required}
+            technologies={technologies}
+            fields={fields}
+          />
         </div>
       )}
     </>
