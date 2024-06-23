@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import OtherLinks from '../OtherLinks';
 import PropTypes from 'prop-types';
-import Button from '../Elements/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faEnvelope, faPhoneVolume, faLocationDot, faPlus } from '@fortawesome/free-solid-svg-icons';
-
+import { faPenToSquare, faEnvelope, faPhoneVolume, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import UpdateForm from './update';
 function Profile(props) {
   const [edit, setEdit] = useState(false); //EDIT BUTTON STATE
 
@@ -154,99 +152,14 @@ function Profile(props) {
       {edit && (
         <div className="personal-details-section row details">
           <h1>Edit Personal Details</h1>
-          <div className="sub-section">
-            <form>
-              <div className="form-group">
-                <label htmlFor="name">Full Name</label>
-                <input
-                  type="text"
-                  className="form-input"
-                  name="name"
-                  id="fullName"
-                  value={profile.fullName}
-                  onChange={(event) => changeProfile(event.target.id, event.target.value)}
-                  placeholder="Enter Your First and Last Name"
-                />
-              </div>
-
-              <div className="row-group">
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    className="form-input"
-                    name="email"
-                    id="email"
-                    placeholder="Enter Email"
-                    value={profile.email}
-                    onChange={(event) => changeProfile(event.target.id, event.target.value)}
-                  />
-                  {errorMsg.email && <span className="email error">Incorrect Email format</span>}
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="phone">Phone</label>
-                  <input
-                    type="tel"
-                    className="form-input"
-                    name="phone"
-                    id="phone"
-                    placeholder="Enter Phone"
-                    value={profile.phone}
-                    onChange={(event) => changeProfile(event.target.id, event.target.value)}
-                  />
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="address">Address</label>
-                <input
-                  type="text"
-                  className="form-input"
-                  name="location"
-                  id="location"
-                  placeholder="City, Country"
-                  value={profile.location}
-                  onChange={(event) => changeProfile(event.target.id, event.target.value)}
-                />
-              </div>
-
-              <div className="form-group">
-                <h3>Others</h3>
-
-                <div className="links">
-                  {Object.entries(othersLink).map(
-                    ([key, value]) =>
-                      !value && (
-                        <div className="link_name" key={key} onClick={() => toggleField(key)}>
-                          <FontAwesomeIcon icon={faPlus} />
-                          {key.charAt(0).toUpperCase() + key.slice(1)}
-                        </div>
-                      )
-                  )}
-                </div>
-
-                {Object.entries(othersLink).map(
-                  ([key, value]) =>
-                    value && (
-                      <OtherLinks
-                        name={key}
-                        key={key}
-                        text={key.charAt(0).toUpperCase() + key.slice(1)}
-                        removeField={removeField}
-                        others={profile.others}
-                        changeValue={changeProfile}
-                      />
-                    )
-                )}
-              </div>
-
-              <div className="button-section">
-                <Button value="Close" onClick={(event) => toggleDetails(event)} className="btn close" />
-                <Button value="Update" onClick={(event) => save(event)} className="btn save" />
-              </div>
-            </form>
-          </div>
+          <UpdateForm
+            changeProfile={changeProfile}
+            profile={profile}
+            othersLink={othersLink}
+            toggleField={toggleField}
+            removeField={removeField}
+            save={save}
+          />
         </div>
       )}
     </>
