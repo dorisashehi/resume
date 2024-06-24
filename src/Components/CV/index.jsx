@@ -60,12 +60,12 @@ const CVPaper = (props) => {
               return (
                 <div className="item" key={key}>
                   <div className="name">
-                    <h3>{education.school || 'School / Bootcamp / Program'}</h3>
-                    <p>{location}</p>
+                    <h3 className="left-column">{education.school || 'School / Bootcamp / Program'}</h3>
+                    <p className="right-column">{location}</p>
                   </div>
                   <div className="descr">
-                    <p>{education.degree || 'Degree Name'}</p>
-                    <p>{date}</p>
+                    <p className="left-column">{education.degree || 'Degree Name'}</p>
+                    <p className="right-column">{date}</p>
                   </div>
                 </div>
               );
@@ -86,12 +86,12 @@ const CVPaper = (props) => {
               return (
                 <div className="item" key={index}>
                   <div className="name">
-                    <h3>{experience.exp_company || 'Company'}</h3>
-                    <p>{location}</p>
+                    <h3 className="left-column">{experience.exp_company || 'Company'}</h3>
+                    <p className="right-column">{location}</p>
                   </div>
                   <div className="descr">
-                    <p>{experience.exp_job || 'Position Held'}</p>
-                    <p>{date}</p>
+                    <p className="left-column">{experience.exp_job || 'Position Held'}</p>
+                    <p className="right-column">{date}</p>
                   </div>
 
                   <div className="more-info" dangerouslySetInnerHTML={{ __html: responsibilities }}></div>
@@ -113,8 +113,8 @@ const CVPaper = (props) => {
               return (
                 <div className="item" key={index}>
                   <div className="name">
-                    <h3>{project.project_title || 'Project Name'}</h3>
-                    <p>{date}</p>
+                    <h3 className="left-column">{project.project_title || 'Project Name'}</h3>
+                    <p className="right-column">{date}</p>
                   </div>
                   <div className="descr">
                     <p>{project.project_type || 'Project Type'}</p>

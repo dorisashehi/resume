@@ -17,6 +17,8 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  gap: 15px;
+  text-align: flex-start;
 }
 
 .col.sections-column .summary-section.row {

@@ -505,8 +505,10 @@ main .col.sections-column .resume-icon.edit {
 #popup-root .col.cv-column {
   display: block;
   padding: 20px;
-  min-height: 500px;
+  min-height: 450px;
   max-width: 700px;
+  max-height: 450px;
+  overflow: auto;
 }
 #popup-root .popup-content {
   padding: 0px 20px;
@@ -643,9 +645,8 @@ main .col.sections-column .resume-icon.edit {
     padding-left: 10px !important;
   }
   #popup-root .col.cv-column {
-    display: block;
-    padding: 20px;
-    min-height: 800px;
+    min-height: 600px;
     max-width: 700px;
+    max-height: 600px;
   }
 }

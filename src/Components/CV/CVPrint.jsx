@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 import Html from 'react-pdf-html';
 import { Document, Page, Text, View, StyleSheet, Link, Font } from '@react-pdf/renderer';
-
+import { format } from 'date-fns';
 const styles = StyleSheet.create({
   column: {
     flex: 1,
@@ -34,6 +34,8 @@ const styles = StyleSheet.create({
     alignItems: 'baseline',
     textTransform: 'capitalize',
     fontSize: 10,
+    gap: 15,
+    textAlign: 'flex-start',
   },
   cvName: {
     fontSize: 16,
@@ -65,6 +67,9 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     fontSize: 10,
   },
+  leftColumn: {
+    flex: '0 0 70%',
+  },
 });
 
 const CVPaper = (props) => {
@@ -72,6 +77,16 @@ const CVPaper = (props) => {
   const { summary, education, experience, projects, skills } = props.resumeInfo;
   const summ =
     DOMPurify.sanitize(summary) || 'x+ years as [Title] with y small/medium/large companies in the [Industry]'; // Summary sanitized or default value
+
+  const formatDate = (date) => {
+    //FORMAT DATE
+    let formattedDate = '';
+    if (date) {
+      return (formattedDate = format(date, 'MMMM yyyy'));
+    } else {
+      return (formattedDate = 'MM/YEAR');
+    }
+  };
 
   return (
     <Document>
@@ -105,16 +120,18 @@ const CVPaper = (props) => {
           <View style={styles.sectionDescr}>
             {Object.entries(education).map(([key, education]) => {
               const location = (education.edu_city || 'City') + ', ' + (education.edu_country || 'State');
-              const date = (education.schl_start_date || 'MM/YEAR') + ' - ' + (education?.schl_end_date || 'MM/YEAR');
+              const date = formatDate(education.schl_start_date) + ' - ' + formatDate(education.schl_end_date);
 
               return (
                 <View style={styles.item} key={key}>
                   <View style={styles.descrName}>
-                    <Text style={styles.header}>{education.school || 'School / Bootcamp / Program'}</Text>
+                    <Text style={[styles.header, styles.leftColumn]}>
+                      {education.school || 'School / Bootcamp / Program'}
+                    </Text>
                     <Text style={[styles.paragraph, styles.itemLocation]}>{location}</Text>
                   </View>
                   <View style={styles.descrName}>
-                    <Text>{education.degree || 'Degree Name'}</Text>
+                    <Text style={styles.leftColumn}>{education.degree || 'Degree Name'}</Text>
                     <Text style={styles.paragraph}>{date}</Text>
                   </View>
                 </View>
@@ -137,11 +154,11 @@ const CVPaper = (props) => {
               return (
                 <View style={styles.item} key={index}>
                   <View style={styles.descrName}>
-                    <Text style={styles.header}>{experienceItem.exp_company || 'Company'}</Text>
+                    <Text style={[styles.header, styles.leftColumn]}>{experienceItem.exp_company || 'Company'}</Text>
                     <Text style={[styles.paragraph, styles.itemLocation]}>{location}</Text>
                   </View>
                   <View style={styles.descrName}>
-                    <Text>{experienceItem.exp_job || 'Position Held'}</Text>
+                    <Text style={styles.leftColumn}>{experienceItem.exp_job || 'Position Held'}</Text>
                     <Text style={styles.paragraph}>{date}</Text>
                   </View>
                   <View>
@@ -165,7 +182,10 @@ const CVPaper = (props) => {
               return (
                 <View style={styles.item} key={index}>
                   <View style={styles.descrName}>
-                    <Text style={styles.header} onPress={() => Linking.openURL(project.project_link || '')}>
+                    <Text
+                      style={[styles.header, styles.leftColumn]}
+                      onPress={() => Linking.openURL(project.project_link || '')}
+                    >
                       {project.project_title || 'Project Name'}
                     </Text>
                     <Text style={styles.paragraph}>{date}</Text>
