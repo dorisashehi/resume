@@ -48,7 +48,7 @@ const UpdateForm = (props) => {
         <div className="row-group">
           <FormInput
             label="Start Date"
-            type="text"
+            type="date"
             className="form-input"
             name="project_start_date"
             id="project_start_date"
@@ -59,7 +59,7 @@ const UpdateForm = (props) => {
 
           <FormInput
             label="End Date"
-            type="text"
+            type="date"
             className="form-input"
             name="project_end_date"
             id="project_end_date"

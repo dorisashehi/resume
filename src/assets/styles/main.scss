@@ -29,15 +29,15 @@ p {
 
 section .main {
   height: 45px;
-  padding: 10px 20px;
+  padding: 10px 25px;
   background-color: var(--button-bg-color);
   display: flex;
   color: #ffffff;
   align-items: center;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 section .main .text-content {
-  max-width: 1950px;
+  max-width: 1835px;
   width: 100%;
   margin: auto;
 }
@@ -232,6 +232,7 @@ main .col.sections-column .btn {
 
 main .col.sections-column .btn.download-pdf {
   padding: 10px 15px;
+  align-items: baseline;
 }
 main .col.sections-column .btn.download-pdf svg {
   font-size: 1rem;
@@ -418,14 +419,6 @@ main .col.sections-column h1:hover {
   opacity: 0.8;
 }
 
-main .col.sections-column .resume-icon {
-  padding-left: 10px;
-}
-
-main .col.sections-column .resume-icon.edit {
-  font-size: 1.3rem;
-}
-
 main .col.sections-column h1 span {
   width: 80%;
 }
@@ -441,6 +434,7 @@ main .col.sections-column h1 span {
   text-align: center;
   border-radius: 0.8em;
   align-items: center;
+  cursor: pointer;
 }
 
 .col.costumize-column .container.active {
@@ -463,6 +457,13 @@ main .col.sections-column .section-presentation .toogle-header svg.right-icon {
 
 main .col.sections-column .section-presentation .edit-icon svg {
   font-size: 0.7rem;
+}
+main .col.sections-column .resume-icon {
+  padding: 0px !important;
+}
+
+main .col.sections-column .resume-icon.edit {
+  font-size: 1.3rem;
 }
 
 //FIELD INPUT + BUTTON
@@ -505,6 +506,7 @@ main .col.sections-column .section-presentation .edit-icon svg {
   display: block;
   padding: 20px;
   min-height: 500px;
+  max-width: 700px;
 }
 #popup-root .popup-content {
   padding: 0px 20px;
@@ -632,5 +634,18 @@ main .col.sections-column .section-presentation .edit-icon svg {
   }
   main .col.sections-column .btn.download-pdf span {
     display: block;
+  }
+  section .main {
+    font-size: 0.9rem;
+  }
+
+  main .col.sections-column .resume-icon {
+    padding-left: 10px !important;
+  }
+  #popup-root .col.cv-column {
+    display: block;
+    padding: 20px;
+    min-height: 800px;
+    max-width: 700px;
   }
 }

@@ -2,12 +2,23 @@ import './index.scss';
 import PropTypes from 'prop-types';
 import React from 'react';
 import DOMPurify from 'dompurify';
+import { format } from 'date-fns';
 
 const CVPaper = (props) => {
   const { fullName, email, phone, location, others } = props.resumeInfo.profile;
   const { summary, education, experience, projects, skills } = props.resumeInfo;
   const summ =
     DOMPurify.sanitize(summary) || 'x+ years as [Title] with y small/medium/large companies in the [Industry]'; //Summary sanitized or default value
+
+  const formatDate = (date) => {
+    //FORMAT DATE
+    let formattedDate = '';
+    if (date) {
+      return (formattedDate = format(date, 'MMMM yyyy'));
+    } else {
+      return (formattedDate = 'MM/YEAR');
+    }
+  };
 
   return (
     <>
@@ -44,7 +55,7 @@ const CVPaper = (props) => {
           <div className="section-descr">
             {Object.entries(education).map(([key, education]) => {
               const location = (education.edu_city || 'City') + ', ' + (education.edu_country || 'State');
-              const date = (education?.schl_start_date || 'MM/YEAR') + ' - ' + (education?.schl_end_date || 'MM/YEAR');
+              const date = formatDate(education.schl_start_date) + ' - ' + formatDate(education.schl_end_date);
 
               return (
                 <div className="item" key={key}>
@@ -56,14 +67,6 @@ const CVPaper = (props) => {
                     <p>{education.degree || 'Degree Name'}</p>
                     <p>{date}</p>
                   </div>
-                  <div className="more-info">
-                    {/* <ul className="list">
-                                                <li className="item">
-                                                    <b>Relevant Courses: </b>
-                                                    { value.courses.join(', ') }
-                                                </li>
-                                            </ul> */}
-                  </div>
                 </div>
               );
             })}
@@ -74,10 +77,8 @@ const CVPaper = (props) => {
           <h1 className="section-title">Proffesional Experience</h1>
           <div className="section-descr">
             {experience.map((experience, index) => {
-              //console.log(experience)
-
               const location = (experience.exp_city || 'City') + ', ' + (experience.exp_country || 'State');
-              const date = (experience.exp_start_date || 'MM/YEAR') + ' - ' + (experience.exp_end_date || 'MM/YEAR');
+              const date = formatDate(experience.exp_start_date) + ' - ' + formatDate(experience.exp_end_date);
               const responsibilities =
                 DOMPurify.sanitize(experience.exp_responsibilities) ||
                 '<ul><li>For example: Part of a 7 person team delivering a product serving 1,500 users, releasing updates every 2 weeks, on a codebase with more than 150,000 lines of code, 100 classes, 15 tables.</ul';
@@ -104,8 +105,7 @@ const CVPaper = (props) => {
           <h1 className="section-title">Projects</h1>
           <div className="section-descr">
             {projects.map((project, index) => {
-              const date = (project.exp_start_date || 'MM/YEAR') + ' - ' + (project.exp_end_date || 'MM/YEAR');
-
+              const date = formatDate(project.exp_start_date) + ' - ' + formatDate(project.exp_end_date);
               const work =
                 DOMPurify.sanitize(project?.project_works) ||
                 '<ul><li>Cover your project, team/ solo work, quantify and call out notable things like size of projects, number of users, etc.</li></ul>'; //Summary sanitized or default value

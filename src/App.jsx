@@ -1,44 +1,40 @@
 import './App.scss';
+import { useState } from 'react';
+import Popup from 'reactjs-popup';
 import CVPaper from './Components/CV';
+import CVPrint from './Components/CV/CVPrint';
 import Experience from './Components/Experience';
 import Profile from './Components/Profile';
 import Summary from './Components/Summary';
 import Education from './Components/Education';
 import Projects from './Components/Projects';
-import { useState } from 'react';
 import Skills from './Components/Skills';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faPenToSquare,
-  faFilePen,
-  faFileLines,
-  faMagnifyingGlass,
-  faCheck,
-  faDownload,
-} from '@fortawesome/free-solid-svg-icons';
-import Popup from 'reactjs-popup';
+import { faPenToSquare, faFileLines, faMagnifyingGlass, faCheck, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import CVPrint from './Components/CV/CVPrint';
 
 function App() {
-  //const [resumeInfo, setDefaultCV] = useState(defaultInfo);
   const [modalOpen, setModalOpen] = useState(false);
+  const [type, setType] = useState(false);
   const openModal = () => {
     setModalOpen(!modalOpen);
   };
 
-  const [resumeName, setResumeName] = useState('Resume No.1');
-  const [enableEdit, setEnableEdit] = useState(false);
-  const [nameField, setNameField] = useState('Resume No.1');
+  const [resumeName, setResumeName] = useState('Resume No.1'); //DEFAULT RESUME NAME
+  const [enableEdit, setEnableEdit] = useState(false); //EDIT STATE
+  const [nameField, setNameField] = useState('Resume No.1'); //RESUME INPUT VALUE
   const editName = (value) => {
+    //ENABLE EDIT RESUME NAME
     setEnableEdit(true);
   };
 
   const changeName = (value) => {
+    //ON CHANGE RESUME NAME SET NAME
     setNameField(value);
   };
 
   const changeResumeName = () => {
+    //SAVE THE CHANGED RESUME NAME
     setResumeName(nameField);
     setEnableEdit(false);
   };
@@ -153,7 +149,7 @@ function App() {
       <section>
         <div className="main">
           <div className="text-content">
-            <h1>CV Builder</h1>
+            <h1>CV Maker</h1>
           </div>
         </div>
       </section>
@@ -161,9 +157,9 @@ function App() {
       <section className="main">
         <main>
           <div className="col costumize-column">
-            <div className="logo container">
+            {/* <div className="logo container">
               <h1>CV</h1>
-            </div>
+            </div> */}
 
             <div className="content container active">
               <FontAwesomeIcon icon={faFileLines} title="Content" />
@@ -177,7 +173,7 @@ function App() {
             <div className="costumize container" onClick={openModal}>
               <FontAwesomeIcon icon={faMagnifyingGlass} title="Preview CV" />
               <h1>Preview</h1>
-              <Popup open={modalOpen} modal nested>
+              {/* <Popup open={modalOpen} modal nested>
                 {(close) => (
                   <div className="modal">
                     <div className="content">
@@ -185,7 +181,7 @@ function App() {
                     </div>
                   </div>
                 )}
-              </Popup>
+              </Popup> */}
             </div>
           </div>
 
