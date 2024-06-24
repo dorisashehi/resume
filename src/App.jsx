@@ -8,7 +8,14 @@ import Projects from './Components/Projects';
 import { useState } from 'react';
 import Skills from './Components/Skills';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPenToSquare, faFilePen, faFileLines, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPenToSquare,
+  faFilePen,
+  faFileLines,
+  faMagnifyingGlass,
+  faCheck,
+  faDownload,
+} from '@fortawesome/free-solid-svg-icons';
 import Popup from 'reactjs-popup';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import CVPrint from './Components/CV/CVPrint';
@@ -18,6 +25,22 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(!modalOpen);
+  };
+
+  const [resumeName, setResumeName] = useState('Resume No.1');
+  const [enableEdit, setEnableEdit] = useState(false);
+  const [nameField, setNameField] = useState('Resume No.1');
+  const editName = (value) => {
+    setEnableEdit(true);
+  };
+
+  const changeName = (value) => {
+    setNameField(value);
+  };
+
+  const changeResumeName = () => {
+    setResumeName(nameField);
+    setEnableEdit(false);
   };
 
   const [cvData, setCVData] = useState({
@@ -143,16 +166,16 @@ function App() {
             </div>
 
             <div className="content container active">
-              <FontAwesomeIcon icon={faFileLines} />
+              <FontAwesomeIcon icon={faFileLines} title="Content" />
               <h1>Content</h1>
             </div>
 
-            <div className="costumize container">
+            {/* <div className="costumize container">
               <FontAwesomeIcon icon={faFilePen} />
               <h1>Costumize</h1>
-            </div>
+            </div> */}
             <div className="costumize container" onClick={openModal}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <FontAwesomeIcon icon={faMagnifyingGlass} title="Preview CV" />
               <h1>Preview</h1>
               <Popup open={modalOpen} modal nested>
                 {(close) => (
@@ -168,12 +191,36 @@ function App() {
 
           <div className="col sections-column">
             <div className="download-section row">
-              <h1 className="resume-title">
-                Resume No.1
-                <FontAwesomeIcon icon={faPenToSquare} />
-              </h1>
-              <PDFDownloadLink document={<CVPrint resumeInfo={cvData} />} fileName="example.pdf">
-                {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download PDF')}
+              {!enableEdit && (
+                <h1 className="resume-title">
+                  {resumeName}
+                  <FontAwesomeIcon icon={faPenToSquare} className="resume-icon" onClick={editName} />
+                </h1>
+              )}
+              {enableEdit && (
+                <div className="edit-input">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      value={nameField}
+                      name="resume_name"
+                      id="resume_name"
+                      onChange={(event) => {
+                        changeName(event.target.value);
+                      }}
+                    />
+                  </div>
+                  <FontAwesomeIcon icon={faCheck} className="resume-icon edit" onClick={changeResumeName} />
+                </div>
+              )}
+
+              <PDFDownloadLink
+                document={<CVPrint resumeInfo={cvData} />}
+                fileName={resumeName}
+                className="btn download-pdf"
+              >
+                <span className="download-text">{'Download'}</span>
+                <FontAwesomeIcon icon={faDownload} className="resume-icon" />
               </PDFDownloadLink>
             </div>
 
@@ -192,9 +239,9 @@ function App() {
               <FontAwesomeIcon icon={faFileLines} />
             </div>
 
-            <div className="costumize container">
+            {/* <div className="costumize container">
               <FontAwesomeIcon icon={faFilePen} />
-            </div>
+            </div> */}
             <div className="costumize container" onClick={openModal}>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
               <Popup open={modalOpen} modal nested>

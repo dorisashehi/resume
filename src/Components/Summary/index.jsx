@@ -33,7 +33,7 @@ const Summary = (props) => {
   return (
     <>
       <div className="section-presentation row">
-        <div className="summary toogle-header" onClick={toggleAdd}>
+        <div className="summary toogle-header" onClick={toggleAdd} title="Expand">
           <h1 className="title">
             <FontAwesomeIcon icon={faClipboardList} />
             <span>Summary</span>

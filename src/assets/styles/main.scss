@@ -24,7 +24,7 @@ p {
   font-style: italic;
   color: #ff5f64;
   padding-top: 10px;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 
 section .main {
@@ -51,6 +51,18 @@ main .col.sections-column .form-group {
   flex: 1;
 }
 
+main .col.sections-column .edit-input .form-group {
+  margin-top: 0px;
+}
+
+main .col.sections-column .edit-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+main .col.sections-column .edit-input #resumme_name {
+  margin-top: 0px;
+}
 main .col.sections-column .inline {
   display: flex;
   flex-direction: row;
@@ -128,7 +140,7 @@ main .col.sections-column .form-group input {
   height: 25px;
   margin-top: 10px;
   color: #6c7381;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
 }
 
 main .col.sections-column .form-group .inline input[type='text'] {
@@ -214,7 +226,20 @@ main .col.sections-column .btn {
   float: right;
   font-size: 0.7rem;
   font-weight: 600;
+  text-decoration: none;
+  display: flex;
 }
+
+main .col.sections-column .btn.download-pdf {
+  padding: 10px 15px;
+}
+main .col.sections-column .btn.download-pdf svg {
+  font-size: 1rem;
+}
+main .col.sections-column .btn.download-pdf span {
+  display: none;
+}
+
 .btn-simple {
   border: none;
   background: #ffffff;
@@ -279,7 +304,7 @@ main .col.sections-column .details .item.buttons {
 
 main .col.sections-column .toogle-section .item.buttons .button-section,
 main .col.sections-column .details .button-section.add {
-  border: 5px solid #f3f4f6;
+  border: 5px solid #dfe0e3;
   border-radius: 1em;
   padding: 8px 24px;
   margin-top: 0px;
@@ -290,6 +315,11 @@ main .col.sections-column .details .button-section.add {
   height: 18px;
   align-items: normal;
   gap: 0px;
+}
+
+main .col.sections-column .toogle-section .item.buttons .button-section:hover,
+main .col.sections-column .details .button-section.add:hover {
+  opacity: 0.8;
 }
 
 main .col.sections-column .toogle-section .item.buttons .button-section input,
@@ -384,6 +414,18 @@ main .col.sections-column h1 {
   display: flex;
 }
 
+main .col.sections-column h1:hover {
+  opacity: 0.8;
+}
+
+main .col.sections-column .resume-icon {
+  padding-left: 10px;
+}
+
+main .col.sections-column .resume-icon.edit {
+  font-size: 1.3rem;
+}
+
 main .col.sections-column h1 span {
   width: 80%;
 }
@@ -462,10 +504,14 @@ main .col.sections-column .section-presentation .edit-icon svg {
 #popup-root .col.cv-column {
   display: block;
   padding: 20px;
-  min-height: 600px;
+  min-height: 500px;
 }
 #popup-root .popup-content {
   padding: 0px 20px;
+}
+
+.more-info {
+  font-style: normal;
 }
 
 @media screen and (min-width: 575px) {
@@ -545,7 +591,7 @@ main .col.sections-column .section-presentation .edit-icon svg {
   }
 
   main .col.sections-column .section-presentation .edit-icon svg {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   main .col.sections-column .section-presentation svg {
@@ -553,7 +599,7 @@ main .col.sections-column .section-presentation .edit-icon svg {
   }
 
   main .col.sections-column .section-presentation .toogle-header svg.right-icon {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   main .col.sections-column {
@@ -570,5 +616,21 @@ main .col.sections-column .section-presentation .edit-icon svg {
 
   .col.costumize-column {
     max-width: 100px;
+  }
+  .error {
+    font-size: 0.9rem;
+  }
+  main .col.sections-column .form-group input {
+    font-size: 0.9rem;
+  }
+
+  main .col.sections-column .btn.download-pdf {
+    padding: 15px 44px;
+  }
+  main .col.sections-column .btn.download-pdf svg {
+    font-size: 1.3rem;
+  }
+  main .col.sections-column .btn.download-pdf span {
+    display: block;
   }
 }

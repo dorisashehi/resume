@@ -3,14 +3,6 @@ import PropTypes from 'prop-types';
 import DOMPurify from 'dompurify';
 import Html from 'react-pdf-html';
 import { Document, Page, Text, View, StyleSheet, Link, Font } from '@react-pdf/renderer';
-//import Arial1 from '../../../public/Arial.ttf';
-// Registering custom fonts
-// Font.register({
-//     family: 'Arial',
-//     fonts: [
-//       { src: Arial1},
-//     ],
-//   });
 
 const styles = StyleSheet.create({
   column: {
@@ -41,10 +33,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'baseline',
     textTransform: 'capitalize',
-    fontSize: 11,
+    fontSize: 10,
   },
   cvName: {
-    fontSize: 18,
+    fontSize: 16,
     textTransform: 'capitalize',
     textAlign: 'center',
   },
@@ -54,7 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 10,
     listStyle: 'none',
-    fontSize: 11,
+    fontSize: 10,
     textTransform: 'capitalize',
   },
   linkItem: {
@@ -62,16 +54,16 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     borderBottom: '1px solid #000',
-    fontSize: 12,
+    fontSize: 11,
   },
   sectionDescr: {
     paddingTop: 5,
     fontStyle: 'italic',
-    fontSize: 11,
+    fontSize: 10,
   },
   header: {
     marginBottom: 0,
-    fontSize: 12,
+    fontSize: 10,
   },
 });
 
@@ -85,7 +77,7 @@ const CVPaper = (props) => {
     <Document>
       <Page style={styles.column}>
         <View style={[styles.row, styles.nameSection]}>
-          <Text style={styles.cvName}>{fullName || 'FirstName LastName'}</Text>
+          <Text style={styles.cvName}>{fullName || 'Name'}</Text>
         </View>
 
         <View>

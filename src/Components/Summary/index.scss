@@ -1,22 +1,24 @@
-.col.cv-column .section-descr{
-    padding-top: 5px;
+.col.cv-column .section-descr {
+  padding-top: 5px;
 }
 
-.col.cv-column .section-descr .item{
-    margin-bottom: 10px;
+.col.cv-column .section-descr h3 {
+  font-style: normal;
+}
+.col.cv-column .section-descr .item {
+  margin-bottom: 10px;
 }
 
-.col.cv-column .section-descr .item .location{
-    text-transform: capitalize;
+.col.cv-column .section-descr .item .location {
+  text-transform: capitalize;
 }
 
-.col.cv-column .section-descr .item .descr{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+.col.cv-column .section-descr .item .descr {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
 }
 
 .col.sections-column .summary-section.row {
-    flex-direction: column;
-
+  flex-direction: column;
 }
