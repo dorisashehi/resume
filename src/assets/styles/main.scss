@@ -485,7 +485,7 @@ main .col.sections-column {
 }
 
 .editor {
-  width: calc(var(--main-size) - 60px);
+  width: auto;
   .ck.ck-icon {
     font-size: 8px;
   }
@@ -591,6 +591,9 @@ main .col.sections-column {
         padding-left: 10px !important;
       }
     }
+  }
+  .editor {
+    width: calc(var(--main-size) - 60px);
   }
 
   section .main {
