@@ -35,124 +35,112 @@ section .main {
   color: #ffffff;
   align-items: center;
   font-size: 0.7rem;
-}
-section .main .text-content {
-  max-width: 1835px;
-  width: 100%;
-  margin: auto;
+  .text-content {
+    max-width: 1835px;
+    width: 100%;
+    margin: auto;
+  }
 }
 
 /*GENERAL INPUT STYLE*/
-main .col.sections-column .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-top: 25px;
-  font-size: 500;
-  flex: 1;
-}
-
-main .col.sections-column .edit-input .form-group {
-  margin-top: 0px;
-}
-
-main .col.sections-column .edit-input {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-main .col.sections-column .edit-input #resumme_name {
-  margin-top: 0px;
-}
-main .col.sections-column .inline {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  align-items: flex-start;
-  margin-top: 10px;
-}
-
-main .col.sections-column .inline input {
-  flex: 1%;
-}
-
-main .col.sections-column svg,
-main .col.sections-column .link_name {
-  cursor: pointer;
-  padding-right: 5px;
-}
-
-main .col.sections-column .link_name:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-main .col.sections-column svg.delete-icon {
-  align-self: center;
-}
-
-main .col.sections-column .form-group .links {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 15px;
-}
-
-main .col.sections-column .form-group .link_name {
-  background: #f3f4f6;
-  width: fit-content;
-  padding: 10px 15px;
-  border-radius: 0.8em;
-  color: #6b7280;
-  font-weight: 500;
-  font-size: 0.7rem;
-}
-main .col.sections-column .form-group .link_name:hover {
-  opacity: 0.8;
-}
-
-main .col.sections-column .form-group label {
-  font-size: 0.7rem;
-}
-
-main .col.sections-column .row-group {
-  gap: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: normal;
-}
-
-main .col.sections-column .row-group .form-group {
-  flex: 1 1 45%;
-}
-
-main .col.sections-column form {
-  display: flex;
-  flex-direction: column;
-}
-
-main .col.sections-column .form-group input {
-  padding: 10px;
-  background: #f3f4f6;
-  border: none;
-  border-radius: 0.7em;
-  height: 25px;
-  margin-top: 10px;
-  color: #6c7381;
-  font-size: 0.7rem;
-}
-
-main .col.sections-column .form-group .inline input[type='text'] {
-  margin-top: 0px;
-}
-
-main .col.sections-column .form-group input::placeholder {
-  color: #6c7381;
-}
-
-main .col.sections-column .form-group input:focus-visible {
-  outline: none;
+main .col.sections-column {
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    font-size: 500;
+    flex: 1;
+    input {
+      padding: 10px;
+      background: #f3f4f6;
+      border: none;
+      border-radius: 0.7em;
+      height: 25px;
+      margin-top: 10px;
+      color: #6c7381;
+      font-size: 0.7rem;
+    }
+    .inline input[type='text'] {
+      margin-top: 0px;
+    }
+    input::placeholder {
+      color: #6c7381;
+    }
+    input:focus-visible {
+      outline: none;
+    }
+  }
+  .edit-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .form-group {
+      margin-top: 0px;
+    }
+    #resumme_name {
+      margin-top: 0px;
+    }
+  }
+  .inline {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+    margin-top: 10px;
+    input {
+      flex: 1%;
+    }
+  }
+  svg,
+  .link_name {
+    cursor: pointer;
+    padding-right: 5px;
+  }
+  .link_name:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  svg.delete-icon {
+    align-self: center;
+  }
+  .form-group {
+    .links {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 15px;
+    }
+    .link_name {
+      background: #f3f4f6;
+      width: fit-content;
+      padding: 10px 15px;
+      border-radius: 0.8em;
+      color: #6b7280;
+      font-weight: 500;
+      font-size: 0.7rem;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+    label {
+      font-size: 0.7rem;
+    }
+  }
+  .row-group {
+    gap: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: normal;
+    .form-group {
+      flex: 1 1 45%;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /*GENERAL MAIN COLUMNS STYLE*/
@@ -176,69 +164,74 @@ main {
   max-width: 80px;
   padding: 33px 20px 0px 20px;
   font-weight: 500;
-}
-
-.col.costumize-column svg {
-  font-size: 20px;
-}
-
-.col.costumize-column .content {
-  display: flex;
-  flex-direction: column;
+  svg {
+    font-size: 20px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 main .col.sections-column {
   flex: 0 0 100%;
   min-height: 500px;
   min-width: 0px;
-}
-
-main .col.sections-column .row {
-  background-color: #ffffff;
-  padding: 25px 30px;
-  display: flex;
-  font-weight: bold;
-  color: #240f33;
-  border-radius: 0.7em;
-  margin-bottom: 20px;
-  justify-content: space-between;
-}
-
-main .col.sections-column .row.details {
-  display: flex;
-  flex-direction: column;
+  .row {
+    background-color: #ffffff;
+    padding: 25px 30px;
+    display: flex;
+    font-weight: bold;
+    color: #240f33;
+    border-radius: 0.7em;
+    margin-bottom: 20px;
+    justify-content: space-between;
+  }
+  .row.details {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 /*DOWNLOAD SECTION*/
-main .col.sections-column .download-section {
-  justify-content: space-between;
-  align-items: center;
-}
-main .col.sections-column .download-section .resume-title svg {
-  color: #a4a8b0;
-}
-main .col.sections-column .btn {
-  padding: 10px 35px;
-  border-radius: 0.9em;
-  background-color: var(--button-bg-color);
-  color: var(--button-color);
-  cursor: pointer;
-  float: right;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-decoration: none;
-  display: flex;
-}
-
-main .col.sections-column .btn.download-pdf {
-  padding: 10px 15px;
-  align-items: baseline;
-}
-main .col.sections-column .btn.download-pdf svg {
-  font-size: 1rem;
-}
-main .col.sections-column .btn.download-pdf span {
-  display: none;
+main .col.sections-column {
+  .download-section {
+    justify-content: space-between;
+    align-items: center;
+    .resume-title svg {
+      color: #a4a8b0;
+    }
+  }
+  .btn {
+    padding: 10px 35px;
+    border-radius: 0.9em;
+    background-color: var(--button-bg-color);
+    color: var(--button-color);
+    cursor: pointer;
+    float: right;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+  }
+  .btn.download-pdf {
+    padding: 10px 15px;
+    align-items: baseline;
+    svg {
+      font-size: 1rem;
+    }
+    span {
+      display: none;
+    }
+  }
+  .btn:hover {
+    opacity: 0.8;
+  }
+  .btn svg {
+    color: var(--button-color);
+    padding-left: 10px;
+    font-size: 1.3rem;
+  }
 }
 
 .btn-simple {
@@ -255,179 +248,171 @@ main .col.sections-column .btn.download-pdf span {
   gap: 15px;
 }
 
-main .col.sections-column .btn:hover {
-  opacity: 0.8;
-}
-
-main .col.sections-column .btn svg {
-  color: var(--button-color);
-  padding-left: 10px;
-  font-size: 1.3rem;
-}
-
 //TOOGLE SECTIONS
 
-main .col.sections-column .section-presentation.row {
-  flex-direction: column;
-}
-
-main .col.sections-column .toogle-header {
-  text-transform: capitalize;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-main .col.sections-column .toogle-section .item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  color: #001660;
-  border-top: 5px solid #f3f4f6;
-  padding: 20px 0px;
-}
-
-main .col.sections-column .toogle-section svg {
-  color: #4f5765;
-}
-
-main .col.sections-column .toogle-section {
-  margin-top: 10px;
-}
-
-main .col.sections-column .toogle-section .item.buttons,
-main .col.sections-column .details .item.buttons {
-  justify-content: center;
-}
-
-main .col.sections-column .toogle-section .item.buttons .button-section,
-main .col.sections-column .details .button-section.add {
-  border: 5px solid #dfe0e3;
-  border-radius: 1em;
-  padding: 8px 24px;
-  margin-top: 0px;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  align-items: flex-end;
-  height: 18px;
-  align-items: normal;
-  gap: 0px;
-}
-
-main .col.sections-column .toogle-section .item.buttons .button-section:hover,
-main .col.sections-column .details .button-section.add:hover {
-  opacity: 0.8;
-}
-
-main .col.sections-column .toogle-section .item.buttons .button-section input,
-main .col.sections-column .details .item.buttons .button-section input {
-  cursor: pointer;
-  font-size: 0.7rem;
-  padding: 0px;
-  font-weight: bold;
-}
-
-main .col.sections-column .toogle-section input.add,
-main .col.sections-column .details input.add {
-  border: none;
-  background: #ffffff;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  margin-top: 0px;
-}
-
-main .col.sections-column .ck.ck-editor {
-  padding-top: 10px;
-}
-
-main .col.sections-column .ck.ck-content {
-  min-height: 150px;
+main .col.sections-column {
+  .section-presentation.row {
+    flex-direction: column;
+  }
+  .toogle-header {
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .toogle-section {
+    margin-top: 10px;
+  }
+  .toogle-section .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #001660;
+    border-top: 5px solid #f3f4f6;
+    padding: 20px 0px;
+  }
+  .toogle-section svg {
+    color: #4f5765;
+  }
+  .toogle-section .item.buttons,
+  .details .item.buttons {
+    justify-content: center;
+  }
+  .toogle-section .item.buttons .button-section,
+  .details .button-section.add {
+    border: 5px solid #dfe0e3;
+    border-radius: 1em;
+    padding: 8px 24px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: flex-end;
+    height: 18px;
+    align-items: normal;
+    gap: 0px;
+  }
+  .toogle-section .item.buttons .button-section:hover,
+  .details .button-section.add:hover {
+    opacity: 0.8;
+  }
+  .toogle-section .item.buttons .button-section input,
+  .details .item.buttons .button-section input {
+    cursor: pointer;
+    font-size: 0.7rem;
+    padding: 0px;
+    font-weight: bold;
+  }
+  .toogle-section input.add,
+  .details input.add {
+    border: none;
+    background: #ffffff;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+  }
+  .ck.ck-editor {
+    padding-top: 10px;
+  }
+  .ck.ck-content {
+    min-height: 150px;
+  }
 }
 
 /*PERSONAL DETAILS SECTION*/
-main .col.sections-column .personal-section {
-  flex-direction: column;
-  position: relative;
-  cursor: pointer;
-}
-
-main .col.sections-column .personal-section .position {
-  color: #8c8d97;
-  margin-top: 5px;
-}
-
-main .col.sections-column .personal-section .edit-icon {
-  width: fit-content;
-  padding: 6px;
-  border-radius: 0.9em;
-  float: right;
-  position: absolute;
-  right: 20px;
-}
-
-main .col.sections-column .personal-section .edit-icon {
-  font-size: 0.7rem;
-}
-
-main .col.sections-column .personal-section .personal-info {
-  list-style: none;
-  padding: 0px;
-}
-
-main .col.sections-column .personal-section .personal-info .item {
-  margin-top: 15px;
-  color: #443d52;
-  font-weight: 500;
-  font-size: 0.7rem;
-}
-
-main .col.sections-column .personal-section .name {
-  text-transform: capitalize;
+main .col.sections-column {
+  .personal-section {
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+  }
+  .personal-section {
+    .position {
+      color: #8c8d97;
+      margin-top: 5px;
+    }
+    .edit-icon {
+      width: fit-content;
+      padding: 6px;
+      border-radius: 0.9em;
+      float: right;
+      position: absolute;
+      right: 20px;
+      font-size: 0.7rem;
+    }
+    .personal-info {
+      list-style: none;
+      padding: 0px;
+      .item {
+        margin-top: 15px;
+        color: #443d52;
+        font-weight: 500;
+        font-size: 0.7rem;
+      }
+    }
+    .name {
+      text-transform: capitalize;
+    }
+  }
 }
 
 /*EXPERIENCE, PROJECTS, SKILLS SECTION*/
 
-main .col.sections-column .button-section {
-  margin-top: 25px;
-  display: flex;
-  gap: 5px;
-  justify-content: space-between;
-  align-items: center;
+main .col.sections-column {
+  .button-section {
+    margin-top: 25px;
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+    align-items: center;
+  }
+  button {
+    float: right;
+  }
+  .sub-section {
+    margin-top: 0px;
+  }
+  h1 {
+    font-size: 0.8rem;
+    color: var(--text-color);
+    line-height: 1.15rem;
+    width: 80%;
+    display: flex;
+
+    &:hover {
+      opacity: 0.8;
+    }
+    span {
+      width: 80%;
+    }
+  }
+  .section-presentation {
+    svg {
+      padding-right: 10px;
+      font-size: 1rem;
+      color: var(--button-bg-color);
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    .toogle-header svg.right-icon {
+      font-size: 0.7rem;
+    }
+    .edit-icon svg {
+      font-size: 0.7rem;
+    }
+  }
+  .resume-icon {
+    padding: 0px !important;
+    &.edit {
+      font-size: 1.3rem;
+    }
+  }
 }
 
-main .col.sections-column button {
-  float: right;
-}
-
-main .col.sections-column .sub-section {
-  margin-top: 0px;
-}
-
-main .col.sections-column h1 {
-  font-size: 0.8rem;
-  color: var(--text-color);
-  line-height: 1.15rem;
-  width: 80%;
-  display: flex;
-}
-
-main .col.sections-column h1:hover {
-  opacity: 0.8;
-}
-
-main .col.sections-column h1 span {
-  width: 80%;
-}
-
-.col.costumize-column .container h1 {
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-top: 12px;
-}
 .col.costumize-column .container {
   margin-bottom: 25px;
   padding: 19px 7px;
@@ -435,48 +420,27 @@ main .col.sections-column h1 span {
   border-radius: 0.8em;
   align-items: center;
   cursor: pointer;
-}
-
-.col.costumize-column .container.active {
-  background: #f9fafb;
-}
-
-main .col.sections-column .section-presentation svg {
-  padding-right: 10px;
-  font-size: 1rem;
-  color: var(--button-bg-color);
-}
-
-main .col.sections-column .section-presentation svg:hover {
-  opacity: 0.8;
-}
-
-main .col.sections-column .section-presentation .toogle-header svg.right-icon {
-  font-size: 0.7rem;
-}
-
-main .col.sections-column .section-presentation .edit-icon svg {
-  font-size: 0.7rem;
-}
-main .col.sections-column .resume-icon {
-  padding: 0px !important;
-}
-
-main .col.sections-column .resume-icon.edit {
-  font-size: 1.3rem;
+  h1 {
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-top: 12px;
+  }
+  &.active {
+    background: #f9fafb;
+  }
 }
 
 //FIELD INPUT + BUTTON
 .field-btn {
   flex: 80%;
+  input[type='text'] {
+    width: 95%;
+  }
+  &.error {
+    display: block;
+  }
 }
 
-.field-btn input[type='text'] {
-  width: 95%;
-}
-.field-btn.error {
-  display: block;
-}
 #popup-root .popup-overlay {
   background: rgba(0, 0, 0, 0.5);
 }
@@ -489,29 +453,28 @@ main .col.sections-column .resume-icon.edit {
   right: 0px;
   bottom: 0px;
   display: block;
-}
-
-.col.costumize-column.only-mobile .container.container {
-  background-color: #ffffff;
-  border-radius: 1.9em;
-  padding: 15px;
-  background: #f9fafb;
-  box-shadow: -1px 2px 7px #b2abab;
-}
-.col.costumize-column.only-mobile {
   min-height: auto;
+  .container.container {
+    background-color: #ffffff;
+    border-radius: 1.9em;
+    padding: 15px;
+    background: #f9fafb;
+    box-shadow: -1px 2px 7px #b2abab;
+  }
 }
 
-#popup-root .col.cv-column {
-  display: block;
-  padding: 20px;
-  min-height: 450px;
-  max-width: 700px;
-  max-height: 450px;
-  overflow: auto;
-}
-#popup-root .popup-content {
-  padding: 0px 20px;
+#popup-root {
+  .col.cv-column {
+    display: block;
+    padding: 20px;
+    min-height: 450px;
+    max-width: 700px;
+    max-height: 450px;
+    overflow: auto;
+  }
+  .popup-content {
+    padding: 0px 20px;
+  }
 }
 
 .more-info {
@@ -527,122 +490,104 @@ main .col.sections-column .resume-icon.edit {
 @media screen and (min-width: 1200px) {
   .col.costumize-column {
     display: block;
+    &.only-mobile {
+      display: none;
+    }
   }
   main {
     max-width: 1950px;
-  }
-
-  main .col.sections-column {
-    flex: 0 0 40%;
-  }
-  .col.costumize-column.only-mobile {
-    display: none;
+    .col.sections-column {
+      flex: 0 0 40%;
+    }
   }
 }
 
 @media screen and (min-width: 1400px) {
-  main .col.sections-column {
-    min-width: 700px;
-  }
-
-  main .col.sections-column h1 {
-    font-size: 1.2rem;
-    line-height: 1.75rem;
-  }
-
   main {
     padding: 100px 100px 50px 80px;
-  }
-
-  main .col.sections-column .row-group {
-    flex-direction: row;
-    align-items: end;
-  }
-
-  main .col.sections-column .form-group input {
-    height: 35px;
-  }
-
-  main .col.sections-column .btn {
-    padding: 15px 44px;
-    font-size: 1rem;
-    font-weight: 600;
-  }
-
-  main .col.sections-column .form-group .link_name {
-    font-size: 1rem;
-  }
-
-  main .col.sections-column .form-group label {
-    font-size: 1rem;
-  }
-
-  main .col.sections-column .toogle-section .item.buttons .button-section input,
-  main .col.sections-column .details .item.buttons .button-section input {
-    font-size: 1rem;
-    color: var(--button-bg-color);
-    font-weight: bold;
-  }
-
-  main .col.sections-column .toogle-section .item.buttons .button-section,
-  main .col.sections-column .details .button-section.add {
-    padding: 13px 30px;
-    align-items: center;
-  }
-
-  main .col.sections-column .personal-section .personal-info .item {
-    font-size: 1rem;
-  }
-
-  main .col.sections-column .section-presentation .edit-icon svg {
-    font-size: 1.3rem;
-  }
-
-  main .col.sections-column .section-presentation svg {
-    font-size: 1.3rem;
-  }
-
-  main .col.sections-column .section-presentation .toogle-header svg.right-icon {
-    font-size: 1.3rem;
-  }
-
-  main .col.sections-column {
-    flex: 0 0 30%;
-  }
-
-  main .col.sections-column .sub-section {
-    margin-top: 25px;
-  }
-
-  .col.costumize-column svg {
-    font-size: 30px;
-  }
-
-  .col.costumize-column {
-    max-width: 100px;
+    .col.costumize-column {
+      svg {
+        max-width: 100px;
+      }
+    }
+    .col.sections-column {
+      min-width: 700px;
+      flex: 0 0 30%;
+      h1 {
+        font-size: 1.2rem;
+        line-height: 1.75rem;
+      }
+      .row-group {
+        flex-direction: row;
+        align-items: end;
+      }
+      .form-group input {
+        height: 35px;
+      }
+      .btn {
+        padding: 15px 44px;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      .form-group {
+        .link_name {
+          font-size: 1rem;
+        }
+        label {
+          font-size: 1rem;
+        }
+      }
+      .toogle-section .item.buttons .button-section input,
+      .details .item.buttons .button-section input {
+        font-size: 1rem;
+        color: var(--button-bg-color);
+        font-weight: bold;
+      }
+      .toogle-section .item.buttons .button-section,
+      .details .button-section.add {
+        padding: 13px 30px;
+        align-items: center;
+      }
+      .personal-section .personal-info .item {
+        font-size: 1rem;
+      }
+      .section-presentation {
+        .edit-icon svg {
+          font-size: 1.3rem;
+        }
+        svg {
+          font-size: 1.3rem;
+        }
+        .toogle-header svg.right-icon {
+          font-size: 1.3rem;
+        }
+      }
+      .sub-section {
+        margin-top: 25px;
+      }
+      .form-group input {
+        font-size: 0.9rem;
+      }
+      .btn.download-pdf {
+        padding: 15px 44px;
+        svg {
+          font-size: 1.3rem;
+        }
+        span {
+          display: block;
+        }
+      }
+      .resume-icon {
+        padding-left: 10px !important;
+      }
+    }
   }
   .error {
     font-size: 0.9rem;
   }
-  main .col.sections-column .form-group input {
-    font-size: 0.9rem;
-  }
 
-  main .col.sections-column .btn.download-pdf {
-    padding: 15px 44px;
-  }
-  main .col.sections-column .btn.download-pdf svg {
-    font-size: 1.3rem;
-  }
-  main .col.sections-column .btn.download-pdf span {
-    display: block;
-  }
   section .main {
     font-size: 0.9rem;
-  }
-
-  main .col.sections-column .resume-icon {
-    padding-left: 10px !important;
   }
   #popup-root .col.cv-column {
     min-height: 600px;
