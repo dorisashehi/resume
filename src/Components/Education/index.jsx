@@ -15,6 +15,8 @@ function Education(props) {
   const handleOpenSummary = () => {
     //OPEN CLOSE EDIT
     setSummary(!showSummany);
+    setEdit(false);
+    setOpen(false);
   };
 
   const [fields, setFieldsObj] = useState({}); //AN OBJ TO SAVE THE EDUCATION ADDING TO ADD EXP BOX

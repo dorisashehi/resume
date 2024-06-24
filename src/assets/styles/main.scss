@@ -55,7 +55,7 @@ main .col.sections-column {
       background: #f3f4f6;
       border: none;
       border-radius: 0.7em;
-      height: 25px;
+      height: 20px;
       margin-top: 10px;
       color: #6c7381;
       font-size: 0.7rem;
@@ -275,10 +275,9 @@ main .col.sections-column {
     color: #001660;
     border-top: 5px solid #f3f4f6;
     padding: 20px 0px;
+    font-size: var(--label-size);
   }
-  .toogle-section svg {
-    color: #4f5765;
-  }
+
   .toogle-section .item.buttons,
   .details .item.buttons {
     justify-content: center;
@@ -296,6 +295,7 @@ main .col.sections-column {
     height: 18px;
     align-items: normal;
     gap: 0px;
+    align-items: center;
   }
   .toogle-section .item.buttons .button-section:hover,
   .details .button-section.add:hover {
@@ -407,6 +407,10 @@ main .col.sections-column {
     .edit-icon svg {
       font-size: 1rem;
     }
+  }
+  .toogle-section svg {
+    color: #4f5765;
+    font-size: var(--input-size);
   }
   .resume-icon {
     padding: 0px !important;
