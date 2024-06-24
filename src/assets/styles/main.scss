@@ -24,7 +24,7 @@ p {
   font-style: italic;
   color: #ff5f64;
   padding-top: 10px;
-  font-size: 0.7rem;
+  font-size: var(--input-size);
 }
 
 section .main {
@@ -94,7 +94,9 @@ main .col.sections-column {
   svg,
   .link_name {
     cursor: pointer;
-    padding-right: 5px;
+  }
+  .link_name svg {
+    font-size: var(--button-icons);
   }
   .link_name:hover {
     cursor: pointer;
@@ -134,7 +136,7 @@ main .col.sections-column {
     justify-content: space-between;
     align-items: normal;
     .form-group {
-      flex: 1 1 45%;
+      flex: 0 0 45%;
     }
   }
   form {
@@ -157,15 +159,15 @@ main {
 .col.costumize-column {
   display: none;
   flex: 0 0 10%;
-  min-height: 400px;
+  min-height: 300px;
   background-color: #ffffff;
   border-radius: 0.5em;
   height: fit-content;
   max-width: 80px;
-  padding: 33px 20px 0px 20px;
+  padding: 33px 7px 0px 7px;
   font-weight: 500;
   svg {
-    font-size: 20px;
+    font-size: 1.2rem;
   }
   .content {
     display: flex;
@@ -179,7 +181,7 @@ main .col.sections-column {
   min-width: 0px;
   .row {
     background-color: #ffffff;
-    padding: 25px 30px;
+    padding: 20px 30px;
     display: flex;
     font-weight: bold;
     color: #240f33;
@@ -230,7 +232,7 @@ main .col.sections-column {
   .btn svg {
     color: var(--button-color);
     padding-left: 10px;
-    font-size: 1.3rem;
+    font-size: var(--icon-size);
   }
 }
 
@@ -239,7 +241,7 @@ main .col.sections-column {
   background: #ffffff;
   font-weight: bold;
   color: var(--button-bg-color);
-  font-size: 1rem;
+  font-size: var(--label-size);
   cursor: pointer;
 }
 .button-group {
@@ -285,7 +287,7 @@ main .col.sections-column {
   .details .button-section.add {
     border: 5px solid #dfe0e3;
     border-radius: 1em;
-    padding: 8px 24px;
+    padding: var(--second-button-padding);
     margin-top: 0px;
     display: flex;
     justify-content: center;
@@ -408,7 +410,7 @@ main .col.sections-column {
   .resume-icon {
     padding: 0px !important;
     &.edit {
-      font-size: 1.3rem;
+      font-size: var(--section-header);
     }
   }
 }
@@ -422,7 +424,7 @@ main .col.sections-column {
   cursor: pointer;
   h1 {
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: var(--label-size);
     margin-top: 12px;
   }
   &.active {
@@ -511,67 +513,68 @@ main .col.sections-column {
       }
     }
     .col.sections-column {
-      min-width: 700px;
+      min-width: 550px;
       flex: 0 0 30%;
       h1 {
-        font-size: 1.2rem;
-        line-height: 1.75rem;
+        font-size: var(--section-header);
+        line-height: 1.25rem;
       }
       .row-group {
         flex-direction: row;
         align-items: end;
       }
       .form-group input {
-        height: 35px;
+        height: 30px;
       }
       .btn {
-        padding: 15px 44px;
-        font-size: 1rem;
+        padding: 10px 40px;
+        font-size: var(--label-size);
         font-weight: 600;
       }
       .form-group {
         .link_name {
-          font-size: 1rem;
+          font-size: var(--label-size);
+          svg {
+            padding-right: 5px;
+          }
         }
+
         label {
-          font-size: 1rem;
+          font-size: var(--label-size);
         }
       }
       .toogle-section .item.buttons .button-section input,
       .details .item.buttons .button-section input {
-        font-size: 1rem;
+        font-size: var(--label-size);
         color: var(--button-bg-color);
         font-weight: bold;
       }
       .toogle-section .item.buttons .button-section,
       .details .button-section.add {
-        padding: 13px 30px;
         align-items: center;
       }
       .personal-section .personal-info .item {
-        font-size: 1rem;
+        font-size: 0.8rem;
       }
       .section-presentation {
         .edit-icon svg {
-          font-size: 1.3rem;
+          font-size: var(--icon-size);
         }
         svg {
-          font-size: 1.3rem;
+          font-size: var(--button-icons);
         }
         .toogle-header svg.right-icon {
-          font-size: 1.3rem;
+          font-size: var(---icon-size);
         }
       }
       .sub-section {
         margin-top: 25px;
       }
-      .form-group input {
-        font-size: 0.9rem;
-      }
+
       .btn.download-pdf {
-        padding: 15px 44px;
+        padding: var(--button-padding);
         svg {
-          font-size: 1.3rem;
+          font-size: var(--icon-size);
         }
         span {
           display: block;
@@ -581,9 +584,6 @@ main .col.sections-column {
         padding-left: 10px !important;
       }
     }
-  }
-  .error {
-    font-size: 0.9rem;
   }
 
   section .main {
