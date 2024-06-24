@@ -47,7 +47,7 @@ function App() {
       phone: '',
       location: '',
       others: {
-        website: '',
+        portfolio: '',
         github: '',
         linkedIn: '',
       },

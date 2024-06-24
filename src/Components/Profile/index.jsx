@@ -96,7 +96,7 @@ function Profile(props) {
   const removeField = (field) => {
     //REMOVE FORM FIELDS FOR LINKS ON CLICK REMOVE ICON
 
-    if (['website', 'github', 'linkedin'].includes(field)) {
+    if (['portfolio', 'github', 'linkedin'].includes(field)) {
       toggleField(field);
     }
 
