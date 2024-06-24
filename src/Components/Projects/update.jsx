@@ -70,7 +70,7 @@ const UpdateForm = (props) => {
         </div>
         <div className="row-group">
           <div className="form-group">
-            <div className="App">
+            <div className="App editor">
               <label htmlFor="exp_responsibilities">Works Done</label>
               <CKEditor
                 editor={ClassicEditor}

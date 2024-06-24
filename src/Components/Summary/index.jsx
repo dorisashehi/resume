@@ -49,7 +49,7 @@ const Summary = (props) => {
             <form>
               <div className="row-group">
                 <div className="form-group">
-                  <div className="App">
+                  <div className="App editor">
                     <label htmlFor="summary">Summary</label>
                     <CKEditor
                       editor={ClassicEditor}

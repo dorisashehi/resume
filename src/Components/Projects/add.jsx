@@ -61,7 +61,7 @@ const AddForm = (props) => {
         </div>
 
         <div className="form-group">
-          <div className="App">
+          <div className="App editor">
             <label htmlFor="exp_responsibilities">Work Done</label>
             <CKEditor
               editor={ClassicEditor}

@@ -36,7 +36,7 @@ section .main {
   align-items: center;
   font-size: 0.7rem;
   .text-content {
-    max-width: 1835px;
+    max-width: 1500px;
     width: 100%;
     margin: auto;
   }
@@ -98,7 +98,7 @@ main .col.sections-column {
   .link_name svg {
     font-size: var(--button-icons);
   }
-  .link_name:hover {
+  .links .link_name:hover {
     cursor: pointer;
     opacity: 0.8;
   }
@@ -122,9 +122,9 @@ main .col.sections-column {
       font-weight: 500;
       font-size: 0.7rem;
     }
-    &:hover {
-      opacity: 0.8;
-    }
+    // &:hover {
+    //   opacity: 0.8;
+    // }
     label {
       font-size: 0.7rem;
     }
@@ -135,9 +135,9 @@ main .col.sections-column {
     flex-direction: column;
     justify-content: space-between;
     align-items: normal;
-    .form-group {
-      flex: 0 0 45%;
-    }
+    // .form-group {
+    //   flex: 0 0 45%;
+    // }
   }
   form {
     display: flex;
@@ -300,6 +300,7 @@ main .col.sections-column {
   .toogle-section .item.buttons .button-section:hover,
   .details .button-section.add:hover {
     opacity: 0.8;
+    cursor: pointer;
   }
   .toogle-section .item.buttons .button-section input,
   .details .item.buttons .button-section input {
@@ -404,7 +405,7 @@ main .col.sections-column {
       font-size: 0.7rem;
     }
     .edit-icon svg {
-      font-size: 0.7rem;
+      font-size: 1rem;
     }
   }
   .resume-icon {
@@ -483,6 +484,12 @@ main .col.sections-column {
   font-style: normal;
 }
 
+.editor {
+  width: calc(var(--main-size) - 60px);
+  .ck.ck-icon {
+    font-size: 8px;
+  }
+}
 @media screen and (min-width: 575px) {
   main {
     max-width: 600px;
@@ -497,7 +504,7 @@ main .col.sections-column {
     }
   }
   main {
-    max-width: 1950px;
+    max-width: 1500px;
     .col.sections-column {
       flex: 0 0 40%;
     }
