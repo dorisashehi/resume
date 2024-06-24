@@ -21,6 +21,8 @@ function Skills(props) {
   const handleOpenSummary = () => {
     //OPEN CLOSE EDIT
     setSummary(!showSummany);
+    setEdit(false);
+    setOpen(false);
   };
 
   const [fields, setFieldsObj] = useState({

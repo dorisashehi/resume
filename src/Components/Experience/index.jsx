@@ -80,6 +80,8 @@ function Experience(props) {
   const handleOpenSummary = () => {
     //OPEN CLOSE EXPERIENCE SUMMARY
     setSummary(!showSummany);
+    setEdit(false);
+    setOpen(false);
   };
 
   const toggleEdit = (event) => {

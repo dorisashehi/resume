@@ -29,6 +29,8 @@ function Projects(props) {
   const handleOpenSummary = () => {
     //OPEN CLOSE PROJECT SUMMARY
     setSummary(!showSummany);
+    setEdit(false);
+    setOpen(false);
   };
 
   const toggleAdd = (event) => {
