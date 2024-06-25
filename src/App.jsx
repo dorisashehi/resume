@@ -173,15 +173,6 @@ function App() {
             <div className="costumize container" onClick={openModal}>
               <FontAwesomeIcon icon={faMagnifyingGlass} title="Preview CV" />
               <h1>Preview</h1>
-              {/* <Popup open={modalOpen} modal nested>
-                {(close) => (
-                  <div className="modal">
-                    <div className="content">
-                      <CVPaper resumeInfo={cvData} />
-                    </div>
-                  </div>
-                )}
-              </Popup> */}
             </div>
           </div>
 
