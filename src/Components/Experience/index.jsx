@@ -1,45 +1,42 @@
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faPlus, faPenToSquare, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import AddForm from './add';
 import UpdateForm from './update';
+import useToggleSections from '../Elements/Hooks/toogleSections';
+import useValidate from '../Elements/Hooks/validate';
 
 function Experience(props) {
-  const [addBox, setOpen] = useState(false); //STATE FOR ADD EXPERIENCE BOX
-  const [showSummany, setSummary] = useState(false); //STATE FOR ADD EXPERIENCE BOX
-  const [editBox, setEdit] = useState(false);
-  const [required, setRequired] = useState(false); //REQUIRED FIELD
-
-  const [id, setID] = useState(); //ID FOR A NEW EXPERIENCE
-
-  const [fieldsArr, setFieldsArr] = useState([]); //ARRAY OF EXPERIENCES ADDED
-
   /*
-        {
-            exp_company: '',
-            exp_job: '',
-            exp_technology: '',
-            exp_city: '',
-            exp_country: '',
-            exp_start_date: '',
-            exp_end_date: '',
-            responsibilities: []
-        }
-    */
+    {
+      exp_company: '',
+      exp_job: '',
+      exp_technology: '',
+      exp_city: '',
+      exp_country: '',
+      exp_start_date: '',
+      exp_end_date: '',
+      responsibilities: []
+    }
+  */
 
-  const [fields, setFieldsObj] = useState({}); //AN OBJ TO SAVE THE EXPERIENCE ADDING TO ADD EXP BOX
+  const {
+    addBox,
+    setOpen,
+    editBox,
+    setEdit,
+    showSummany,
+    setSummary,
+    id,
+    setID,
+    handleOpenSummary,
+    toggleAdd,
+    fields,
+    setFieldsObj,
+    setFieldsArr,
+    fieldsArr,
+  } = useToggleSections();
 
-  const toggleAdd = (event) => {
-    //OPEN CLOSE DETAILS
-
-    event.preventDefault();
-
-    setID(uuidv4()); //GENERATE A RANDOM ID WHEN EXP BOX OPEN
-    setFieldsObj({}); //EMPTY PREVIOUS EXPERIONCE OBJECT
-    setEdit(false);
-    setOpen(!addBox); //OPEN/CLOSE ADD BOX
-  };
+  const { validateRequiredFields, required } = useValidate();
 
   const changeFormFields = (input, value) => {
     setFieldsObj({
@@ -50,22 +47,10 @@ function Experience(props) {
     });
   };
 
-  const validateRequiredFields = (fields) => {
-    //CHECK IS REQ FIELD IS FILLED
-
-    if (!fields.exp_company) {
-      setRequired(true); //REQUIRED FIELD IS NOT FILLED
-      return true;
-    }
-
-    setRequired(false); //REQUIRED FIELD IS FILLED
-    return false;
-  };
-
   const save = (event) => {
     event.preventDefault();
 
-    const error = validateRequiredFields(fields);
+    const error = validateRequiredFields(fields.exp_company);
 
     if (!error) {
       //EXECUTE IF COMPANY NAME IF FILLED
@@ -75,13 +60,6 @@ function Experience(props) {
       props.addExperiences(newFieldsArr); //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
       setOpen(false); //CLOSE ADD BOX DIALOG
     }
-  };
-
-  const handleOpenSummary = () => {
-    //OPEN CLOSE EXPERIENCE SUMMARY
-    setSummary(!showSummany);
-    setEdit(false);
-    setOpen(false);
   };
 
   const toggleEdit = (event) => {
@@ -106,7 +84,7 @@ function Experience(props) {
     event.preventDefault();
     const index = fieldsArr.findIndex((item) => item.id === fields.id); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
 
-    const error = validateRequiredFields(fields); //CHECK ID COMPANY NAME EMPTY
+    const error = validateRequiredFields(fields.exp_company); //CHECK ID COMPANY NAME EMPTY
 
     if (!error) {
       const updatedExperiences = [...fieldsArr];

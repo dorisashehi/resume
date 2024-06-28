@@ -52,10 +52,10 @@ function Education(props) {
     });
   };
 
-  const validateRequiredFields = (fields) => {
+  const validateRequiredFields = (field) => {
     //CHECK IS REQ FIELD IS FILLED
 
-    if (!fields.school) {
+    if (!field) {
       setRequired(true); //REQUIRED FIELD IS NOT FILLED
       return true;
     }
@@ -67,7 +67,7 @@ function Education(props) {
   const save = (event) => {
     event.preventDefault();
 
-    const error = validateRequiredFields(fields);
+    const error = validateRequiredFields(fields.school);
 
     if (!error) {
       //EXECUTE IF SCHOOL NAME IF FILLED
@@ -101,7 +101,7 @@ function Education(props) {
     event.preventDefault();
     const index = fieldsArr.findIndex((item) => item.id === fields.id); //FIND INDEX OF EDUCATION IN ARR OF EDUCATIONS
 
-    const error = validateRequiredFields(fields); //CHECK IF SCHOOL NAME IS EMPTY
+    const error = validateRequiredFields(fields.school); //CHECK IF SCHOOL NAME IS EMPTY
 
     if (!error) {
       const updatedFieldsArr = [...fieldsArr];
