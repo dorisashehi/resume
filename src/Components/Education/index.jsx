@@ -2,67 +2,31 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGraduationCap, faPenToSquare, faAngleDown, faPlus } from '@fortawesome/free-solid-svg-icons';
+import useToggleSections from '../Elements/Hooks/toogleSections';
+import useValidate from '../Elements/Hooks/validate';
+import useChangeFields from '../Elements/Hooks/changeFields';
 import AddForm from './add';
 import UpdateForm from './update';
 
 function Education(props) {
-  const [addBox, setOpen] = useState(false);
-  const [editBox, setEdit] = useState(false);
-  const [showSummany, setSummary] = useState(false); //STATE FOR ADD EDUCATION BOX
-  const [id, setID] = useState(); //ID FOR A NEW EDUCATION
-  const [required, setRequired] = useState(false); //REQUIRED FIELD
-
-  const handleOpenSummary = () => {
-    //OPEN CLOSE EDIT
-    setSummary(!showSummany);
-    setEdit(false);
-    setOpen(false);
-  };
-
-  const [fields, setFieldsObj] = useState({}); //AN OBJ TO SAVE THE EDUCATION ADDING TO ADD EXP BOX
-  const [fieldsArr, setFieldsArr] = useState([]); //ARRAY OF EDUCATIONS ADDED
-
   /**
-     *  {
-            school: '',
-            edu_city: '',
-            edu_country: '',
-            degree: '',
-            schl_start_date: '',
-            schl_end_date: '',
-            courses: [],
-        }
-     */
-
-  const toggleAdd = (event) => {
-    //OPEN CLOSE DETAILS
-    event.preventDefault();
-    setID(uuidv4()); //GENERATE A RANDOM ID WHEN EXP BOX OPEN
-    setFieldsObj({}); //EMPTY PREVIOUS EDUCATION OBJECT
-    setEdit(false);
-    setOpen(!addBox); //OPEN/CLOSE ADD BOX
-  };
-
-  const changeFormFields = (input, value) => {
-    setFieldsObj({
-      //SET INPUT FIELD VALUE TO THE EDUCATION OBJECT
-      ...fields,
-      id: id,
-      [input]: value,
-    });
-  };
-
-  const validateRequiredFields = (field) => {
-    //CHECK IS REQ FIELD IS FILLED
-
-    if (!field) {
-      setRequired(true); //REQUIRED FIELD IS NOT FILLED
-      return true;
+    {
+        school: '',
+        edu_city: '',
+        edu_country: '',
+        degree: '',
+        schl_start_date: '',
+        schl_end_date: '',
+        courses: [],
     }
+  */
 
-    setRequired(false); //REQUIRED FIELD IS FILLED
-    return false;
-  };
+  const { addBox, setOpen, editBox, setEdit, showSummany, handleOpenSummary, toggleAdd, toggleEdit } =
+    useToggleSections();
+  const { fields, setFieldsObj, fieldsArr, setFieldsArr, findField, findIndex, filterField, changeFormFields } =
+    useChangeFields();
+  const { validateRequiredFields, required } = useValidate();
+  const [id, setID] = useState();
 
   const save = (event) => {
     event.preventDefault();
@@ -71,7 +35,7 @@ function Education(props) {
 
     if (!error) {
       //EXECUTE IF SCHOOL NAME IF FILLED
-
+      fields.id = uuidv4();
       const newFieldsArr = [...fieldsArr, fields];
       setFieldsArr(newFieldsArr); //SET THE EDUCATION BJECT TO THE ARRAY OF EXPERIENCES
       setOpen(false); //CLOSE ADD BOX DIALOG
@@ -82,7 +46,7 @@ function Education(props) {
   const handleEdit = (id) => {
     //EDIT EXPERIEMCE ACTION
 
-    const data = fieldsArr.find((item) => item.id === id); //FIND EDITED EDUCATION IN EXPERIENCES ARRAY
+    const data = findField(id); //FIND EDITED EDUCATION IN EXPERIENCES ARRAY
 
     setID(id);
     setOpen(false); //CLOSE ADD BOX IF OPENED
@@ -90,16 +54,9 @@ function Education(props) {
     setEdit(true); //OPEN EDIT BOX
   };
 
-  const toggleEdit = (event) => {
-    //OPEN CLOSE EDIT BOX
-
-    event.preventDefault();
-    setEdit(!editBox); //OPEN/CLOSE EDIT BOX
-  };
-
   const update = (event) => {
     event.preventDefault();
-    const index = fieldsArr.findIndex((item) => item.id === fields.id); //FIND INDEX OF EDUCATION IN ARR OF EDUCATIONS
+    const index = findIndex(); //FIND INDEX OF EDUCATION IN ARR OF EDUCATIONS
 
     const error = validateRequiredFields(fields.school); //CHECK IF SCHOOL NAME IS EMPTY
 
@@ -114,7 +71,7 @@ function Education(props) {
 
   const deleteField = (event, id) => {
     event.preventDefault();
-    const newFieldsArr = fieldsArr.filter((item) => item.id !== id); //FILTER WITHOUT THE REMOVED ELEMENT
+    const newFieldsArr = filterField(id); //FILTER WITHOUT THE REMOVED ELEMENT
     setFieldsArr(newFieldsArr);
     props.addEducation(newFieldsArr);
     setEdit(false); //CLOSE EDIT BOX DIALOG

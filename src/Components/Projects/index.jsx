@@ -4,66 +4,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderOpen, faAngleDown, faPlus, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import AddForm from './add';
 import UpdateForm from './update';
+import useToggleSections from '../Elements/Hooks/toogleSections';
+import useValidate from '../Elements/Hooks/validate';
+import useChangeFields from '../Elements/Hooks/changeFields';
 
 function Projects(props) {
-  const [addBox, setOpen] = useState(false);
-  const [editBox, setEdit] = useState(false);
-  const [showSummany, setSummary] = useState(false); //STATE FOR ADD PROJECT BOX
-  const [id, setID] = useState(); //ID FOR A NEW PROJECT
-  const [required, setRequired] = useState(false); //REQUIRED FIELD
-  const [fields, setFieldsObj] = useState({}); //AN OBJ TO SAVE THE PROJECT ADDING TO ADD EXP BOX
-  const [fieldsArr, setFieldsArr] = useState([]); //ARRAY OF PROJECTS ADDED
-
   /**
-     *  {
-            project_title: '',
-            project_technology: '',
-            project_type: '',
-            project_city: '',
-            project_country: '',
-            work_done: []
+   {
+        project_title: '',
+        project_technology: '',
+        project_type: '',
+        project_city: '',
+        project_country: '',
+        work_done: []
 
-        },
-     */
+    },
+  */
 
-  const handleOpenSummary = () => {
-    //OPEN CLOSE PROJECT SUMMARY
-    setSummary(!showSummany);
-    setEdit(false);
-    setOpen(false);
-  };
-
-  const toggleAdd = (event) => {
-    //OPEN CLOSE DETAILS
-
-    event.preventDefault();
-
-    setID(uuidv4()); //GENERATE A RANDOM ID WHEN ADD BOX OPEN
-    setFieldsObj({}); //EMPTY PREVIOUS PROJECT OBJECT
-    setEdit(false);
-    setOpen(!addBox); //OPEN/CLOSE ADD BOX
-  };
-
-  const changeFormFields = (input, value) => {
-    setFieldsObj({
-      //SET INPUT FIELD VALUE TO THE PROJECT OBJECT
-      ...fields,
-      id: id,
-      [input]: value,
-    });
-  };
-
-  const validateRequiredFields = (fields) => {
-    //CHECK IS REQ FIELD IS FILLED
-
-    if (!fields.project_title) {
-      setRequired(true); //REQUIRED FIELD IS NOT FILLED
-      return true;
-    }
-
-    setRequired(false); //REQUIRED FIELD IS FILLED
-    return false;
-  };
+  const { addBox, setOpen, editBox, setEdit, showSummany, handleOpenSummary, toggleAdd, toggleEdit } =
+    useToggleSections();
+  const { fields, setFieldsObj, fieldsArr, setFieldsArr, findField, findIndex, filterField, changeFormFields } =
+    useChangeFields();
+  const { validateRequiredFields, required } = useValidate();
+  const [id, setID] = useState();
 
   const save = (event) => {
     event.preventDefault();
@@ -73,6 +36,7 @@ function Projects(props) {
     if (!error) {
       //EXECUTE IF SCHOOL NAME IF FILLED
 
+      fields.id = uuidv4();
       const newFieldsArr = [...fieldsArr, fields];
       setFieldsArr(newFieldsArr); //SET THE PROJECT OBJECT TO THE ARRAY OF PROJECTS
       setOpen(false); //CLOSE ADD BOX DIALOG
@@ -80,17 +44,10 @@ function Projects(props) {
     }
   };
 
-  const toggleEdit = (event) => {
-    //OPEN CLOSE EDIT BOX
-
-    event.preventDefault();
-    setEdit(!editBox); //OPEN/CLOSE EDIT BOX
-  };
-
   const handleEdit = (id) => {
     //EDIT PROJECT ACTION
 
-    const data = fieldsArr.find((item) => item.id === id); //FIND EDITED PROJECT IN PROJECTS ARRAY
+    const data = findField(id); //FIND EDITED PROJECT IN PROJECTS ARRAY
 
     setID(id);
     setOpen(false); //CLOSE ADD BOX IF OPENED
@@ -98,8 +55,8 @@ function Projects(props) {
     setEdit(true); //OPEN EDIT BOX
   };
 
-  const update = (id) => {
-    const index = fieldsArr.findIndex((item) => item.id === id); //FIND INDEX OF PROJECT IN ARR PROJECTS
+  const update = () => {
+    const index = findIndex(); //FIND INDEX OF PROJECT IN ARR PROJECTS
     const error = validateRequiredFields(fields); //CHECK ID COMPANY NAME EMPTY
 
     if (!error) {
@@ -113,7 +70,7 @@ function Projects(props) {
 
   const deleteField = (event, id) => {
     event.preventDefault();
-    const newFieldsArr = fieldsArr.filter((item) => item.id !== id); //FILTER WITHOUT THE REMOVED ELEMENT
+    const newFieldsArr = filterField(id); //FILTER WITHOUT THE REMOVED ELEMENT
     setFieldsArr(newFieldsArr);
     props.addProjects(newFieldsArr);
     setEdit(false); //CLOSE EDIT BOX DIALOG

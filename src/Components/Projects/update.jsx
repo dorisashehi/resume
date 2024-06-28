@@ -52,7 +52,7 @@ const UpdateForm = (props) => {
             className="form-input"
             name="project_start_date"
             id="project_start_date"
-            value={props.fields.project_technology || ''}
+            value={props.fields.project_start_date || ''}
             onChange={(event) => props.changeFormFields(event.target.id, event.target.value)}
             placeholder="Enter Start Date"
           />

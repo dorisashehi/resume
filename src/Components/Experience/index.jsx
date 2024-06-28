@@ -22,7 +22,7 @@ function Experience(props) {
     }
   */
 
-  const { addBox, setOpen, editBox, setEdit, showSummany, setSummary, handleOpenSummary, toggleAdd, toggleEdit } =
+  const { addBox, setOpen, editBox, setEdit, showSummany, handleOpenSummary, toggleAdd, toggleEdit } =
     useToggleSections();
   const { fields, setFieldsObj, fieldsArr, setFieldsArr, findField, findIndex, filterField, changeFormFields } =
     useChangeFields();
