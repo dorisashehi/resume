@@ -4,6 +4,9 @@ import AddForm from './add';
 import UpdateForm from './update';
 import useToggleSections from '../Elements/Hooks/toogleSections';
 import useValidate from '../Elements/Hooks/validate';
+import useChangeFields from '../Elements/Hooks/changeFields';
+import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
 
 function Experience(props) {
   /*
@@ -19,42 +22,21 @@ function Experience(props) {
     }
   */
 
-  const {
-    addBox,
-    setOpen,
-    editBox,
-    setEdit,
-    showSummany,
-    setSummary,
-    id,
-    setID,
-    handleOpenSummary,
-    toggleAdd,
-    fields,
-    setFieldsObj,
-    setFieldsArr,
-    fieldsArr,
-  } = useToggleSections();
-
+  const { addBox, setOpen, editBox, setEdit, showSummany, setSummary, handleOpenSummary, toggleAdd, toggleEdit } =
+    useToggleSections();
+  const { fields, setFieldsObj, fieldsArr, setFieldsArr, findField, findIndex, filterField, changeFormFields } =
+    useChangeFields();
   const { validateRequiredFields, required } = useValidate();
-
-  const changeFormFields = (input, value) => {
-    setFieldsObj({
-      //SET INPUT FIELD VALUE TO THE EXPERIENCE OBJECT
-      ...fields,
-      id: id,
-      [input]: value,
-    });
-  };
+  const [id, setID] = useState();
 
   const save = (event) => {
     event.preventDefault();
-
     const error = validateRequiredFields(fields.exp_company);
 
     if (!error) {
       //EXECUTE IF COMPANY NAME IF FILLED
 
+      fields.id = uuidv4();
       const newFieldsArr = [...fieldsArr, fields];
       setFieldsArr(newFieldsArr); //SET THE EXPERIENCE BJECT TO THE ARRAY OF EXPERIENCES
       props.addExperiences(newFieldsArr); //ADD ARRAY OF EXPERIENCES TO THE PARENT ELEMNT
@@ -62,17 +44,10 @@ function Experience(props) {
     }
   };
 
-  const toggleEdit = (event) => {
-    //OPEN CLOSE EDIT BOX
-
-    event.preventDefault();
-    setEdit(!editBox); //OPEN/CLOSE EDIT BOX
-  };
-
   const handleEdit = (id) => {
     //EDIT EXPERIEMCE ACTION
 
-    const data = fieldsArr.find((item) => item.id === id); //FIND EDITED EXPERINCE IN EXPERIENCES ARRAY
+    const data = findField(id); //FIND EDITED EXPERINCE IN EXPERIENCES ARRAY
 
     setID(id);
     setOpen(false); //CLOSE ADD BOX IF OPENED
@@ -82,7 +57,7 @@ function Experience(props) {
 
   const update = (event) => {
     event.preventDefault();
-    const index = fieldsArr.findIndex((item) => item.id === fields.id); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
+    const index = findIndex(); //FIND INDEX OF EXPERIENCE IN ARR EXPERIENCES
 
     const error = validateRequiredFields(fields.exp_company); //CHECK ID COMPANY NAME EMPTY
 
@@ -97,7 +72,7 @@ function Experience(props) {
 
   const deleteField = (event, id) => {
     event.preventDefault();
-    const newFieldsArr = fieldsArr.filter((item) => item.id !== id); //FILTER WITHOUT THE REMOVED ELEMENT
+    const newFieldsArr = filterField(id); //FILTER WITHOUT THE REMOVED ELEMENT
     setFieldsArr(newFieldsArr);
     props.addExperiences(newFieldsArr);
     setEdit(false); //CLOSE EDIT BOX DIALOG
